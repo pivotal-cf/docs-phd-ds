@@ -23,7 +23,7 @@ To create a service plan:
                 <p>Configure the following display options for your Pivotal HD cluster plans. This information displays in the Pivotal CF Console and Command-line Interface.</p>
 						
                 <table
-                    frame="void"
+                    frame="void" rules="all"
                     width="783">
                     <caption>Informational Display</caption>
                     <col
@@ -63,9 +63,9 @@ To create a service plan:
                     </tbody>
                 </table>
             </li>
-            <li>Enter the following values for multi-tenant configuration. The values are informational only ?? <table
-                    frame="void">
-                    <caption>Multi-tenant configuration</caption>
+            <li>Enter the following values for cost display. The values are informational only.<table
+                    frame="void" rules="all">
+                    <caption>Cost Information</caption>
                     <col
                         width="33%" />
                     <col
@@ -94,7 +94,7 @@ To create a service plan:
                 </table>
             </li>
             <li>Enter the following values to define your cluster instances:<table
-                    frame="void">
+                    frame="void" rules="all">
                     <caption>Cluster Instances</caption>
                     <col
                         width="33%" />
@@ -129,7 +129,7 @@ To create a service plan:
                 </table></li>
             <li>Fill in the remaining fields to define the cluster plan. The cluster plan defines the nodes and components of the Pivotal HD clusters that Pivotal HD Data Services creates. <p>For more information about Pivotal HD and its components, see the <a
                         href="http://pivotalhd.docs.gopivotal.com/index.html">Pivotal HD Documentation</a> .</p><table
-                    frame="void">
+                    frame="void" rules="all">
                     <caption>Cluster Plan Configuration</caption>
                     <col
                         width="33%" />

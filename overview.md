@@ -11,6 +11,8 @@ Pre-created cluster instances are made available as "hot standbys". Pivotal HD D
 ?? Applications that require "elastic" resources can also use Pivotal HD Data Services to quickly spin-up a cluster and then destroy it when it is no longer needed so that its resources can be redeployed or shutdown to save power. 
 
 
-The following image shows the work flow for installing Pivotal HD Data Services and creating clusters:
+Figure 1 shows the work flow for installing Pivotal HD Data Services and creating clusters:
+
+**Figure 1. Pivotal HD Data Services Work Flow**
 
 ![Data Service Work Flow](/images/data_service.png "Data Service Work Flow")

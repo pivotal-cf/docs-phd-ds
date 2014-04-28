@@ -24,6 +24,10 @@ For more information, see [Getting Started with the Developer Console](http://do
 
 If you need to access a virtual machine in your Pivotal HD cluster or if you need to access the virtual machine that runs Pivotal HD Data Services, you can use Pivotal CF Ops Manager to display the necessary credentials and URLs. Ops Manager also displays status of each virtual machine and enables you to download its log files. 
 
+**Pivotal CF Developer Console**
+
+![Pivotal CF Developer Console](/images/dev_console_large.png "Pivotal CF Developer Console")
+
 ##To view the status of the virtual machines in a cluster:
 
 1. Use a Web browser to open the Pivotal CF Ops Manager application. 
@@ -69,6 +73,7 @@ If you need to access a virtual machine in your Pivotal HD cluster or if you nee
 #Binding an Application to a Pivotal HD Cluster Instances
 
 The process of binding an application to a service automatically populates a set of environment variables. These variables define credentials, URLs for services and other configurations. When you use Pivotal CF to bind an application to a Pivotal HD service, these variables are populated automatically. When the application moves into a production phase, you can easily bind the application to an external instance of Pivotal HD by setting new values for these variables. Pivotal CF can also automatically create these bindings. See [Bind a Service](http://docs.gopivotal.com/pivotalcf/devguide/services/bind-service.html).
+
 
 ??insert list of env vars
 

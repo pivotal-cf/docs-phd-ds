@@ -12,6 +12,8 @@ The documentation contains the following topics:
 * [Using the Pivotal HD Data Service](data_service.html)
 
 
+For more information on installing and using Pivotal HD, see the 
+[Pivotal HD Documentation](../pivotalhd/index.html).
 
 
 
