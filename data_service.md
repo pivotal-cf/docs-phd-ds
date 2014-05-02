@@ -83,5 +83,12 @@ The process of binding an application to a service automatically populates a set
 
 3. Click **Bind**
 
+#Using BOSH Client to Examine a PHD Deployment 
+   
+   or is this about app deployment ?  (this from Logan's additions to doc plan)
+   
+    deployments
+	VM
 
+#Using SSH into Virtual Machines in the Cluster	
 

@@ -7,7 +7,6 @@ title: Installing Pivotal HD Data Services
 Installation of Pivotal HD Data Services requires the following:
 
 * Pivotal Cloud Foundry v?? (installed)
-* Pivotal HD 2.x
 * Pivotal Elastic Runtime installed
 * Web Browser
 * Network access and credentials for the Pivotal Cloud Foundry Ops Manager application. 
@@ -50,8 +49,8 @@ Installation of Pivotal HD Data Services requires the following:
             </li>
             <li>
                 <p>Configure the following network settings for the virtual machines in your Pivotal HD cluster instances:</p>
-                <table
-                    frame="void">
+                <table 
+                    frame="void" rules="all">
                     <caption>Network Settings</caption>
                     <col
                         width="33%" />
