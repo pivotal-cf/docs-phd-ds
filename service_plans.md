@@ -43,7 +43,7 @@ To create a service plan:
                         <tr>
                             <td>Service Plan Name</td>
                             <td
-                                rowspan="5">These fields affect how a Service Plan appears to users in the CLI and Web Console of the Elastic Runtime Services Marketplace</td>
+                                rowspan="5">These fields affect how a Service Plan appears to users in the CLI and Web Console of the Pivotal CF Services Marketplace</td>
                         </tr>
                         <tr>
                             <td> Service Plan Description</td>
