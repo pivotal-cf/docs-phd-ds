@@ -42,11 +42,12 @@ To create a service plan:
                         
                         <tr>
                             <td>Service Plan Name</td>
-                            <td
-                                rowspan="5">These fields affect how a Service Plan appears to users in the CLI and Web Console of the Pivotal CF Services Marketplace</td>
+                            <td>Name of the Service Plan. You use this name when creating cluster instances.</td>
                         </tr>
                         <tr>
                             <td> Service Plan Description</td>
+                            <td
+                                rowspan="4">These fields are for display only. The values in these fields display to users in the Cloud Foundry CLI and in the Marketplace section of the Pivotal CF Developer Console.</td>
                         </tr>
                         <tr>
                             <td> Service Plan Feature Bullet 1 </td>
@@ -63,8 +64,9 @@ To create a service plan:
                     </tbody>
                 </table>
             </li>
-            <li>Enter the following values for cost display. The values are informational only.<table
-                    frame="void" rules="all">
+            <li>Enter the following values regarding the cost of Pivotal HD clusters. These fields are for display only. The values in these fields display to users in the Cloud Foundry CLI and in the Marketplace section of the Pivotal CF Developer Console.<table
+                    frame="void"
+                    rules="all">
                     <caption>Cost Information</caption>
                     <col
                         width="33%" />
@@ -82,7 +84,7 @@ To create a service plan:
                     <tbody>
                         <tr>
                             <td> Amount </td>
-                            <td>Cost, in US dollars to create a Pivotal HD cluster instance from this Service Plan </td>
+                            <td>Cost in US dollars to create a Pivotal HD cluster instance from this Service Plan </td>
                             <td>US dollars</td>
                         </tr>
                         <tr>
@@ -127,12 +129,13 @@ To create a service plan:
                         </tr>
                     </tbody>
                 </table></li>
-            <li>Fill in the remaining fields to define the cluster plan. The cluster plan defines the nodes and components of the Pivotal HD clusters that Pivotal HD Data Services creates. <p>For more information about Pivotal HD and its components, see the <a
+            <li>Fill in the remaining fields to define the configuration of the Pivotal HD clusters that will be created by this Service Plan. <p>For more information about Pivotal HD and its components, see the <a
                         href="http://pivotalhd.docs.gopivotal.com/index.html">Pivotal HD Documentation</a> .</p><table
-                    frame="void" rules="all">
-                    <caption>Cluster Plan Configuration</caption>
+                    frame="void"
+                    rules="all">
+                    <caption>Pivotal HD Cluster Configuration</caption>
                     <col
-                        width="33%" />
+                        width="34%" />
                     <col
                         width="33%" />
                     <col
@@ -159,7 +162,7 @@ To create a service plan:
                         <tr>
                             <td>Number of PHD Slaves</td>
                             <td
-                                rowspan="3">Each instance of a PHD Slave virtual machine runs all applicable Slave processes for the PHD components that are included in the Service Plan. If only Yarn/MapReduce2 is selected above, then the Slave runs only that NodeManager process. <p></p>If HAWQ is also selected, the HAWQ Segment Server process is included. <p></p>Note that the HDFS DataNode process always runs on these slaves. </td>
+                                rowspan="3">Each instance of a PHD Slave virtual machine runs all applicable slave processes for the PHD components that are included in the Service Plan. If only Yarn/MapReduce2 is selected above, then the slave runs only that NodeManager process. <p></p>If HAWQ is also selected, the HAWQ Segment Server process is included. <p></p>Note that the HDFS DataNode process always runs on these slaves. </td>
                             <td>
                                 <ul>
                                     <li>Minimum: 1</li>
@@ -202,7 +205,7 @@ To create a service plan:
                         <tr>
                             <td>NameNode CPU</td>
                             <td
-                                rowspan="3">The NameNode runs on its own dedicated virtual machine. If the corresponding component is not selected above (?? huh?), the resource fields have no effect. </td>
+                                rowspan="3">The NameNode runs on its own dedicated virtual machine.</td>
                             <td>
                                 <ul>
                                     <li>Minimum: 1</li>
@@ -235,7 +238,7 @@ To create a service plan:
                         <tr>
                             <td>ResourceManager CPU </td>
                             <td
-                                rowspan="3">The ResourceManager runs on its own dedicated virtual machine. If the corresponding component is not selected above ??huh?, the resource fields have no effect. .</td>
+                                rowspan="3">The ResourceManager runs on its own dedicated virtual machine. </td>
                             <td>
                                 <ul>
                                     <li>Minimum: 1</li>
@@ -266,42 +269,9 @@ To create a service plan:
                             </td>
                         </tr>
                         <tr>
-                            <td>Gemfire XD Locator CPU</td>
-                            <td
-                                rowspan="3">The Gemfire XD Locator runs on its own dedicated virtual machine. If the corresponding component is not selected above ??huh?, the resource fields have no effect. </td>
-                            <td>
-                                <ul>
-                                    <li>Minimum: 1</li>
-                                    <li>Maximum: 64 </li>
-                                    <li><strong>Default: </strong>1</li>
-                                </ul>
-                                <p>This field must contain a power of 2</p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Gemfire XD Locator RAM in MB</td>
-                            <td>
-                                <ul>
-                                    <li>Minimum: 1024</li>
-                                    <li>Maximum: 1048576 </li>
-                                    <li><strong>Default: </strong>1024</li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Gemfire XD Locator Ephemeral Disk in MB </td>
-                            <td>
-                                <ul>
-                                    <li>Minimum: 2048</li>
-                                    <li>Maximum: 1048576 </li>
-                                    <li><strong>Default: </strong>2048</li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
                             <td>HAWQ Master CPU</td>
                             <td
-                                rowspan="3">The HAWQ Master runs on its own dedicated virtual machine. If the corresponding component is not selected above, ?? the resource fields have no effect. .</td>
+                                rowspan="3">The HAWQ Master runs on its own dedicated virtual machine. If  you do not specify HAWQ as part of this cluster, these fields are ignored. </td>
                             <td>
                                 <ul>
                                     <li>Minimum: 1</li>
@@ -331,6 +301,40 @@ To create a service plan:
                                 </ul>
                             </td>
                         </tr>
+                        <tr>
+                            <td>Gemfire XD Locator CPU</td>
+                            <td
+                                rowspan="3">The Gemfire XD Locator runs on its own dedicated virtual machine. If  you do not specify GemFire XD as part of this cluster, these fields are ignored.  </td>
+                            <td>
+                                <ul>
+                                    <li>Minimum: 1</li>
+                                    <li>Maximum: 64 </li>
+                                    <li><strong>Default: </strong>1</li>
+                                </ul>
+                                <p>This field must contain a power of 2</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Gemfire XD Locator RAM in MB</td>
+                            <td>
+                                <ul>
+                                    <li>Minimum: 1024</li>
+                                    <li>Maximum: 1048576 </li>
+                                    <li><strong>Default: </strong>1024</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Gemfire XD Locator Ephemeral Disk in MB </td>
+                            <td>
+                                <ul>
+                                    <li>Minimum: 2048</li>
+                                    <li>Maximum: 1048576 </li>
+                                    <li><strong>Default: </strong>2048</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        
                     </tbody>
                 </table>
             </li>

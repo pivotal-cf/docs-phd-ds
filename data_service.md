@@ -2,15 +2,23 @@
 title: Using a Pivotal HD Data Service
 ---
 
-#Creating Pivotal HD Cluster Instances
+After Pivotal HD Data Services is installed you can deploy instances of the Pivotal HD cluster that are defined in the Service Plan. The plan defines the maximum number of cluster instances you can create as well as the number of pre-created cluster instances that are available. You can bind applications deployed in the Cloud Foundry environment to these cluster instances. 
 
-After Pivotal HD Data Services is installed you can deploy instances of the Pivotal HD cluster that are defined in the Service Plan. The plan defines the maximum number of cluster instances you can create as well as the number of pre-created cluster instances that are available. 
+* [Creating Pivotal HD Cluster Instances](#create-cluster)
+* [Deleting Pivotal HD Cluster Instances](#delete-cluster)
+* [Accessing Pivotal HD Cluster Instances](#access-cluster)
+* [Binding Applications to Pivotal HD Cluster Instances](#binding)
+* [Unbinding Applications from Pivotal HD Cluster Instances](#unbinding)
+* [Using SSH to access Pivotal HD Cluster virtual machines](#ssh)
+
+<a id="create-cluster"></a>
+#Creating and Using Pivotal HD Cluster Instances
 
 You use either the Pivotal CF Developer Console or the Pivotal CF command line to create cluster instances.
 
 ##Developer Console
 
-To create an instance of a Pivotal HD Service Plan: 
+To create an instance of a Pivotal HD Service Plan using the Pivotal CF Developer Console: 
 
 1. Log in to the **Pivotal CF Developer Console**.  
 
@@ -20,19 +28,21 @@ To create an instance of a Pivotal HD Service Plan:
 
 	The **Services Marketplace** displays.
 
-3. Select **Pivotal HD**.
+4. Select **Pivotal HD**.
 
 	The **Pivotal HD Service** page displays.
 
-4. Click **Create a Service**.
+5. Click **Create a Service**.
 
 	The **Add a new Service Instance** page displays.
 	
-5. Enter a name for this PHD service instance. 
+6. Enter a name for this PHD service instance. 
 
-6. Select a space from the **Add to Space** drop-down list.
+7. Select a space from the **Add to Space** drop-down list.
 
-7. (Optional) Select an application from the **Bind to App** drop-down list. The drop-down list displays available applications previously configured for this Org and Space. If you do not want to bind an application at this time, select **[do not bind]**.
+8. (Optional) Select an application from the **Bind to App** drop-down list. The drop-down list displays available applications previously configured for this Org and Space. If you do not want to bind an application, select **[do not bind]**.
+
+9. Click **Add**. 
 
 The PHD service deploys. To see the status of this cluster, select its space from the navigation menu on the left and select the instance from the list that displays. 
 
@@ -50,16 +60,16 @@ To create a Pivotal HD cluster instance:
 
 2. If necessary, select a space using the following command:
 
-	`cf target -s <space name>`
+	`$ cf target -s <space name>`
 		
 2. Run the following command:
 
-	`cf create-service p-hd <Service Plan name> <instance name>`
+	`$ cf create-service p-hd <Service Plan name> <instance name>`
 	
 	Where:
 	
-	 * *Service Plan name* is the name of the Service Plan you created previously. See [Creating a Service Plan](service_plans.html).
-	 * *instance name* is the name of the instance you are creating. 
+	* *Service Plan name* is the name of the Service Plan you created previously. See [Creating a Service Plan](service_plans.html).
+	* *instance name* is the name of the instance you are creating. 
 	 
 	For example:
 	
@@ -72,10 +82,9 @@ To create a Pivotal HD cluster instance:
 	$ cf create-service p-hd Standard phd1
 	Creating service phd1 in org pivotalrocks / space staging as admin...
 	OK
-    </pre>
+    </pre>  
 
-3.  
-
+<a id="delete-cluster"></a>
 #Deleting Pivotal HD Cluster Instances
 
 After creating a Pivotal HD cluster instance, you can delete the instance.
@@ -101,18 +110,18 @@ After creating a Pivotal HD cluster instance, you can delete the instance.
 
 2. If necessary, select a space using the following command:
 
-	`cf target -s <space name>`
+	`$ cf target -s <space name>`
 		
 2. Run the following command:
 
-	`cf delete-service <instance name>`
+	`$ cf delete-service <instance name>`
 	
 	Where *instance name* is the name of the instance you are creating. 
 	 
 	For example:
 	
 	<pre class="terminal">
-	cf delete-service phd1
+	$ cf delete-service phd1
 
 	Are you sure you want to delete the service phd1 ? y
 	Deleting service phd1 in org pivotalrocks / space staging as admin...
@@ -120,13 +129,14 @@ After creating a Pivotal HD cluster instance, you can delete the instance.
 	
     </pre>
 
+<a id="access-cluster"></a>
 #Accessing Pivotal HD Cluster Instance Machines
 
 If you need to access a virtual machine in your Pivotal HD cluster or if you need to access the virtual machine that runs Pivotal HD Data Services, you can use Pivotal CF Ops Manager to display the necessary credentials and URLs. Ops Manager also displays status of each virtual machine and enables you to download its log files. 
 
 ##Viewing the status of the virtual machines in a cluster:
 
-1. Use a Web browser to open the Pivotal CF Ops Manager application. 
+1. Use a Web browser to open the **Pivotal CF Ops Manager** application. 
 
 2. Click the Pivotal Elastic Runtime tile.  
 
@@ -136,9 +146,9 @@ If you need to access a virtual machine in your Pivotal HD cluster or if you nee
 
 ##Locating credentials and URLS of virtual machines in a cluster:
 
-1. Use a Web browser to open the Pivotal CF Ops Manager application. 
+1. Use a Web browser to open the **Pivotal CF Ops Manager** application. 
 
-2. Click the Pivotal Elastic Runtime tile.  
+2. Click the **Pivotal Elastic Runtime** tile.  
 
 3. Click the **Credentials** tab.
 
@@ -146,13 +156,13 @@ If you need to access a virtual machine in your Pivotal HD cluster or if you nee
 
 ##Accessing log files of virtual machines in a cluster:
 
-1. Use a Web browser to open the Pivotal CF Ops Manager application. 
+1. Use a Web browser to open the **Pivotal CF Ops Manager** application. 
 
-2. Click the Pivotal Elastic Runtime tile.  
+2. Click the **Pivotal Elastic Runtime** tile.  
 
 3. Click the **Status** tab.
 
-	A table of credentials for various virtual machines displays. Locate the row for the machine that you want to access.
+	A table of virtual machines displays. Locate the row for the machine that you want to access.
 
 4. Click the download icon in the **Logs** column to download the logs.
 
@@ -166,19 +176,20 @@ If you need to access a virtual machine in your Pivotal HD cluster or if you nee
 
 	A zip file containing the logs downloads to your computer. 
 
+<a id="binding"></a>
 #Binding an Application to a Pivotal HD Cluster Instance
 
-The process of binding an application to a service automatically populates a set of environment variables. These variables define credentials, URLs for services and other configurations. When you use Pivotal CF to bind an application to a Pivotal HD service, these variables are populated automatically. When the application moves into a production phase, you can easily bind the application to an external instance of Pivotal HD by setting new values for these variables. Pivotal CF can also automatically create these bindings. See [Bind a Service](http://docs.gopivotal.com/pivotalcf/devguide/services/bind-service.html).
+The process of binding an application to a service automatically populates a set of environment variables. These variables define credentials, URLs for services and other configurations. When you use Pivotal CF to bind an application to a Pivotal HD service, these variables are populated automatically. When the application moves into a production phase, you can easily bind the application to an external instance of Pivotal HD by setting new values for these variables.
+
+For more information, see the following topic in the Pivotal CF documentation: [Bind a Service](http://docs.gopivotal.com/pivotalcf/devguide/services/bind-service.html).
 
 ##About Bindings and Environment Variables
 
-When you bind an application, a set of environment variables are set that contain URLs, credentials, and other meta-data about the application. 
-
-You can view these variables in two ways:
+You can view the binding variables using either the Pivotal CF Developers Console or a Web browser to retrieve a the variables in JSON format.
 
 ##Pivotal CF Developer Console
 
-To view the binding variables from the Pivotal CF Developer Console:
+To view the binding variables from the **Pivotal CF Developer Console**:
 
 1. Log in to the **Pivotal CF Developer Console**.  
 
@@ -188,9 +199,16 @@ To view the binding variables from the Pivotal CF Developer Console:
 
 	A list of applications and services instances displays.
 
-4. Now what??
+4. Locate your Pivotal HD instance in the list of Bound Services and click **Credentials**.
 
-##JSON Display
+	A dialog box displays the credentials for the components of the Pivotal HD instance.
+	For example:
+	
+	![PHD Credentials Bindings](/images/cred_bindings.png "PHD Credentials Bindings")
+
+	You may need to copy the contents of each field and paste them into a text editor to view them. 
+	
+##JSON Format
 
 You can display the binding variables as a JSON document:
 
@@ -202,7 +220,7 @@ You can display the binding variables as a JSON document:
 
 	`app-sinatra-services.rock.music.cf-app.com/env`
 
-	The browser displays the following JSON document (formatted for easier reading):
+	The browser displays the following JSON document (the output has been formatted for easier reading):
 
 	<pre class="terminal">
 
@@ -248,7 +266,7 @@ You can display the binding variables as a JSON document:
 
 2. Select your Pivotal HD Cluster service.
 
-3. Select space where the application you want to bind is deployed.
+3. Select the space where the application you want to bind is deployed.
 
 	A list of deployed applications and services displays. 
 
@@ -268,25 +286,27 @@ You can display the binding variables as a JSON document:
 
 2. If necessary, select a space using the following command:
 
-	`cf target -s <space name>`
+	`$ cf target -s <space name>`
 
 3. Run the following command:
 
-	`cf bind-service <application> <service instance name>`
+	`$ cf bind-service <application> <service instance name>`
 
 	For example:
 	
 	<pre class="terminal">
 	
-	cf bind-service app-sinatra-services phd2
+	$ cf bind-service app-sinatra-services phd2
 	Binding service phd2 to app app-sinatra-services in org pivotalrocks / space staging as admin...
 	OK
 	TIP: Use 'cf push' to ensure your env variable changes take effect
 </pre>
 
+
+<a id="unbinding"></a>
 #Unbinding an Application from a Pivotal HD cluster instance
 
-You can unbind a bound application from a Pivotal HD cluster instance. 
+You can unbind a bound application from a Pivotal HD cluster instance using either the Pivotal CF Developer Console or the Pivotal CF command line. 
 
 ##Developer Console
 
@@ -312,23 +332,23 @@ You can unbind a bound application from a Pivotal HD cluster instance.
 
 2. If necessary, select a space using the following command:
 
-	`cf target -s <space name>`
+	`$ cf target -s <space name>`
 
 3. Run the following command:
 
-	`cf bind-service <application> <service instance name>`
+	`$ cf bind-service <application> <service instance name>`
 
 	For example:
 	
 	<pre class="terminal">
 	
-	cf bind-service app-sinatra-services phd2
+	$ cf bind-service app-sinatra-services phd2
 	Binding service phd2 to app app-sinatra-services in org pivotalrocks / space staging as admin...
 	OK
 	TIP: Use 'cf push' to ensure your env variable changes take effect
 </pre>
 
-
+<a id="bosh"></a>
 #Using BOSH Director to Examine a PHD Deployment 
    
    You can login to the BOSH Director and use the BOSH Command-Line Interface to run diagnostic commands that examine a Pivotal CF installation, including your Pivotal HD cluster instances.  The BOSH Director runs on the virtual machine that Ops Manager deploys on the first install of the Ops Manager Director for VMware vSphere.
@@ -447,7 +467,7 @@ You can unbind a bound application from a Pivotal HD cluster instance.
 
 	Displays a list of available releases. 
 
-	
+<a id="ssh"></a>	
 #Using SSH into Virtual Machines in the Cluster	
 
 To access the various machines in a Pivotal HD cluster by ssh:
