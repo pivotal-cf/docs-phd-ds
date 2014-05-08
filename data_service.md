@@ -6,17 +6,16 @@ After Pivotal HD Data Services is installed you can deploy instances of the Pivo
 
 * [Creating Pivotal HD Cluster Instances](#create-cluster)
 * [Deleting Pivotal HD Cluster Instances](#delete-cluster)
-* [Accessing Pivotal HD Cluster Instances](#access-cluster)
 * [Binding Applications to Pivotal HD Cluster Instances](#binding)
 * [Unbinding Applications from Pivotal HD Cluster Instances](#unbinding)
-* [Using SSH to access Pivotal HD Cluster virtual machines](#ssh)
+
 
 <a id="create-cluster"></a>
 #Creating and Using Pivotal HD Cluster Instances
 
 You use either the Pivotal CF Developer Console or the Pivotal CF command line to create cluster instances.
 
-##Developer Console
+##Pivotal CF Developer Console
 
 To create an instance of a Pivotal HD Service Plan using the Pivotal CF Developer Console: 
 
@@ -90,7 +89,7 @@ To create a Pivotal HD cluster instance:
 After creating a Pivotal HD cluster instance, you can delete the instance.
 
 
-##Developer Console
+##Pivotal CF Developer Console
 
 1. Log in to the **Pivotal CF Developer Console**.  
 
@@ -129,53 +128,6 @@ After creating a Pivotal HD cluster instance, you can delete the instance.
 	
     </pre>
 
-<a id="access-cluster"></a>
-#Accessing Pivotal HD Cluster Instance Machines
-
-If you need to access a virtual machine in your Pivotal HD cluster or if you need to access the virtual machine that runs Pivotal HD Data Services, you can use Pivotal CF Ops Manager to display the necessary credentials and URLs. Ops Manager also displays status of each virtual machine and enables you to download its log files. 
-
-##Viewing the status of the virtual machines in a cluster:
-
-1. Use a Web browser to open the **Pivotal CF Ops Manager** application. 
-
-2. Click the Pivotal Elastic Runtime tile.  
-
-3. Click the **Status** tab.
-
-	A table of with a row for each virtual machines displays. Each row describes the status of the virtual machine. 
-
-##Locating credentials and URLS of virtual machines in a cluster:
-
-1. Use a Web browser to open the **Pivotal CF Ops Manager** application. 
-
-2. Click the **Pivotal Elastic Runtime** tile.  
-
-3. Click the **Credentials** tab.
-
-	A table of credentials for various virtual machines displays. Locate the row for the machine that you want to access.
-
-##Accessing log files of virtual machines in a cluster:
-
-1. Use a Web browser to open the **Pivotal CF Ops Manager** application. 
-
-2. Click the **Pivotal Elastic Runtime** tile.  
-
-3. Click the **Status** tab.
-
-	A table of virtual machines displays. Locate the row for the machine that you want to access.
-
-4. Click the download icon in the **Logs** column to download the logs.
-
-	Ops Manager creates a zip file containing the logs.
-	
-5. Click the **Logs** tab.
-
-	A table of downloaded log files displays. 
-
-6. Click the link for the zip file containing the logs you are interested in.
-
-	A zip file containing the logs downloads to your computer. 
-
 <a id="binding"></a>
 #Binding an Application to a Pivotal HD Cluster Instance
 
@@ -183,11 +135,11 @@ The process of binding an application to a service automatically populates a set
 
 For more information, see the following topic in the Pivotal CF documentation: [Bind a Service](http://docs.gopivotal.com/pivotalcf/devguide/services/bind-service.html).
 
-##About Bindings and Environment Variables
+##Viewing Binding Meta Data and Environment Variables
 
 You can view the binding variables using either the Pivotal CF Developers Console or a Web browser to retrieve a the variables in JSON format.
 
-##Pivotal CF Developer Console
+###Pivotal CF Developer Console
 
 To view the binding variables from the **Pivotal CF Developer Console**:
 
@@ -208,7 +160,7 @@ To view the binding variables from the **Pivotal CF Developer Console**:
 
 	You may need to copy the contents of each field and paste them into a text editor to view them. 
 	
-##JSON Format
+###JSON Format
 
 You can display the binding variables as a JSON document:
 
@@ -260,7 +212,7 @@ You can display the binding variables as a JSON document:
 	}
 </pre>
 
-##Developer Console
+##Pivotal CF Developer Console
 
 1. Log in to the **Developer Console**. 
 
@@ -308,7 +260,7 @@ You can display the binding variables as a JSON document:
 
 You can unbind a bound application from a Pivotal HD cluster instance using either the Pivotal CF Developer Console or the Pivotal CF command line. 
 
-##Developer Console
+##Pivotal CF Developer Console
 
 1. Log in to the **Developer Console**. 
 
@@ -348,130 +300,4 @@ You can unbind a bound application from a Pivotal HD cluster instance using eith
 	TIP: Use 'cf push' to ensure your env variable changes take effect
 </pre>
 
-<a id="bosh"></a>
-#Using BOSH Director to Examine a PHD Deployment 
-   
-   You can login to the BOSH Director and use the BOSH Command-Line Interface to run diagnostic commands that examine a Pivotal CF installation, including your Pivotal HD cluster instances.  The BOSH Director runs on the virtual machine that Ops Manager deploys on the first install of the Ops Manager Director for VMware vSphere.
-   
-   See [Troubleshooting with the BOSH CLI](http://docs.gopivotal.com/pivotalcf/customizing/trouble-advanced.html). 
-      
-1. Log in to the BOSH Director.
 
-2. Run one of the following commands: 
-
-* `bosh deployments`
-
-	Displays a list of deployments.	For example:
-		
-	<pre class="terminal">
-	   $ bosh deployments
-	   +---------------------------------+--------------------------------+-------------------------------+
-	   | Name                            | Release(s)                     | Stemcell(s)                   |
-	   +---------------------------------+--------------------------------+-------------------------------+
-	   | cf-5f2b8491a89b0598c95c         | cf/169                         | bosh-vsphere-esxi-ubuntu/2366 |
-	   |                                 | push-console-release/6         |                               |
-	   |                                 | runtime-verification-errands/1 |                               |
-	   +---------------------------------+--------------------------------+-------------------------------+
-	   | phd-1                           | phd/282                        | bosh-vsphere-esxi-centos/1868 |
-	   +---------------------------------+--------------------------------+-------------------------------+
-	   | phd-2                           | phd/282                        | bosh-vsphere-esxi-centos/1868 |
-	   +---------------------------------+--------------------------------+-------------------------------+
-	   | phd-3                           | phd/282                        | bosh-vsphere-esxi-centos/1868 |
-	   +---------------------------------+--------------------------------+-------------------------------+
-	   | phd-broker-037b5a195ed32bdf4e61 | phd-broker/277                 | bosh-vsphere-esxi-centos/1868 |
-	   +---------------------------------+--------------------------------+-------------------------------+
-	   Deployments total: 5
-   </pre>
-	   
-* `bosh vms`
-
-	Displays a list of virtual machines in the environment for all deployments. To limit the list to a specific deployment, enter its name as the first argument. For example:
-	
-	<pre class="terminal">
-		$ bosh vms phd-3
-		Deployment `phd-3'
-
-		Director task 151
-
-		Task 151 done
-
-		+-------------------+---------+-----------------+-----------+
-		| Job/index         | State   | Resource Pool   | IPs       |
-		+-------------------+---------+-----------------+-----------+
-		| gfxd-locator/0    | running | gfxd-locator    | 10.0.1.29 |
-		| namenode/0        | running | namenode        | 10.0.1.27 |
-		| phd-slave/0       | running | worker          | 10.0.1.30 |
-		| resourcemanager/0 | running | resourcemanager | 10.0.1.28 |
-		+-------------------+---------+-----------------+-----------+
-
-		VMs total: 4
-	</pre>
-	
-	You can also add the `--detail` flag to include the names of the each virtual machines.	For example:
-	
-	<pre class="terminal">
-	[root@rock ~]# bosh vms phd-3 --detail
-	Deployment `phd-3'
-
-	Director task 152
-
-	Task 152 done
-
-	+-------------------+---------+-----------------+-----------+-----------------------------------------+--------------------------------------+--------------+
-	| Job/index         | State   | Resource Pool   | IPs       | CID                                     | Agent ID                             | Resurrection |
-	+-------------------+---------+-----------------+-----------+-----------------------------------------+--------------------------------------+--------------+
-	| gfxd-locator/0    | running | gfxd-locator    | 10.0.1.29 | vm-e7cacaec-8190-4841-81fb-ae7ca4784ea1 | 4718b1bf-1af7-4fc9-802c-36037f0a30cc | active       |
-	| namenode/0        | running | namenode        | 10.0.1.27 | vm-8eac5c1a-de57-414d-a109-c1117eb58cad | 5c45c684-46ac-4f76-a285-e507beeb029b | active       |
-	| phd-slave/0       | running | worker          | 10.0.1.30 | vm-889afcd8-02ac-42bf-b848-992716a34cec | 75a00ccd-cad8-45dd-9369-2274e1b4ec01 | active       |
-	| resourcemanager/0 | running | resourcemanager | 10.0.1.28 | vm-a64bc3fa-fdd0-40c0-8311-fe854b72ff16 | 3551bb58-e2e1-4bc2-8a7c-c941391f3679 | active       |
-	+-------------------+---------+-----------------+-----------+-----------------------------------------+--------------------------------------+--------------+
-
-	VMs total: 4
-    </pre>
-	
-* `cf services`
-
-	Displays a list of Cloud Foundry services, including any instances of Pivotal HD Data Services. For example:
-	
-	<pre class="terminal">
-	$ cf services
-	Getting services in org pivotalrocks / space staging as admin...
-	OK
-
-	name        service   plan       bound apps             
-	phd-clus1   p-hd      Standard   app-sinatra-services	
-
-	</pre>
-	
-* `cf service-brokers`
-
-	Displays a list of Cloud Foundry service brokers. For example:
-	
-	<pre class="terminal">
-	$ cf service-brokers
-	Getting service brokers as admin...
-
-	name         url   
-	phd-broker   http://10.0.0.51:8080
-   </pre>
-
-* `cf delete-service-broker`
-
-	Deletes a Cloud Foundry service broker.
-
-* `bosh delete deployment`
-
-	Deletes a BOSH deployment. 
-
-* `bosh releases`
-
-	Displays a list of available releases. 
-
-<a id="ssh"></a>	
-#Using SSH into Virtual Machines in the Cluster	
-
-To access the various machines in a Pivotal HD cluster by ssh:
-
-1. Open the Ops Manager application in a Web browser.
-
-2. now what ?? can't see it no phd in rock.music
