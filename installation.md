@@ -18,10 +18,9 @@ Installation of Pivotal HD Data Services requires the following:
         <li>Download the Pivotal HD Data Services software from <a href="http://network.gopivotal.com/">The Pivotal Network</a>.
         </li>
         <li>Use a Web browser to open the <strong>Pivotal Ops Manager</strong> application. (This application is part of your Pivotal Cloud Foundry installation.) <p>The <strong>Pivotal CF Ops Manager Installation Dashboard</strong> displays:</p>
-                <img
-                    align="left"
+               <p> <img
                     alt="Ops Manager"
-                    src="images/ops_manager_large.png" />
+                    src="images/ops_manager_large.png" /></p>
             </li>
         
         <li> Click the <strong>Import a Product</strong> button.

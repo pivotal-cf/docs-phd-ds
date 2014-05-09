@@ -150,7 +150,7 @@ To create a service plan:
                     <tbody>
                         <tr>
                             <td>Service Plan Components:</td>
-                            <td>Select the HD components you want included in this Service Plan. HDFS is always included by default in a Service Plan.<p>To create a Service Plan that only offers a Haddop service, select only the <strong>YARN/MapReduce2</strong> option.</p></td>
+                            <td>Select the HD components you want included in this Service Plan. HDFS is always included by default in a Service Plan.<p>To create a Service Plan that only offers a Hadoop service, select only the <strong>YARN/MapReduce2</strong> option.</p></td>
                             <td>
                                 <ul>
                                     <li>Yarn/MapReduce2 </li>
@@ -166,7 +166,6 @@ To create a service plan:
                             <td>
                                 <ul>
                                     <li>Minimum: 1</li>
-                                    <li>Maximum: 64</li>
                                     <li><strong>Default: </strong>1</li>
                                 </ul>
                             </td>
@@ -187,7 +186,7 @@ To create a service plan:
                                 <ul>
                                     <li>Minimum: 8192</li>
                                     <li>Maximum: 1048576 </li>
-                                    <li><strong>Default: </strong>2</li>
+                                    <li><strong>Default: </strong>8192</li>
                                 </ul>
                             </td>
                         </tr>
@@ -196,9 +195,9 @@ To create a service plan:
                             <td></td>
                             <td>
                                 <ul>
-                                    <li>Minimum: 8192</li>
+                                    <li>Minimum: 12288</li>
                                     <li>Maximum: 65011712 </li>
-                                    <li><strong>Default: </strong>8192</li>
+                                    <li><strong>Default: </strong>12288</li>
                                 </ul>
                             </td>
                         </tr>
@@ -229,9 +228,9 @@ To create a service plan:
                             <td>NameNode Ephemeral Disk in MB</td>
                             <td>
                                 <ul>
-                                    <li>Minimum: 8192</li>
+                                    <li>Minimum: 8704</li>
                                     <li>Maximum: 1048576 </li>
-                                    <li><strong>Default: </strong>8192</li>
+                                    <li><strong>Default: </strong>8704</li>
                                 </ul>
                             </td>
                         </tr>
@@ -262,9 +261,9 @@ To create a service plan:
                             <td>ResourceManager Ephemeral Disk in MB </td>
                             <td>
                                 <ul>
-                                    <li>Minimum: 4096</li>
+                                    <li>Minimum: 5120</li>
                                     <li>Maximum: 1048576 </li>
-                                    <li><strong>Default: </strong>4096</li>
+                                    <li><strong>Default: </strong>5120</li>
                                 </ul>
                             </td>
                         </tr>
@@ -295,9 +294,9 @@ To create a service plan:
                             <td>HAWQ Master Ephemeral Disk in MB </td>
                             <td>
                                 <ul>
-                                    <li>Minimum: 4096</li>
+                                    <li>Minimum: 5120</li>
                                     <li>Maximum: 1048576 </li>
-                                    <li><strong>Default: </strong>4096</li>
+                                    <li><strong>Default: </strong>5120</li>
                                 </ul>
                             </td>
                         </tr>
@@ -328,9 +327,9 @@ To create a service plan:
                             <td>Gemfire XD Locator Ephemeral Disk in MB </td>
                             <td>
                                 <ul>
-                                    <li>Minimum: 2048</li>
+                                    <li>Minimum: 3072</li>
                                     <li>Maximum: 1048576 </li>
-                                    <li><strong>Default: </strong>2048</li>
+                                    <li><strong>Default: </strong>3072</li>
                                 </ul>
                             </td>
                         </tr>

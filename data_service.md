@@ -59,35 +59,34 @@ To create a Pivotal HD cluster instance:
 
 2. If necessary, select a space using the following command:
 
-	`$ cf target -s <space name>`
+	`$ cf target  -o <organization> -s <space name>`
 		
 2. Run the following command:
-
+	
 	`$ cf create-service p-hd <Service Plan name> <instance name>`
 	
 	Where:
-	
-	* *Service Plan name* is the name of the Service Plan you created previously. See [Creating a Service Plan](service_plans.html).
-	* *instance name* is the name of the instance you are creating. 
-	 
+	* `<Service Plan name>` is the name of the Service Plan you created previously. See [Creating a Service Plan](service_plans.html).
+	* `<instance name>` is the name of the instance you are creating. 
+		
 	For example:
-	
-	<pre class="terminal">
+
+<pre class="terminal">
 	$ cf target -s staging
 	API endpoint: https://api.rock.music.cf-app.com (API version: 2.2.0)
 	User:         admin
-	Org:          pivotalrocks
+	Org:          pivotalorg
 	Space:        staging
 	$ cf create-service p-hd Standard phd1
-	Creating service phd1 in org pivotalrocks / space staging as admin...
+	Creating service phd1 in org pivotalorg / space staging as admin...
 	OK
-    </pre>  
+</pre>  
 
 <a id="delete-cluster"></a>
+
 #Deleting Pivotal HD Cluster Instances
 
-After creating a Pivotal HD cluster instance, you can delete the instance.
-
+After creating a Pivotal HD cluster instance, you can delete the instance when it is no longer needed. 
 
 ##Pivotal CF Developer Console
 
@@ -109,13 +108,13 @@ After creating a Pivotal HD cluster instance, you can delete the instance.
 
 2. If necessary, select a space using the following command:
 
-	`$ cf target -s <space name>`
+	`$cf target -o <organization> -s <space>`
 		
 2. Run the following command:
 
 	`$ cf delete-service <instance name>`
 	
-	Where *instance name* is the name of the instance you are creating. 
+	Where *instance name* is the name of the instance you are deleting. 
 	 
 	For example:
 	
@@ -123,7 +122,7 @@ After creating a Pivotal HD cluster instance, you can delete the instance.
 	$ cf delete-service phd1
 
 	Are you sure you want to delete the service phd1 ? y
-	Deleting service phd1 in org pivotalrocks / space staging as admin...
+	Deleting service phd1 in org pivotalorg / space staging as admin...
 	OK
 	
     </pre>
@@ -131,15 +130,13 @@ After creating a Pivotal HD cluster instance, you can delete the instance.
 <a id="binding"></a>
 #Binding an Application to a Pivotal HD Cluster Instance
 
-The process of binding an application to a service automatically populates a set of environment variables. These variables define credentials, URLs for services and other configurations. When you use Pivotal CF to bind an application to a Pivotal HD service, these variables are populated automatically. When the application moves into a production phase, you can easily bind the application to an external instance of Pivotal HD by setting new values for these variables.
+The process of binding an application to a service automatically populates a set of environment variables. These variables define credentials, URLs for services and other configurations. When you use Pivotal CF to bind an application to a Pivotal HD service, these variables are populated automatically. When the application moves into a production phase, you can easily bind the application to an external instance of Pivotal HD.
 
-For more information, see the following topic in the Pivotal CF documentation: [Bind a Service](http://docs.gopivotal.com/pivotalcf/devguide/services/bind-service.html).
+For more information about binding, see the following topic in the Pivotal CF documentation: [Bind a Service](http://docs.gopivotal.com/pivotalcf/devguide/services/bind-service.html).
 
 ##Viewing Binding Meta Data and Environment Variables
 
-You can view the binding variables using either the Pivotal CF Developers Console or a Web browser to retrieve a the variables in JSON format.
-
-###Pivotal CF Developer Console
+You can view the binding variables using the Pivotal CF Developers Console.
 
 To view the binding variables from the **Pivotal CF Developer Console**:
 
@@ -160,59 +157,7 @@ To view the binding variables from the **Pivotal CF Developer Console**:
 
 	You may need to copy the contents of each field and paste them into a text editor to view them. 
 	
-###JSON Format
-
-You can display the binding variables as a JSON document:
-
-1. Open a Web browser and enter a URL constructed as follows:
-
-	`<app name>.<Web Console URL>/env`
-	
-	For example, the following URL returns the environment variables for the `app-sinatra-services` application. 
-
-	`app-sinatra-services.rock.music.cf-app.com/env`
-
-	The browser displays the following JSON document (the output has been formatted for easier reading):
-
-	<pre class="terminal">
-
-	{
-	  "p-hd": [
-	    {
-	      "name": "phd-inst1",
-	      "label": "p-hd",
-	      "tags": [],
-	      "plan": "Standard",
-	      "credentials": {
-	        "hadoop_username": "u294d1cab32a2454",
-	        "hdfs": {
-	          "configuration": {
-	            "fs.defaultFS": "hdfs://10.0.1.6:8020"
-	          },
-	          "directory": "/user/u294d1cab32a2454"
-	        },
-	        "yarn": {
-	          "configuration": {
-	            "yarn.resourcemanager.address": "10.0.1.7:8032",
-	            "mapreduce.framework.name": "yarn",
-	            "yarn.resourcemanager.scheduler.address": "10.0.1.7:8030",
-	            "mapreduce.job.working.dir": "/user/u294d1cab32a2454/work",
-	            "yarn.app.mapreduce.am.staging-dir": "/user/u294d1cab32a2454/staging"
-	          }
-	        },
-	        "hawq": {
-	          "uri": "jdbc:postgres://10.0.1.8:5432/default;username=u294d1cab32a2454;password=564a77eb-0aad-4a92-7c83-9b73183e2784"
-	        },
-	        "gemfirexd": {
-	          "uri": "jdbc:gemfirexd://10.0.1.9:1527/user=u294d1cab32a2454;password=6e5e7546-bb92-4d3b-4165-5e5c68fe0e59"
-	        }
-	      }
-	    }
-	  ]
-	}
-</pre>
-
-##Pivotal CF Developer Console
+##Binding an Application using the Pivotal CF Developer Console
 
 1. Log in to the **Developer Console**. 
 
@@ -232,7 +177,7 @@ You can display the binding variables as a JSON document:
 
 7. Click the **Bind** button for the service you want to bind to this application. 
 
-##Pivotal CF Command Line
+##Binding an Application using the Pivotal CF Command Line
 
 1. Using ssh, log in to the virtual machine that Ops Manager deploys on the first install of the Ops Manager Director for VMware vSphere.
 
@@ -249,7 +194,7 @@ You can display the binding variables as a JSON document:
 	<pre class="terminal">
 	
 	$ cf bind-service app-sinatra-services phd2
-	Binding service phd2 to app app-sinatra-services in org pivotalrocks / space staging as admin...
+	Binding service phd2 to app app-sinatra-services in org pivotalorg / space staging as admin...
 	OK
 	TIP: Use 'cf push' to ensure your env variable changes take effect
 </pre>
@@ -284,20 +229,12 @@ You can unbind a bound application from a Pivotal HD cluster instance using eith
 
 2. If necessary, select a space using the following command:
 
-	`$ cf target -s <space name>`
+	`$ cf target -o <organization> -s <space name>`
 
 3. Run the following command:
 
-	`$ cf bind-service <application> <service instance name>`
+	`$ cf unbind-service <application> <service instance name>`
 
-	For example:
 	
-	<pre class="terminal">
-	
-	$ cf bind-service app-sinatra-services phd2
-	Binding service phd2 to app app-sinatra-services in org pivotalrocks / space staging as admin...
-	OK
-	TIP: Use 'cf push' to ensure your env variable changes take effect
-</pre>
 
 

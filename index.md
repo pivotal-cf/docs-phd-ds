@@ -10,7 +10,8 @@ The documentation contains the following topics:
 * [Installing Pivotal HD Data Services](installation.html)
 * [Creating Service Plans](service_plans.html)
 * [Using the Pivotal HD Data Service](data_service.html)
-* [Troubleshooting a Pivotal HD Cluster Instance](troubleshooting.html)
+* [Troubleshooting a Pivotal HD Instance](troubleshooting.html)
+* [Release Notes](relnotes.html)
 
 For more information on installing and using Pivotal HD, see the 
 [Pivotal HD Documentation](../pivotalhd/index.html).
