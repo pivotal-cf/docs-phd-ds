@@ -8,7 +8,7 @@ title: Troubleshooting a PHD Cluster Instance
 <li><a
     href="#creds">Locating credentials and URLS of virtual machines in a cluster</a></li>
 <li><a
-    href="#logs">Accessing log files of virtual machines in a cluster</a></li>
+    href="#logs">Accessing the log files of the PHD-Broker virtual machine</a></li>
 <li><a
     href="#bosh">Using BOSH Director to Examine a PHD Deployment</a></li>
 <li><a
@@ -18,7 +18,7 @@ title: Troubleshooting a PHD Cluster Instance
 </ul>
 <a
 id="creds"></a>
-<h1>Locating the credentials for the Pivotal HD Data Services broker</h1><ol>
+<h1>Locating the credentials and URL of the Pivotal HD Data Services broker</h1><ol>
 <li>
 <p>Use a Web browser to open the <strong>Pivotal CF Ops Manager</strong> application. </p>
 </li>
@@ -29,33 +29,25 @@ id="creds"></a>
 <p>Click the <strong>Credentials</strong> tab.</p>
 <p>The credentials for the PHD-Broker virtual machine display. </p>
 </li>
+<li>Click the <strong>Status</strong> tab.
+<p>The IP address of the PHD-Broker virtual machine displays.</p></li> 
 </ol>
 <a
 id="logs"></a>
-<h1>Accessing log files of virtual machines in a cluster</h1>
+<h1>Accessing the log files of the PHD-Broker virtual machine</h1>
 <ol>
+<li>Locate the credentials and URL of the PHD-Broker virtual machine as described <a
+href="#creds">above</a>. </li>
+<li>Using this URL and credentials, log in to the PHD-Broker virtual machine using ssh:<pre># ssh vcap@10.0.0.51 
+vcap@10.0.0.51's password: 
+Last login: Wed May 7 15:13:04 2014 from 10.0.0.1 
+[vcap@21c20803-7459-46dc-a0f7-36c70c956db4 ~]</pre></li>
+<li>There are two relevant log files you may want to access:<ul>
 <li>
-<p>Use a Web browser to open the <strong>Pivotal CF Ops Manager</strong> application. </p>
-</li>
+    <code>/var/vcap/sys/logs/phd-broker/broker.out</code>  - these are the logs from the PHD-Broker that contain entries about starting the broker, deploying PHD instances, and binding to applications. </li>
 <li>
-<p>Click the <strong>Pivotal Elastic Runtime</strong> tile. </p>
-</li>
-<li>
-<p>Click the <strong>Status</strong> tab.</p>
-<p>A table of virtual machines displays. Locate the row for the machine that you want to access.</p>
-</li>
-<li>
-<p>Click the download icon in the <strong>Logs</strong> column to download the logs.</p>
-<p>Ops Manager creates a zip file containing the logs.</p>
-</li>
-<li>
-<p>Click the <strong>Logs</strong> tab.</p>
-<p>A table of downloaded log files displays. </p>
-</li>
-<li>
-<p>Click the link for the zip file containing the logs you are interested in.</p>
-<p>A zip file containing the logs downloads to your computer. </p>
-</li>
+    <code>/var/vcap/sys/log/phd-broker/phd-broker.stdout.log</code> - these are the logs from the general shell commands, including bosh deployments. These log files include more detailed output from specific commands and can be useful when trying to debug a specific issue where there was a failure reported in one of the other logs. </li>
+</ul></li>
 </ol>
 <p><a
 id="bosh"></a>
