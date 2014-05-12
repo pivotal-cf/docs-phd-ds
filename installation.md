@@ -135,7 +135,7 @@ To achieve this, you must exclude the IP range you want the Pivotal HD deploymen
 
 Here is an example of how you might do that if you were deploying everything to the IP subnet 10.0.0.0/16.  In this example, we are reserving the first 512 IP Addresses for Operations Manager and the next 512 IP addresses for the Pivotal HD Service.
 
-**VSphere Network Settings Tab:**
+**vSphere Network Settings Tab:**
 
 * Network Name: `vSphereNetwork_A`
 * IP Address Subnet: `10.0.0.0/16`

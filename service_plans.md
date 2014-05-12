@@ -14,7 +14,7 @@ To create a service plan:
             <li>
                 <p>Use a Web browser to open the <strong>Pivotal Ops Manager</strong> application. (This application is part of your Pivotal Cloud Foundry installation.)</p>
             </li>
-            
+            <li>Click the <strong>Pivotal HD for Pivotal CF</strong> tile. <p></li>
             <li>
                 <p>Click <strong>On-demand Service Plans</strong>.</p>
                 <p>The <strong>On-demand Service Plans</strong> screen displays.</p>
@@ -42,15 +42,11 @@ To create a service plan:
                         
                         <tr>
                             <td>Service Plan Name</td>
-                            <td>Name of the Service Plan. You use this name when creating cluster instances.</td>
+                            <td>Name of the Service Plan. You use this name when creating Pivotal HD service instances.</td>
                         </tr>
                         <tr>
-                            <td> Service Plan Description</td>
-                            <td
+                            <td> Service Plan Feature Bullet 1 </td><td
                                 rowspan="4">These fields are for display only. The values in these fields display to users in the Cloud Foundry CLI and in the Marketplace section of the Pivotal CF Developer Console.</td>
-                        </tr>
-                        <tr>
-                            <td> Service Plan Feature Bullet 1 </td>
                         </tr>
                         <tr>
                             <td>Service Plan Feature Bullet 2 </td>
