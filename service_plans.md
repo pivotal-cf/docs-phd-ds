@@ -119,7 +119,7 @@ To create a service plan:
                         </tr>
                         <tr>
                             <td> Number of Pre-Created Instances</td>
-                            <td>Pivotal HD Data Services creates a reserved pool of Service Plan Instances to allocate to Pivotal CF Users. When an Service Plan Instance is allocated in Pivotal CF Elastic Runtime, the service back-fills the pool. <p>The Service never pre-creates more instances than the configured Maximum Number of Instances. </p></td>
+                            <td>Pivotal HD Service creates a reserved pool of Service Plan Instances to allocate to Pivotal CF Users. When an Service Plan Instance is allocated in Pivotal CF Elastic Runtime, the service back-fills the pool. <p>The Service never pre-creates more instances than the configured Maximum Number of Instances. </p></td>
                             <td>
                                 <ul>
                                     <li>Minimum: 1</li>

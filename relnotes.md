@@ -1,5 +1,5 @@
 ---
-title: Release Notes for Pivotal HD Data Services v 1.2.0.0
+title: Release Notes for Pivotal HD Service v 1.2.0.0
 ---
 #Pre-Created Clusters
 
@@ -9,7 +9,7 @@ title: Release Notes for Pivotal HD Data Services v 1.2.0.0
 
 * The Pivotal CF Administrator can now configure the metadata and Pivotal HD components they wish to offer as a Pivotal CF Service Plan. Previously, the service plan was hard coded.
 
-* Administrators can now define the vSphere network where Pivotal HD Data Services deploys Pivotal HD clusters, independent of the network used for the deployment of Pivotal CF. If these networks are different, the networks must be able to route traffic to each other.
+* Administrators can now define the vSphere network where Pivotal HD Service deploys Pivotal HD clusters, independent of the network used for the deployment of Pivotal CF. If these networks are different, the networks must be able to route traffic to each other.
 
 * vSphere resources continue to be configurable per component.
 

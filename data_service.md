@@ -2,7 +2,7 @@
 title: Using a Pivotal HD Data Service
 ---
 
-After Pivotal HD Data Services is installed you can deploy instances of the Pivotal HD cluster that are defined in the Service Plan. The plan defines the maximum number of cluster instances you can create as well as the number of pre-created cluster instances that are available. You can bind applications deployed in the Cloud Foundry environment to these cluster instances. 
+After Pivotal HD Service is installed you can deploy instances of the Pivotal HD cluster that are defined in the Service Plan. The plan defines the maximum number of cluster instances you can create as well as the number of pre-created cluster instances that are available. You can bind applications deployed in the Cloud Foundry environment to these cluster instances. 
 
 * [Creating Pivotal HD Cluster Instances](#create-cluster)
 * [Deleting Pivotal HD Cluster Instances](#delete-cluster)

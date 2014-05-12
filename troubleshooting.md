@@ -1,9 +1,9 @@
 ---
-title: Troubleshooting a PHD Cluster Instance 
+title: Troubleshooting a Pivotal HD Service Instance 
 ---
 
 <p>This section discusses tools and procedures you can use to diagnose problems with a Pivotal HD cluster instance. </p>
-<p>If you need to access a virtual machine in your Pivotal HD cluster or if you need to access the virtual machine that runs Pivotal HD Data Services, you can use Pivotal CF Ops Manager to display the necessary credentials and URLs. Ops Manager also displays the status of each virtual machine and enables you to download its log files. </p>
+<p>If you need to access a virtual machine in your Pivotal HD cluster or if you need to access the virtual machine that runs Pivotal HD Service, you can use Pivotal CF Ops Manager to display the necessary credentials and URLs. Ops Manager also displays the status of each virtual machine and enables you to download its log files. </p>
 <ul>
 <li><a
     href="#creds">Locating credentials and URLS of virtual machines in a cluster</a></li>
@@ -18,7 +18,7 @@ title: Troubleshooting a PHD Cluster Instance
 </ul>
 <a
 id="creds"></a>
-<h1>Locating the credentials and URL of the Pivotal HD Data Services broker</h1><ol>
+<h1>Locating the credentials and URL of the Pivotal HD Service broker</h1><ol>
 <li>
 <p>Use a Web browser to open the <strong>Pivotal CF Ops Manager</strong> application. </p>
 </li>
@@ -133,7 +133,7 @@ VMs total: 4
 </li>
 <li>
 <p><code>cf services</code></p>
-<p>Displays a list of Cloud Foundry services, including any instances of Pivotal HD Data Services. For example:</p>
+<p>Displays a list of Cloud Foundry services, including any instances of Pivotal HD Service. For example:</p>
 <pre class="terminal">
 $ cf services
 Getting services in org pivotalrocks / space staging as admin...
@@ -172,7 +172,7 @@ phd-broker   http://10.0.0.51:8080
 id="ssh"></a></p>
 <h1>Accessing Pivotal HD Cluster Instance virtual machines using SSH</h1>
 <p>Although it is not usually necessary to access machines within a Pivotal HD cluster directly, there may be troubleshooting situations where you need to access a cluster machine using SSH. To access these machines, you need to locate the Piovtal HD Service Instance ID for the cluster and then use that information to get a list of cluster IP addresses you can use for ssh access. </p>
-<p>Pivotal HD Data Services creates these Service Instance IDs when it pre-creates cluster instances. When a user creates a cluster instance using Pivotal HD Data Services, the user creates a service instance name for the cluster. Internally, Pivotal HD Data Services maps this user-defined name to the cluster instance ID. </p>
+<p>Pivotal HD Service creates these Service Instance IDs when it pre-creates cluster instances. When a user creates a cluster instance using Pivotal HD Service, the user creates a service instance name for the cluster. Internally, Pivotal HD Service maps this user-defined name to the cluster instance ID. </p>
 <p>To determine which Virtual Machines are associated with a specific Service Instance, take the following steps to look up the mapping:</p>
 <ol>
 <li>Log into the Pivotal CF command line instance that manages your Pivotal CF deployment.</li>

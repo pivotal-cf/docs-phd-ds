@@ -2,14 +2,14 @@
 title: Overview
 ---
 
-Pivotal HD Data Services allows Pivotal Cloud Foundry users to define the parameters of a Pivotal HD cluster and quickly create one or more instances of the cluster in the Cloud Foundry environment. Using Cloud Foundry tools, developers can easily bind applications to the Pivotal HD cluster for data access. When an application moves into production, you can bind the application to use a production instance of Pivotal HD that is external to Cloud Foundry. 
+The Pivotal HD Service allows Pivotal CF users to create Pivotal HD clusters on-demand.  A cluster is allocated each time a Pivotal CF user creates an instance of the Pivotal HD Service using the Pivotal CF Command Line Interface or Developer Web Console.  Pivotal CF users can also create and bind user credentials for each component of the Pivotal HD cluster to any application they push to Pivotal Elastic Runtime.
 
-An administrator initially defines a *Service Plan* for the cluster. The Service Plan specifies which Hadoop components to deploy, the number of nodes to deploy, the hardware configuration of the nodes, the number of slaves, and other information. The administrator also specifies the maximum number of clusters that can be created and the number of *pre-created* clusters to keep ready for quick deployment. Pivotal HD Data Services creates and starts the nodes of these these pre-created cluster instances in advance, eliminating the need to wait while the cluster's virtual machines are created and started. 
+ A Pivotal CF Administrator initially imports the Pivotal HD Service into Pivotal CF Ops Manager, where they define the details of the service plan they wish to offer.  The service plan is a blueprint that describes what each instance of a Pivotal HD cluster is comprised of.  The definition consists of which Pivotal HD components to include, the number of slave nodes to deploy, and how much CPU, Ram and Disk to use for each virtual machine required for the included Pivotal HD components.  The administrator also specifies the maximum number of instances of the service that can be created along with the number to pre-create for rapid allocation to Pivotal CF users.  The Pivotal HD Service creates and starts the virtual machines of these pre-created clusters in advance, eliminating the need for Pivotal CF users to wait when creating an instance of the service."
 
-Pivotal HD Data Services includes all of the Pivotal HD version 1.1 software. A separate installation of Pivotal HD is not required to use Pivotal HD Data Services. 
+The Pivotal HD Service includes several components from the Pivotal HD 1.1 software stack, including HDFS, YARN and MapReduce2.  Additionally, the Pivotal HD Service includes HAWQ and PXF.  Lastly, the Pivotal HD Service includes GemFire XD, which is currently available for beta testing purposes.
 
-Figure 1 shows the work flow for creating Pivotal HD clusters using Pivotal HD Data Services:
+Figure 1 shows the work flow for creating Pivotal HD clusters using Pivotal HD Service:
 
-**Figure 1. Pivotal HD Data Services Work Flow**
+**Figure 1. Pivotal HD Service Work Flow**
 
 ![Data Service Work Flow](/images/data_service.png "Data Service Work Flow")
