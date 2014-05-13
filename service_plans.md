@@ -4,7 +4,7 @@ title: Creating Pivotal HD Service Plans
 
 #Overview
 
-A *Service Plan* is a set of configurations that define a Pivotal HD cluster. An administrator defines the Service Plans and users use this plan to create instances of Pivotal HD clusters.
+A Pivotal CF Administrator can define the details of the Pivotal HD service plan they wish to offer to their Pivotal CF users.  An on-demand service plan is a blueprint that describes the components and configuration of each instance of a Pivotal HD cluster.  The Pivotal HD Service includes default values for the service plan, which can be changed by the Pivotal CF Administrator.
 
 #Creating Service Plans
 
@@ -14,7 +14,7 @@ To create a service plan:
             <li>
                 <p>Use a Web browser to open the <strong>Pivotal Ops Manager</strong> application. (This application is part of your Pivotal Cloud Foundry installation.)</p>
             </li>
-            <li>Click the <strong>Pivotal HD for Pivotal CF</strong> tile. <p></li>
+            <li>Click the <strong>Pivotal HD for Pivotal CF</strong> tile. </li>
             <li>
                 <p>Click <strong>On-demand Service Plans</strong>.</p>
                 <p>The <strong>On-demand Service Plans</strong> screen displays.</p>
@@ -46,7 +46,7 @@ To create a service plan:
                         </tr>
                         <tr>
                             <td> Service Plan Feature Bullet 1 </td><td
-                                rowspan="4">These fields are for display only. The values in these fields display to users in the Cloud Foundry CLI and in the Marketplace section of the Pivotal CF Developer Console.</td>
+                                rowspan="4">These fields are used by the Pivotal CF Administrator to describe the details of the service plan to Pivotal CF users.  The values in these fields display to users in the Marketplace section of the Pivotal CF Developer Console. </td>
                         </tr>
                         <tr>
                             <td>Service Plan Feature Bullet 2 </td>
@@ -91,7 +91,7 @@ To create a service plan:
                     </tbody>
                 </table>
             </li>
-            <li>Enter the following values to define your cluster instances:<table
+            <li>The Pivotal CF Administrator should ensure that the Pivotal HD Service does not oversubscribe the underlying vSphere resources.  Enter the following values for the cluster defined in your service plan: <table
                     frame="void" rules="all">
                     <caption>Cluster Instances</caption>
                     <col
@@ -111,7 +111,9 @@ To create a service plan:
                         <tr>
                             <td>Maximum Number of Instances </td>
                             <td>Maximum number of Pivotal HD instances that users can create from this Service Plan.</td>
-                            <td>Integer, Leave this field blank if you do not wish to specify a maximum number of instances.</td>
+							<td><ul>
+							                                    <li>Minimum: 1</li>
+							                                </ul><p>This field must not be left blank.</p></td>
                         </tr>
                         <tr>
                             <td> Number of Pre-Created Instances</td>
@@ -120,7 +122,7 @@ To create a service plan:
                                 <ul>
                                     <li>Minimum: 1</li>
                                     <li>Maximum: Maximum Number of Instances Created (configuration value, see above)</li>
-                                </ul>
+                                </ul><p>This field must not be left blank.</p>
                             </td>
                         </tr>
                     </tbody>
