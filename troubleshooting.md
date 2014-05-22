@@ -15,6 +15,8 @@ title: Troubleshooting a Pivotal HD Service Instance
     href="#access-cluster">Accessing Pivotal HD Cluster Instance Machines</a></li>
 <li><a
     href="#ssh">Accessing Pivotal HD Cluster Instance virtual machines using SSH</a></li>
+<li><a 
+	href="#delete_service">Deleting the Pivotal HD Service from Cloud Foundry</a></li> 
 </ul>
 <a
 id="creds"></a>
@@ -282,3 +284,45 @@ Task 257 done
 </li>
 <li>Note the IP address of the machine you want to access and use it to ssh to the virtual machine. </li>
 </ol>
+<a id="delete_service"></a>
+<h1>Deleting the Pivotal HD Service from Cloud Foundry</h1>
+        <ol>
+            <li>Follow the instructions in the <a
+                href="http://docs.gopivotal.com/pivotalcf/customizing/trouble-advanced.html">Advanced Troubleshooting with the BOSH CLI</a> to access the BOSH Director from the Ops Manager VM. </li>
+            <li>
+                <p>Log in to the BOSH Director.</p>
+            </li>
+            <li>
+                <p>Run the following command to delete the Service Broker from the Cloud Controller: </p>
+                <p><code>$ cf delete-service-broker phd-broker</code></p>
+            </li>
+            <li>Run the following command to locate the name of the service broker instance:<p><code>$ bosh deployments</code>
+                </p><p>This command displays a list of deployments similar to the following:</p><pre>+---------------------------+--------------------------------+-------------------------------+
+| Name                      | Release(s)                     | Stemcell(s)                   |
++---------------------------+--------------------------------+-------------------------------+
+| cf-5f2b8491a89b0598c95c   | cf/169                         | bosh-vsphere-esxi-ubuntu/2366 |
+|                           | push-console-release/6         |                               |
+|                           | runtime-verification-errands/1 |                               |
++---------------------------+--------------------------------+-------------------------------+
+| phd-1                     | phd/354                        | bosh-vsphere-esxi-centos/1868 |
++---------------------------+--------------------------------+-------------------------------+
+| phd-2                     | phd/354                        | bosh-vsphere-esxi-centos/1868 |
++---------------------------+--------------------------------+-------------------------------+
+| p-hd-cbff6614fcdffae83292 | phd-broker/350                 | bosh-vsphere-esxi-centos/1868 |
++---------------------------+--------------------------------+-------------------------------+</pre><p>Locate the row where the value in the Release(s) column includes  <code>phd-broker</code> and use the value in the Name column in the following command:</p><pre>$ bosh delete deployment <em>&lt;phd-broker-deployment-name></em></pre><p>For example:</p><pre>$ bosh delete deployment p-hd-cbff6614fcdffae83292</pre></li>
+            <li>Run the <code>bosh deployments</code> command again to see whether there are any unallocated Pivotal HD Service Instances. The instances display with values in the Release(s) column that begin with <code>phd</code>. For example: <pre>$ bosh deployments
++---------------------------+--------------------------------+-------------------------------+
+| Name                      | Release(s)                     | Stemcell(s)                   |
++---------------------------+--------------------------------+-------------------------------+
+| cf-5f2b8491a89b0598c95c   | cf/169                         | bosh-vsphere-esxi-ubuntu/2366 |
+|                           | push-console-release/6         |                               |
+|                           | runtime-verification-errands/1 |                               |
++---------------------------+--------------------------------+-------------------------------+
+| phd-1                     | phd/354                        | bosh-vsphere-esxi-centos/1868 |
++---------------------------+--------------------------------+-------------------------------+
+
+$ bosh delete deployment phd-1</pre></li>
+            <li>Open the <strong>Pivotal CF Ops Manager</strong> application in a Web browser.<p>The Installation Dashboard displays.</p></li>
+            <li>Click the  Trash icon in the Pivotal HD Data Service tile.</li>
+            <li>Click <strong>Apply Changes</strong>.<p>The Pivotal HD Data Service tile is deleted. </p></li>
+        </ol>
