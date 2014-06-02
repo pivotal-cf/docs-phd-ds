@@ -46,7 +46,7 @@ Last login: Wed May 7 15:13:04 2014 from 10.0.0.1
 [vcap@21c20803-7459-46dc-a0f7-36c70c956db4 ~]</pre></li>
 <li>There are two relevant log files you may want to access:<ul>
 <li>
-    <code>/var/vcap/sys/logs/phd-broker/broker.out</code>  - these are the logs from the PHD-Broker that contain entries about starting the broker, deploying PHD instances, and binding to applications. </li>
+    <code>/var/vcap/sys/log/phd-broker/broker.out</code>  - these are the logs from the PHD-Broker that contain entries about starting the broker, deploying PHD instances, and binding to applications. </li>
 <li>
     <code>/var/vcap/sys/log/phd-broker/phd-broker.stdout.log</code> - these are the logs from the general shell commands, including bosh deployments. These log files include more detailed output from specific commands and can be useful when trying to debug a specific issue where there was a failure reported in one of the other logs. </li>
 </ul></li>
