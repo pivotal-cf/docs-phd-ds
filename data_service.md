@@ -1,5 +1,5 @@
 ---
-title: Using a Pivotal HD Data Service
+title: Using a Pivotal HD Data Service Instance
 ---
 
 After the Pivotal CF Administrator deploys the Pivotal HD Service, Pivotal CF Users can create instances of the service, resulting in a pre-deployed Pivotal HD cluster that is allocated for their use.  Pivotal CF Users can subsequently bind applications that were pushed from Elastic Runtime to a Pivotal HD Service Instance in order to create and embed user credentials and API endpoints.
@@ -42,13 +42,19 @@ To create an instance of a Pivotal HD Service Plan using the Pivotal CF Develope
 
 9. Click **Add**. 
 
-A Pivotal HD Service Instance is created, resulting in allocation of an on-demand Pivotal HD Cluster.
+A Pivotal HD Service Instance is created, resulting in allocation of an on-demand Pivotal HD Cluster. The service instance displays in the list of services for the current space:
 
 **Pivotal CF Developer Console**
 
-![Pivotal CF Developer Console](/images/dev_console_large.png "Pivotal CF Developer Console")
+![Pivotal CF Developer Console](images/dev_console_manage_instance.png "Pivotal CF Developer Console")
 	
-For more information about the the Pivotal CF Developer Console, see [Getting Started with the Developer Console](http://docs.gopivotal.com/pivotalcf/console/pcf_console.html).
+Click **Manage** to view the **Service Instance Dashboard** for the service:
+
+![Pivotal CF Developer Console](images/service_instance_dashboard.png "Pivotal CF Developer Console")
+
+You can click the links to access the Web interface for a component.	
+
+For more information about the the Pivotal CF Developer Console, see [Getting Started with the Developer Console](http://docs.gopivotal.com/pivotalcf/console/dev-console.html).
 
 ##Pivotal CF Command Line
 

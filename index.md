@@ -7,9 +7,9 @@ These pages describe how to install, configure and use Pivotal HD Service.
 The documentation contains the following topics:
 
 * [Overview of Pivotal HD Service](overview.html)
-* [Installing Pivotal HD Service](installation.html)
-* [Creating Service Plans](service_plans.html)
-* [Using the Pivotal HD Data Service](data_service.html)
+* [Installing and Upgrading Pivotal HD Service for Pivotal CF](installation.html)
+* [Creating On-Demand Service Plans](service_plans.html)
+* [Using a Pivotal HD Data Service Instance](data_service.html)
 * [Troubleshooting a Pivotal HD Service Instance](troubleshooting.html)
 * [Release Notes](relnotes.html)
 

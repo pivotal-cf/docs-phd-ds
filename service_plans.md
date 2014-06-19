@@ -1,14 +1,19 @@
 ---
-title: Creating Pivotal HD Service Plans
+title: Creating Pivotal HD On-Demand Service Plans
 ---
 
 #Overview
 
 A Pivotal CF Administrator can define the details of the Pivotal HD service plan they wish to offer to their Pivotal CF users.  An on-demand service plan is a blueprint that describes the components and configuration of each instance of a Pivotal HD cluster.  The Pivotal HD Service includes default values for the service plan, which can be changed by the Pivotal CF Administrator.
 
-#Creating Service Plans
+* [Creating an On-Demand Service Plan](#creating)
 
-To create a service plan:
+* [Modifying an On-Demand Service Plan](#modifying)
+
+<a id="creating"></a>
+#Creating On-Demand Service Plans
+
+To create an On-Demand Service Plan:
 
 <ol>
             <li>
@@ -130,7 +135,8 @@ To create a service plan:
             <li>Fill in the remaining fields to define the configuration of the Pivotal HD clusters that will be created by this Service Plan. <p>For more information about Pivotal HD and its components, see the <a
                         href="http://pivotalhd.docs.gopivotal.com/index.html">Pivotal HD Documentation</a> .</p><table
                     frame="void"
-                    rules="all">
+                    rules="all"
+                    width="846">
                     <caption>Pivotal HD Cluster Configuration</caption>
                     <col
                         width="34%" />
@@ -189,7 +195,7 @@ To create a service plan:
                             </td>
                         </tr>
                         <tr>
-                            <td>PHD Slave Ephemeral Disk in MB </td>
+                            <td>PHD Slave Persistent Disk in MB </td>
                             <td></td>
                             <td>
                                 <ul>
@@ -216,19 +222,19 @@ To create a service plan:
                             <td>NameNode RAM in MB </td>
                             <td>
                                 <ul>
-                                    <li>Minimum: 1024</li>
+                                    <li>Minimum: 2048</li>
                                     <li>Maximum: 1048576 </li>
-                                    <li><strong>Default: </strong>1024</li>
+                                    <li><strong>Default: </strong>2048</li>
                                 </ul>
                             </td>
                         </tr>
                         <tr>
-                            <td>NameNode Ephemeral Disk in MB</td>
+                            <td>NameNode Persistent Disk in MB</td>
                             <td>
                                 <ul>
-                                    <li>Minimum: 8704</li>
+                                    <li>Minimum: 8192</li>
                                     <li>Maximum: 1048576 </li>
-                                    <li><strong>Default: </strong>8704</li>
+                                    <li><strong>Default: </strong>8192</li>
                                 </ul>
                             </td>
                         </tr>
@@ -268,7 +274,7 @@ To create a service plan:
                         <tr>
                             <td>HAWQ Master CPU</td>
                             <td
-                                rowspan="3">The HAWQ Master runs on its own dedicated virtual machine. If  you do not specify HAWQ as part of this cluster, these fields are ignored. </td>
+                                rowspan="3">The HAWQ Master runs on its own dedicated virtual machine. If you do not specify HAWQ as part of this cluster, these fields are ignored. </td>
                             <td>
                                 <ul>
                                     <li>Minimum: 1</li>
@@ -289,19 +295,20 @@ To create a service plan:
                             </td>
                         </tr>
                         <tr>
-                            <td>HAWQ Master Ephemeral Disk in MB </td>
+                            <td>HAWQ Master  <span
+                                    style="color: rgb(104, 104, 104); font-family: source_sans_prolight; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; display: inline !important; float: none; background-color: rgb(248, 248, 248);">Persistent</span>  Disk in MB </td>
                             <td>
                                 <ul>
-                                    <li>Minimum: 5120</li>
+                                    <li>Minimum: 4096</li>
                                     <li>Maximum: 1048576 </li>
-                                    <li><strong>Default: </strong>5120</li>
+                                    <li><strong>Default: </strong>4096</li>
                                 </ul>
                             </td>
                         </tr>
                         <tr>
                             <td>Gemfire XD Locator CPU</td>
                             <td
-                                rowspan="3">The Gemfire XD Locator runs on its own dedicated virtual machine. If  you do not specify GemFire XD as part of this cluster, these fields are ignored.  </td>
+                                rowspan="3">The Gemfire XD Locator runs on its own dedicated virtual machine. If you do not specify GemFire XD as part of this cluster, these fields are ignored. </td>
                             <td>
                                 <ul>
                                     <li>Minimum: 1</li>
@@ -322,7 +329,7 @@ To create a service plan:
                             </td>
                         </tr>
                         <tr>
-                            <td>Gemfire XD Locator Ephemeral Disk in MB </td>
+                            <td>Gemfire XD Locator Persistent Disk in MB </td>
                             <td>
                                 <ul>
                                     <li>Minimum: 3072</li>
@@ -331,10 +338,29 @@ To create a service plan:
                                 </ul>
                             </td>
                         </tr>
-                        
                     </tbody>
                 </table>
             </li>
             <li>Click the <strong>Save</strong> button.</li>
+			<li>(Optional) Click 
             
-        </ol>
+</ol>
+<a id="modifying"></a>
+#Modifying an On-Demand Service Plan
+
+<p><strong>Note:</strong>Modifications to the default On-Demand service plan settings only apply to any new <em>new</em> service instances that users create. If you modify the service plan, any pre-created service instances are destroyed and new, pre-allocated instances are created with the new configurations. Existing service instances are not modified.</p>
+
+<p>To modify an On-Demand Service Plan:
+
+<ol>
+<li>
+<p>Use a Web browser to open the <strong>Pivotal Ops Manager</strong> application. (This application is part of your Pivotal Cloud Foundry installation.)</p>
+</li>
+<li>Click the <strong>Pivotal HD for Pivotal CF</strong> tile. </li>
+<li>
+ <p>Click <strong>On-demand Service Plans</strong>.</p>
+ <p>The <strong>On-demand Service Plans</strong> screen displays.</p>
+</li>
+<li>Change any of the fields that define the service plan.</li>
+<li>Click the <strong>Save</strong> button.</li>
+</ol>
