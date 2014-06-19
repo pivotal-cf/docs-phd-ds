@@ -2,7 +2,7 @@
 title: Pivotal HD Service for Pivotal CF
 ---
 
-These pages describe how to install, configure and use Pivotal HD Service.
+These pages describe how to install, configure and use Pivotal HD Service, version 1.2.1.
 
 The documentation contains the following topics:
 
