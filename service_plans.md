@@ -11,7 +11,7 @@ A Pivotal CF Administrator can define the details of the Pivotal HD service plan
 * [Modifying an On-Demand Service Plan](#modifying)
 
 <a id="creating"></a>
-#Creating On-Demand Service Plans
+#Creating an On-Demand Service Plan
 
 To create an On-Demand Service Plan:
 
@@ -348,7 +348,7 @@ To create an On-Demand Service Plan:
 <a id="modifying"></a>
 #Modifying an On-Demand Service Plan
 
-<p><strong>Note:</strong>Modifications to the default On-Demand service plan settings only apply to any new <em>new</em> service instances that users create. If you modify the service plan, any pre-created service instances are destroyed and new, pre-allocated instances are created with the new configurations. Existing service instances are not modified.</p>
+<p><strong>Note:</strong> Modifications to the default On-Demand service plan settings only apply to any new <em>new</em> service instances that users create. If you modify the service plan, any pre-created service instances are destroyed and new, pre-allocated instances are created with the new configurations. Existing service instances are not modified.</p>
 
 <p>To modify an On-Demand Service Plan:
 
