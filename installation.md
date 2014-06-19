@@ -164,7 +164,7 @@ Installing Pivotal HD Service requires the following:
             </li>
             <li>Run the following commands:<p><code>cf purge-service-offering p-hd</code></p><p><code>bosh delete release phd-pbroker</code></p></li>
             <li>Run the following command to list all deployments:<p><code>bosh deployments</code></p><p>This command displays a list of deployments similar to the following:</p>
-                <pre style="font-size:x-small">
+                <pre>
 +---------------------------+--------------------------------+-------------------------------+
 | Name                      | Release(s)                     | Stemcell(s)                   |
 +---------------------------+--------------------------------+-------------------------------+
