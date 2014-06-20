@@ -1,5 +1,5 @@
 ---
-title: Release Notes for Pivotal HD Service v 1.2.0.0
+title: Release Notes for Pivotal HD Service v 1.2.1.0
 ---
 #Pre-Created Clusters
 
@@ -17,7 +17,21 @@ title: Release Notes for Pivotal HD Service v 1.2.0.0
 
 * This release enables beta testing of GemFire XD 1.0 as a Pivotal CF Service.
 
-* Hive, HBase, and the Pivotal HD Client VM have been removed as components of a PHD deployment
+* Hive, HBase, and the Pivotal HD Client VM have been removed as components of a PHD deployment.
+
+
+#Updates in Ops Manager
+
+As of Version 1.2.1.0:
+
+* Changes to the Service are now reflected properly when an Administrator updates fields in Ops Mgr and applies the changes. Note that active Service Instances are never modified even if the Service Plan has been updated. Only new Service Instances created after the update reflect changes.
+
+# Service Instance Dashboard
+
+As of Version 1.2.1.0:
+
+* Service Instances now include a dashboard, which Pivotal CF users can access from the Pivotal CF Web Console. This dashboard helps Pivotal CF users understand what Pivotal HD components are running and where without having to bind an application.
+
 
 #Binding to a Service Instance
 
@@ -26,3 +40,7 @@ title: Release Notes for Pivotal HD Service v 1.2.0.0
 #Known Issues:
 
 * JVM memory allocation is fixed. Increasing the memory allocation for the GemFire XD locator component no longer results in more memory being used by the corresponding GemFire XD process.
+
+* Pivotal HD for Pivotal CF v1.2.0.0 cannot be directly upgraded to v1.2.1.0.  It must first be uninstalled in Ops Manager and deployments and releases manually deleted via bosh prior to upgrading to v1.2.1.0.  Detailed instructions on how to do this are documented under [Installation Steps](installation.html#install).
+
+* jvm memory allocation is currently fixed. Increasing the memory allocation for the GemFire XD locator or Slave component will not result in more memory being used by the corresponding GemFire XD processes.
