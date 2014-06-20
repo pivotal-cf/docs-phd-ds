@@ -294,7 +294,7 @@ Task 257 done
 | hawq-master/0     | running | hawq-master     |10.0.1.8   |
 | namenode/0        | running | namenode        |10.0.1.6   |
 | phd-slave/0       | running | worker          |10.0.1.10  |
-| resourcemanager/0 | running |resourcemanager |10.0.1.7  |
+| resourcemanager/0 | running |resourcemanager  |10.0.1.7   |
 +-------------------+---------+-----------------+-----------+
 </pre>
             </li>
