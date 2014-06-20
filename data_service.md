@@ -86,7 +86,7 @@ To create a Pivotal HD cluster instance:
 		
 	For example:
 
-	<pre >
+	<pre class="terminal" >
 	$  cf login -a https://api.rock.music.cf-app.com -u admin -p 961fdc9cd6a85031f7eb -o pivotal -s staging
 	API endpoint: https://api.rock.music.cf-app.com
 	Authenticating...

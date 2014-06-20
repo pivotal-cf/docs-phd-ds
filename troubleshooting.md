@@ -36,7 +36,7 @@ title: Troubleshooting a Pivotal HD Service Instance
 <ol>
             <li>Locate the credentials and URL of the PHD-Broker virtual machine as described <a
                     href="#creds">above</a>. </li>
-            <li>Using this URL and credentials, log in to the PHD-Broker virtual machine using ssh:<pre># ssh vcap@10.0.0.51 
+            <li>Using this URL and credentials, log in to the PHD-Broker virtual machine using ssh:<pre class="terminal"># ssh vcap@10.0.0.51 
 vcap@10.0.0.51's password: 
 Last login: Wed May 7 15:13:04 2014 from 10.0.0.1 
 [vcap@21c20803-7459-46dc-a0f7-36c70c956db4 ~]</pre></li>
