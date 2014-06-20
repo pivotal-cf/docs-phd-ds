@@ -62,27 +62,28 @@ Last login: Wed May 7 15:13:04 2014 from 10.0.0.1
             </li>
         </ol>
         <ul>
-            <li>
+            <li>bbbebetterssdfrsadf
                 <p><code>bosh deployments</code></p>
                 <p>Displays a list of deployments. For example:</p>
                 <pre class="terminal">
 $ bosh deployments
+
 +---------------------------------+--------------------------------+-------------------------------+
-| Name| Release(s) | Stemcell(s)   |
+| Name                            | Release(s)                     | Stemcell(s)                   |
 +---------------------------------+--------------------------------+-------------------------------+
-| cf-5f2b8491a89b0598c95c | cf/169 | bosh-vsphere-esxi-ubuntu/2366 |
-| | push-console-release/6 |   |
-| | runtime-verification-errands/1 |   |
+| cf-5f2b8491a89b0598c95c         | cf/169                         | bosh-vsphere-esxi-ubuntu/2366 |
+|                                 | push-console-release/6         |                               |
+|                                 | runtime-verification-errands/1 |                               |
 +---------------------------------+--------------------------------+-------------------------------+
-| phd-1   | phd/282| bosh-vsphere-esxi-centos/1868 |
+| phd-1                           | phd/282                        | bosh-vsphere-esxi-centos/1868 |
 +---------------------------------+--------------------------------+-------------------------------+
-| phd-2   | phd/282| bosh-vsphere-esxi-centos/1868 |
+| phd-2                           | phd/282                        | bosh-vsphere-esxi-centos/1868 |
 +---------------------------------+--------------------------------+-------------------------------+
-| phd-3   | phd/282| bosh-vsphere-esxi-centos/1868 |
+| phd-3                           | phd/282                        | bosh-vsphere-esxi-centos/1868 |
 +---------------------------------+--------------------------------+-------------------------------+
-| phd-broker-037b5a195ed32bdf4e61 | phd-broker/277 | bosh-vsphere-esxi-centos/1868 |
+| phd-broker-037b5a195ed32bdf4e61 | phd-broker/277                 | bosh-vsphere-esxi-centos/1868 |
 +---------------------------------+--------------------------------+-------------------------------+
-Deployments total: 5
+ Deployments total: 5
 </pre>
             </li>
             <li>
@@ -97,11 +98,11 @@ Director task 151
 Task 151 done
 
 +-------------------+---------+-----------------+-----------+
-| Job/index | State   | Resource Pool   | IPs   |
+| Job/index         | State   | Resource Pool   | IPs       |
 +-------------------+---------+-----------------+-----------+
-| gfxd-locator/0| running | gfxd-locator| 10.0.1.29 |
-| namenode/0| running | namenode| 10.0.1.27 |
-| phd-slave/0   | running | worker  | 10.0.1.30 |
+| gfxd-locator/0    | running | gfxd-locator    | 10.0.1.29 |
+| namenode/0        | running | namenode        | 10.0.1.27 |
+| phd-slave/0       | running | worker          | 10.0.1.30 |
 | resourcemanager/0 | running | resourcemanager | 10.0.1.28 |
 +-------------------+---------+-----------------+-----------+
 
@@ -117,12 +118,12 @@ Director task 152
 Task 152 done
 
 +-------------------+---------+-----------------+-----------+-----------------------------------------+--------------------------------------+--------------+
-| Job/index | State   | Resource Pool   | IPs   | CID | Agent ID | Resurrection |
+| Job/index         | State   | Resource Pool   | IPs       | CID                                     | Agent ID                             | Resurrection |
 +-------------------+---------+-----------------+-----------+-----------------------------------------+--------------------------------------+--------------+
-| gfxd-locator/0| running | gfxd-locator| 10.0.1.29 | vm-e7cacaec-8190-4841-81fb-ae7ca4784ea1 | 4718b1bf-1af7-4fc9-802c-36037f0a30cc | active   |
-| namenode/0| running | namenode| 10.0.1.27 | vm-8eac5c1a-de57-414d-a109-c1117eb58cad | 5c45c684-46ac-4f76-a285-e507beeb029b | active   |
-| phd-slave/0   | running | worker  | 10.0.1.30 | vm-889afcd8-02ac-42bf-b848-992716a34cec | 75a00ccd-cad8-45dd-9369-2274e1b4ec01 | active   |
-| resourcemanager/0 | running | resourcemanager | 10.0.1.28 | vm-a64bc3fa-fdd0-40c0-8311-fe854b72ff16 | 3551bb58-e2e1-4bc2-8a7c-c941391f3679 | active   |
+| gfxd-locator/0    | running | gfxd-locator    | 10.0.1.29 | vm-e7cacaec-8190-4841-81fb-ae7ca4784ea1 | 4718b1bf-1af7-4fc9-802c-36037f0a30cc | active       |
+| namenode/0        | running | namenode        | 10.0.1.27 | vm-8eac5c1a-de57-414d-a109-c1117eb58cad | 5c45c684-46ac-4f76-a285-e507beeb029b | active       |
+| phd-slave/0       | running | worker          | 10.0.1.30 | vm-889afcd8-02ac-42bf-b848-992716a34cec | 75a00ccd-cad8-45dd-9369-2274e1b4ec01 | active       |
+| resourcemanager/0 | running | resourcemanager | 10.0.1.28 | vm-a64bc3fa-fdd0-40c0-8311-fe854b72ff16 | 3551bb58-e2e1-4bc2-8a7c-c941391f3679 | active       |
 +-------------------+---------+-----------------+-----------+-----------------------------------------+--------------------------------------+--------------+
 
 VMs total: 4
@@ -233,10 +234,14 @@ X-Vcap-Request-Id: 1f201b6b1881d2957ec572f17eb63b4e::00245095-8317-4547-9c93-a8b
 
 {"guid":"5482fff0-42cb-4392-945d-8d83713abaf0","name":"staging","apps":[{"guid":"f23e0d52-13be-434e-b579-ce2a1bad8d79","urls":["app-sinatra-services.rock.music.cf-app.com"],
 "routes":[{"guid":"78161142-f97c-460d-b03e-1f7a748406cc","host":"app-sinatra-services","domain":{"guid":"58b2649a-a127-4c8f-ac49-cb8ec1dd28e0","name":"rock.music.cf-app.com"}}],
-"service_count":1,"service_names":["phd-dieu1"],"running_instances":1,"name":"app-sinatra-services","production":false,"space_guid":"5482fff0-42cb-4392-945d-8d83713abaf0","stack_guid":"f7ad92d1-c34f-4f37-8c25-a671514d73b6",
-"buildpack":null,"detected_buildpack":"Ruby/Rack","environment_json":{},"memory":1024,"instances":1,"disk_quota":1024,"state":"STARTED","version":"5ccc11f4-c9f6-4fa2-aac1-f14e227571f8","command":"bundle exec ruby main.rb -p $PORT","console":false,"debug":null,"staging_task_id":"8568a5a234524be5a97b8e770b4dbfd2","package_state":"STAGED","health_check_timeout":null}],
+"service_count":1,"service_names":["phd-dieu1"],"running_instances":1,"name":"app-sinatra-services",
+"production":false,"space_guid":"5482fff0-42cb-4392-945d-8d83713abaf0","stack_guid":"f7ad92d1-c34f-4f37-8c25-a671514d73b6",
+"buildpack":null,"detected_buildpack":"Ruby/Rack","environment_json":{},"memory":1024,"instances":1,
+"disk_quota":1024,"state":"STARTED","version":"5ccc11f4-c9f6-4fa2-aac1-f14e227571f8","command":"bundle exec ruby main.rb -p $PORT","console":false,"debug":null,"staging_task_id":"8568a5a234524be5a97b8e770b4dbfd2","package_state":"STAGED","health_check_timeout":null}],
 "services":[{"guid":"4914bc7d-da6a-4023-8427-822f17a320fb","name":"phd5","bound_app_count":0,"dashboard_url":null,
-"service_plan":{"guid":"51eeae7e-4a29-424e-b636-424d1aaa92f1","name":"Standard","service":{"guid":"aefee9cf-a789-4697-bebd-bafa47ae63a4","label":"p-hd","provider":null,"version":null}}},{"guid":<strong style="color:red">"5719c2a0-69f2-4ca2-b46a-0f6058fa54af"</strong>,"name":<strong style="color:red">"instance2"</strong>,"bound_app_count":1,"dashboard_url":null,"service_plan":{"guid":"51eeae7e-4a29-424e-b636-424d1aaa92f1",
+"service_plan":{"guid":"51eeae7e-4a29-424e-b636-424d1aaa92f1","name":"Standard","service":
+{"guid":"aefee9cf-a789-4697-bebd-bafa47ae63a4","label":"p-hd","provider":null,"version":null}}},
+{"guid":<strong style="color:red">"5719c2a0-69f2-4ca2-b46a-0f6058fa54af"</strong>,"name":<strong style="color:red">"instance2"</strong>,"bound_app_count":1,"dashboard_url":null,"service_plan":{"guid":"51eeae7e-4a29-424e-b636-424d1aaa92f1",
 "name":"Standard","service":{"guid":"aefee9cf-a789-4697-bebd-bafa47ae63a4","label":"p-hd","provider":null,"version":null}}}]}
 
 </pre>
@@ -255,7 +260,8 @@ vcap@10.0.0.51's password:
 Last login: Wed May 7 15:13:04 2014 from 10.0.0.1 
 [vcap@21c20803-7459-46dc-a0f7-36c70c956db4 ~]$</pre>
             </li>
-            <li>Access the SQLite Database where the Service Broker stores its mappings <pre class="terminal">[vcap@21c20803-7459-46dc-a0f7-36c70c956db4 ~]$ cd /var/vcap/store/phd_broker/ 
+            <li>Access the SQLite Database where the Service Broker stores its mappings: 
+				<pre class="terminal">[vcap@21c20803-7459-46dc-a0f7-36c70c956db4 ~]$ cd /var/vcap/store/phd_broker/ 
 [vcap@21c20803-7459-46dc-a0f7-36c70c956db4 phd_broker]$ sqlite3 database.sqlite3 
 SQLite version 3.6.20 
 Enter ".help" for instructions 
@@ -264,7 +270,7 @@ sqlite> .schema
 CREATE TABLE "ip_addresses" ("id" integer not null primary key autoincrement, "ip" text, "service_instance_id" integer, "job_name" text); 
 CREATE TABLE "service_instances" ("id" integer not null primary key autoincrement, "cloud_controller_id" text, "state" text); 
 sqlite> select * from service_instances; 
-1|<code style="color:red">5719c2a0-69f2-4ca2-b46a-0f6058fa54af</code>|ALLOCATED 
+1|<span style="color:red">5719c2a0-69f2-4ca2-b46a-0f6058fa54af</span>|ALLOCATED 
 2|4914bc7d-da6a-4023-8427-822f17a320fb|ALLOCATED 
 3||AVAILABLE 
 sqlite></pre>
