@@ -100,7 +100,7 @@ Installing Pivotal HD Service requires the following:
                         <td>List any IP addresses you wish to reserve. These addresses will not be used by  by the Pivotal HD Service  to create virtual machines. </td>
                         <td>
                             <p>Separate multiple ranges with commas. For example:</p>
-                            <p><code> 10.10.10.2-10.10.10.10, 10.10.10.200-10.10.10.254</code></p>
+                            <p><pre>10.10.10.2-10.10.10.10, 10.10.10.200-10.10.10.254</pre></p>
                         </td>
                     </tr>
                     <tr>
