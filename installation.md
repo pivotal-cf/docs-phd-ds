@@ -167,7 +167,7 @@ Installing Pivotal HD Service requires the following:
             <li>
                 <p>Log in to the BOSH Director.</p>
             </li>
-            <li>Run the following command: <p><code>bosh delete release phd-pbroker</code></p></li>
+            <li>Run the following command: <p><code>bosh delete release phd-broker</code></p></li>
             <li>Run the following command to list all deployments:<p><code>bosh deployments</code></p><p>This command displays a list of deployments similar to the following:</p>
                 <pre>
 +---------------------------+--------------------------------+-------------------------------+
