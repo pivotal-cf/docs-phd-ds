@@ -159,9 +159,10 @@ Installing Pivotal HD Service requires the following:
             <li>Open the <strong>Pivotal CF Ops Manager</strong> application in a Web browser.<p>The <strong>Installation Dashboard</strong> displays.</p></li>
             <li>Click the Trash icon in the Pivotal HD Data Service tile.</li>
             <li>Click <strong>Apply Changes</strong>.<p>Pivotal Ops Manager begins to delete the Pivotal HD Service. When Ops Manager indicates that the changes have been applied, the Pivotal HD Data Service service broker is deleted and its tile no longer appears in the dashboard. </p></li>
-			<li>Run the following command from a location where you have the cf client installed. You can download the cf client from: 
+			<li>Run the following commands from a location where you have the cf client installed. You can download the cf client from: 
 							<a href ="https://github.com/cloudfoundry/cli#Downloads">https://github.com/cloudfoundry/cli#Downloads</a>:
-			<p><code>cf purge-service-offering p-hd</code></p></li>
+			<p><code>cf purge-service-offering p-hd</code></p>
+			<p><code>cf delete-service-broker phd-broker</code></p></li>
 			<li>Follow the instructions at <a
                     href="http://docs.gopivotal.com/pivotalcf/customizing/trouble-advanced.html">Advanced Troubleshooting with the BOSH CLI</a> to access the BOSH Director from the Ops Manager VM. </li>
             <li>
