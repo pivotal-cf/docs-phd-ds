@@ -62,7 +62,7 @@ Last login: Wed May 7 15:13:04 2014 from 10.0.0.1
             </li>
         </ol>
         <ul>
-            <li>bbbebetterssdfrsadf
+            <li>
                 <p><code>bosh deployments</code></p>
                 <p>Displays a list of deployments. For example:</p>
                 <pre class="terminal">
