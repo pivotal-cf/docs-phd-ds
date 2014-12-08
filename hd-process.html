@@ -1,0 +1,280 @@
+<!DOCTYPE html SYSTEM "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <table
+            frame="void">
+            <caption>Pivotal HD Configuration files and Commands for Hadoop NameNode</caption>
+            <col
+                width="30%" />
+            <col
+                width="50%" />
+            
+            <tbody>
+                <tr>
+                    <td>NameNode configuration file location</td>
+                    <td><code>/var/vcap/jobs/namenode/config/</code></td>
+                </tr>
+                <tr>
+                    <td>Start NameNode process</td>
+                    <td>
+                        <pre>sudo su
+monit start namenode</pre>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Stop NameNode process</td>
+                    <td>
+                        <pre>sudo su
+monit stop namenode</pre>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Restart NameNode process</td>
+                    <td>
+                        <pre>sudo su
+monit restart namenode</pre>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table
+            frame="void">
+            <caption>Pivotal HD Configuration files and Commands for Hadoop ResourceManager</caption>
+            <col
+                width="50%" />
+            <col
+                width="50%" />
+            <tbody>
+                <tr>
+                    <td> ResourceManger configuration file location</td>
+                    <td><code>/var/vcap/jobs/resourcemanager/config/</code></td>
+                </tr>
+                <tr>
+                    <td>Start ResourceManger process command</td>
+                    <td>
+                        <pre>sudo su
+monit start resourcemanager</pre>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Stop ResourceManger process command</td>
+                    <td>
+                        <pre>sudo su
+monit stop resourcemanager</pre>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Restart ResourceManger process command</td>
+                    <td>
+                        <pre>sudo su
+monit restart resourcemanager</pre>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Start HistoryServer process</td>
+                    <td>
+                        <pre>sudo su
+monit start historyserver</pre>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Stop HistoryServer process</td>
+                    <td>
+                        <pre>sudo su
+monit stop historyserver</pre>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Restart HistoryServer process</td>
+                    <td>
+                        <pre>sudo su
+monit restart historyserver</pre>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table
+            frame="void">
+            <caption>Pivotal HD Configuration files and Commands for HAWQ Master</caption>
+            <col
+                width="30%" />
+            <col
+                width="50%" />
+            <tbody>
+                <tr>
+                    <td>HAWQ Master configuration file location</td>
+                    <td><code>/var/vcap/jobs/master/config/</code></td>
+                </tr>
+                <tr>
+                    <td>Start HAWQ Master process</td>
+                    <td>
+                        <pre>sudo su
+monit start master</pre>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Stop HAWQ Master process</td>
+                    <td>
+                        <pre>sudo su
+monit stop master</pre>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Restart HAWQ Master process</td>
+                    <td>
+                        <pre>sudo su
+monit restart master</pre>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table
+            frame="void">
+            <caption>Pivotal HD Configuration files and Commands for GemFire XD Locator</caption>
+            <col
+                width="30%" />
+            <col
+                width="50%" />
+            <tbody>
+                <tr>
+                    <td>GemFire XD configuration file location</td>
+                    <td><code>/var/vcap/jobs/locator/config/</code></td>
+                </tr>
+                <tr>
+                    <td>Start GemFire XD Locator process</td>
+                    <td>
+                        <pre>sudo su
+monit start gfxd-locator</pre>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Stop GemFire XD Locator process</td>
+                    <td>
+                        <pre>sudo su
+monit stop gfxd-locator</pre>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Restart GemFire XD Locator process</td>
+                    <td>
+                        <pre>sudo su
+monit restart gfxd-locator</pre>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table
+            frame="void">
+            <caption>Pivotal HD Configuration files and Commands for Pivotal HD Slave</caption>
+            <col
+                width="50%" />
+            <col
+                width="50%" />
+            <tbody>
+                <tr>
+                    <td> DataNode configuration file location</td>
+                    <td><code>/var/vcap/jobs/resourcemanager/config/</code></td>
+                </tr>
+                <tr>
+                    <td>Start DataNode process command</td>
+                    <td>
+                        <pre>sudo su
+monit start datanode</pre>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Stop DataNode process command</td>
+                    <td>
+                        <pre>sudo su
+monit stop datanode</pre>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Restart DataNode process command</td>
+                    <td>
+                        <pre>sudo su
+monit restart datanode</pre>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Slave NodeManager configuration file location</td>
+                    <td><code>/var/vcap/jobs/nodemanager/config</code></td>
+                </tr>
+                <tr>
+                    <td>Start NodeManager process</td>
+                    <td>
+                        <pre>sudo su
+monit start nodemanager</pre>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Stop NodeManager process</td>
+                    <td>
+                        <pre>sudo su
+monit stop nodemanager</pre>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Restart NodeManager process</td>
+                    <td>
+                        <pre>sudo su
+monit restart nodemanager</pre>
+                    </td>
+                </tr>
+                <tr>
+                    <td>HAWQ Segment Server configuration file location</td>
+                    <td><code>/var/vcap/jobs/segment/config/</code></td>
+                </tr>
+                <tr>
+                    <td>Start Segment Server process</td>
+                    <td>
+                        <pre>sudo su
+monit start segment</pre>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Stop Segment Server process</td>
+                    <td>
+                        <pre>sudo su
+monit stop segment</pre>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Restart Segment Server process</td>
+                    <td>
+                        <pre>sudo su
+monit restart segment</pre>
+                    </td>
+                </tr>
+                <tr>
+                    <td>PHD Slave GemFire XD Server configuration file location</td>
+                    <td><code>/var/vcap/jobs/server/config/</code></td>
+                </tr>
+                <tr>
+                    <td>Start GemFire XD Server process</td>
+                    <td>
+                        <pre>sudo su
+monit start server</pre>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Stop GemFire XD Server process</td>
+                    <td>
+                        <pre>sudo su
+monit stop server</pre>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Restart GemFire XD Server process</td>
+                    <td>
+                        <pre>sudo su
+monit restart server</pre>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

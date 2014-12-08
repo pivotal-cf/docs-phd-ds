@@ -1,62 +1,257 @@
 ---
-title: Installing and Upgrading Pivotal HD Service for Pivotal CF
+title: Installing and Upgrading Pivotal HD for Pivotal CF
 ---
 
 * [Prerequisistes](#prereq)
 
 * [Installation Steps](#install)
 
-* [Upgrading from Version 1.2.0.0 to Version 1.2.1.0](#upgrade121)
+* [Upgrading from Version 1.2.x.0 to 1.3.0.0](#upgrade1300)
 
 * [About vSphere Networking Configurations](#vsphere)
-
-**Note:** Upgrading Pivotal HD Service from version 1.2.0.0 to version 1.2.1.0 requires that you first delete all Pivotal HD Service instances, resulting in loss of any data stored in those instances. See [Upgrading from Version 1.2.0.0 to Version 1.2.1.0](#upgrade121).
-
 
 <a id="prereq"></a>
 #Prerequisites
 
-Installing Pivotal HD Service requires the following:
+Before you begin your Pivotal HD for Pivotal CF deployment, make sure that your system meets the following minimum requirements: 
 
-* An installed instance of Pivotal CF
-* Pivotal Elastic Runtime installed in the Pivotal CF environment
-* Web Browser
-* Network access and credentials for the Pivotal Cloud Foundry Ops Manager application
+* An installed instance of Pivotal CF Ops Manager v1.3.2.0
+* Pivotal CF Elastic Runtime installed in Pivotal CF Ops Manger
+* Network access and credentials for the Pivotal CF Ops Manager Web Console
+* 7 IP Addresses in the vSphere Network where you plan to deploy the Pivotal HD Service Broker. See [Configuring Network Segmentation in Ops Manger](http://docs.pivotal.io/pivotalcf/customizing/network-segmentation.html) in the Pivotal CF documentation. 
+* Capacity in the vSphere cluster, resource pool, and datastore for the Pivotal HD Service Broker and related virtual machines as follows:
+
+<a id="service_vms"></a>
+<table rules="all"
+        frame="void">
+        <caption>Table 1. Pivotal HD Service-Related Virtual Machines</caption>
+        <col
+            width="16%" />
+        <col
+            width="16%" />
+        <col
+            width="16%" />
+        <col
+            width="16%" />
+        <col
+            width="16%" />
+        <col
+            width="16%" />
+        <thead>
+            <tr>
+                <th>Virtual Machine</th>
+                <th>Instances</th>
+                <th>CPU</th>
+                <th>RAM (MB)</th>
+                    <th>Operating System Root Disk (MB)</th>
+                <th>Ephemeral Disk (MB)</th>
+                <th>Persistent Disk (MB)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>PHD-Broker</td>
+                <td>1</td>
+                <td>2</td>
+                <td>4096</td>
+                    <td>3072</td>
+                <td>4096</td>
+                <td>4096</td>
+            </tr>
+            <tr>
+                <td>Route Registrar</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1024</td>
+                    <td>3072</td>
+                <td>1024</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>Broker Registrar</td>
+                <td>1</td>
+                <td>1</td>
+                <td>2048</td>
+                    <td>3072</td>
+                <td>2048</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>Broker Deregistrar</td>
+                <td>1</td>
+                <td>1</td>
+                <td>2048</td>
+                    <td>3072</td>
+                <td>2048</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>PHD Cleanup Tool</td>
+                <td>1</td>
+                <td>1</td>
+                <td>2048</td>
+                    <td>3072</td>
+                <td>2048</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>Compilation</td>
+                <td>2</td>
+                <td>1</td>
+                <td>1024</td>
+                    <td>3072</td>
+                <td>5632</td>
+                <td>0</td>
+            </tr>
+                <tr>
+                    <td><strong>Totals</strong></td>
+                    <td><strong>7</strong></td>
+                    <td><strong>7</strong></td>
+                    <td><strong>12288</strong></td>
+                    <td><strong>18432</strong></td>
+                    <td><strong>16384</strong></td>
+                    <td><strong>4096</strong></td>
+                </tr>
+        </tbody>
+</table>
+<br/>
+
+* A Sufficient number of IP Address for the maximum number of Pivotal HD Clusters you will allow Pivotal CF users to create. Use the following formula to calculate the number of IP addresses: 
+
+<strong>Number of Clusters</strong> * (<strong>Number of PHD Components</strong> + <strong>Number of Slave VMs</strong> + <strong>2 Compilation VMs</strong>)
+
+Where the **Number of PHD Components** is one component for each of the following software services you choose to deploy in your On-Demand cluster: NameNode, HDFS, HAWQ, YARN, GemFire XD. 
+
+* Capacity for each of the Pivotal HD cluster virtual machines as follows:
+
+<table rules="all"
+            frame="void">
+            <caption>Table 2. Pivotal HD Instance Virtual Machines</caption>
+            <col
+                width="16%" />
+            <col
+                width="16%" />
+            <col
+                width="16%" />
+            <col
+                width="16%" />
+            <col
+                width="16%" />
+            <col
+                width="16%" />
+            <thead>
+                <tr>
+                    <th>Virtual Machine</th>
+                    <th>Instances</th>
+                    <th>CPU</th>
+                    <th>RAM (MB)</th>
+                    <th>Operating System Root Disk (MB)</th>
+                    <th>Ephemeral Disk (MB)</th>
+                    <th>Persistent Disk (MB)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>NameNode</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>2048</td>
+                    <td>3072</td>
+                    <td>0</td>
+                    <td>8192</td>
+                </tr>
+                <tr>
+                    <td>Resource Manager</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>2048</td>
+                    <td>3072</td>
+                    <td>5120</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>HAWQ Master</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>2048</td>
+                    <td>3072</td>
+                    <td>0</td>
+                    <td>4096</td>
+                </tr>
+                <tr>
+                    <td>GemFire XD Locator</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1024</td>
+                    <td>3072</td>
+                    <td>0</td>
+                    <td>3072</td>
+                </tr>
+                <tr>
+                    <td>PHD Slave</td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>8192</td>
+                    <td>3072</td>
+                    <td>0</td>
+                    <td>12288</td>
+                </tr>
+                <tr>
+                    <td>Compilation</td>
+                    <td>2</td>
+                    <td>1</td>
+                    <td>1024</td>
+                    <td>3072</td>
+                    <td>5120</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td><strong>Totals</strong></td>
+                    <td><strong>7</strong></td>
+                    <td><strong>7</strong></td>
+                    <td><strong>18432</strong></td>
+                    <td><strong>18432</strong></td>
+                    <td><strong>10240</strong></td>
+                    <td><strong>27648</strong></td>
+                </tr>
+            </tbody>
+        </table>
 
 
 <a id="install"></a>
 #Installation Steps
-
 <ol>
-        <li>Download the Pivotal HD Service's software binary from <a href="http://network.gopivotal.com/">The Pivotal Network</a>.
+        <li>Download the Pivotal HD Service's 1.3.2.0 software binary from 
+            <a  href="https://network.pivotal.io/products/pivotal-hd-service">The Pivotal Network</a>. </li>
+        <li>Use a Web browser to log in to the <strong>Pivotal Ops Manager</strong> application. (This application is part of your Pivotal CF installation.) <p>The <strong>Pivotal CF Ops Manager Installation Dashboard</strong> displays:</p>
+            <p> <img
+                alt="Ops Manager"
+                src="images/ops_manager_large.png" /></p>
         </li>
-        <li>Use a Web browser to open the <strong>Pivotal Ops Manager</strong> application. (This application is part of your Pivotal CF installation.) <p>The <strong>Pivotal CF Ops Manager Installation Dashboard</strong> displays:</p>
-               <p> <img
-                    alt="Ops Manager"
-                    src="images/ops_manager_large.png" /></p>
-            </li>
         
-        <li> Click the <strong>Import a Product</strong> button.
-            
-            <p> The <strong>Add Products</strong> screen displays.</p>
+        <li> Click  <strong>Import a Product</strong>. <p> The <strong>Add Products</strong> screen displays.</p>
         </li>
-        <li>Click the <strong>Choose File</strong> button and navigate to the file you downloaded.
-            
-            <p>The file uploads to your Pivotal CF deployment. </p>
+        <li>Click <strong>Choose File</strong> and navigate to the file you downloaded. <p>The file uploads to your Pivotal CF deployment. </p>
         </li>
-        <li> Click the <strong>Add</strong> button. <p>Pivotal Ops Manager adds a new tile for Pivotal HD Service to the Installation Dashboard. </p>
-            </li>
+        <li> Click <strong>Add</strong>. <p>Pivotal Ops Manager adds a new tile for Pivotal HD Service to the Installation Dashboard. </p>
+        </li>
         
-        <li>Click the <strong>Pivotal HD for Pivotal CF</strong> tile.</li>
+        <li>Select the <strong>Pivotal HD for Pivotal CF</strong> tile.<p>The <strong>Pivotal HD</strong> configuration page displays. </p></li>
+            <li> (Optional) Select <strong>Assign Availability Zones</strong> to configure which Availability Zone you want Ops Manager to use to deploy the Pivotal HD Service Broker and virtual machines.  The Pivotal HD Service Broker and related VMs are all singleton jobs, meaning that only one virtual machine is deployed for each type.  The only exception is the compilation job, which deploys two virtual machines. <p>See <a
+                        href="http://docs.pivotal.io/pivotalcf/customizing/vsphere-config.html">Configuring Ops Manager Director for VMware vSphere </a></p></li>
+            <li>(Optional) Select the <strong>Assign Networks</strong> tab if you want to change the vSphere Network where Ops Manager deploys the Pivotal HD Service Broker and related virtual machines.</span>
+            </li>
+        <li>Click <strong>Save</strong>.</li>
         <li>
-            <p>If it is not already selected, click <strong>Network Settings</strong>.</p>
-			<p>For additional information and examples about setting up vSphere networking, see <a href="#vsphere">About vSphere Networking</a>.
+            <p>Select <strong>Pivotal HD Instance Network Settings</strong>.</p>
+            <p>For details on network configuration and examples, including managing the IP address space between Ops Manager and Pivotal HD, see <a
+                href="#vsphere">About vSphere Networking</a>.</p>
         </li>
         <li>
-            <p>Configure the following network settings for the virtual machines in your Pivotal HD cluster instances:</p>
+            <p>Configure the following network settings  you want to use when deploying the various virtual machines (See <a href="#service_vms">Table 1. Pivotal HD Service-Related Virtual Machines</a>) that make up each Pivotal HD cluster:</p>
             <table 
                 frame="void" rules="all">
-                <caption>Network Settings</caption>
+                <caption>Table 3. Pivotal HD Instance Network Settings</caption>
                 <col
                     width="33%" />
                 <col
@@ -65,131 +260,80 @@ Installing Pivotal HD Service requires the following:
                     width="33%" />
                 <thead>
                     <tr>
-                        <th>Parameter</th>
+                        <th>Field</th>
                         <th>Description</th>
-                        <th>Values</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>Network Name</td>
-                        <td>The name of the network you want all Pivotal HD virtual machines to reside on. If the network is different than the network you configured in the Ops Manager vSphere settings, you must ensure connectivity between the two networks so that the service can monitor the Pivotal HD virtual machines properly.</td>
-                        <td></td>
+                        <td> The vSphere Network Name you want the Pivotal HD Service to deploy Pivotal HD virtual machines to.  For example, if the Network is called <b>Network1</b> in vCenter, specify it as <b>Network1</b> in this field. </td>
                     </tr>
                     <tr>
                         <td>IP Address Subnet</td>
-                        <td>A valid subnet in which to deploy virtual machines. <p>Choose IP addresses that do not overlap with those you assigned to Ops Manager to ensure that  Pivotal HD virtual machines and Pivotal CF virtual machines are assigned unique IP addresses.</p>
-						
-						<p><strong>Important:</strong> You must include a sufficient number of IP addresses for the number of cluster instances and slaves you define in the <a href="service_plans.html">Service Plan</a>. Calculate the required number as follows: </p>
-											
-						<p>N * (S + 10)</p>
-						<p>Where: </p>
-						<ul>
-							<li>N is the maximum number of Pivotal HD Instances (as defined in the Service Plan)</li>
-					    	<li>S is the number of PHD slaves per cluster (as defined in the Service Plan)</li>
-						</ul>
-						</td>
-                        <td>
-                            <p>Enter the subnet using CIDR notation. For example:</p>
-                            <p>
-                                <code>10.10.10.10/16</code>. </p>
-                        </td>
+                        <td> A valid subnet for the vSphere Network specified above in which to deploy virtual machines.  Enter the subnet using CIDR notation. For example: <code>10.0.0.0/16</code>.</td>
                     </tr>
                     <tr>
                         <td>Excluded IP Address Range</td>
-                        <td>List any IP addresses you wish to reserve. These addresses will not be used by  by the Pivotal HD Service  to create virtual machines. </td>
-                        <td>
-                            <p>Separate multiple ranges with commas. For example:</p>
-                            <p>
-<pre>10.10.10.2-10.10.10.10, 
-10.10.10.200-10.10.10.254</pre></p>
-                        </td>
+                        <td> Any IP addresses you want the Pivotal HD Service to <i>not</i> assign to Pivotal HD virtual machines.  <p>Separate multiple ranges with commas. For example:</p><p><code>10.10.10.2-10.10.10.10, 
+                            10.10.10.200-10.10.10.254</code></p></td>
                     </tr>
                     <tr>
                         <td>DNS Servers</td>
-                        <td>One or more IP Addresses of the Domain Name Servers. .</td>
-                        <td></td>
+                        <td> One or more IP Addresses you want the Pivotal HD Service to configure as the Domain Name Servers on each Pivotal HD virtual machine.  For example:<p>
+                            <code>8.8.8.8, 9.9.9.9</code>
+                        </p></td>
                     </tr>
                     <tr>
                         <td>Default Gateway IP Address</td>
-                        <td>IP address of the default gateway.</td>
-                        <td>Separate the IP addresses with a comma.</td>
+                        <td> The IP address you want the Pivotal HD Service to configure as the default gateway on each Pivotal HD virtual machine. </td>
                     </tr>
                 </tbody>
             </table>
-			<p><strong>Note:</strong> If you make changes to these network configurations, the changes only affect creation of <em>new</em> service instances. Any pre-created services instances are destroyed and re-created using the new configurations. Existing service instances are not changed.</p>
+            <p><strong>Note:</strong> If you make changes to these network configurations, the changes only affect creation of <em>new</em> service instances. Any pre-created services instances are destroyed and re-created using the new configurations. Existing allowcated or bound service instances are not changed.</p>
         </li>
         <li>
             <p>Click <strong>Save</strong>.</p>
         </li>
         
-        <li> Select <strong>On-demand Service Plans</strong> if you want to change the configuration of the on-demand Service Plan. The default Service Plan defines a Pivotal HD cluster that includes HDFS, YARN/MapReduce, HAWQ, and GemFire XD. You can use the default Service Plan as-is, or you can modify the Service Plan for your requirements. See <a
-                    href="service_plans.html">Creating Service Plans</a>.</li>
-            
-            <li>(Optional) Click <strong>Resource Sizes</strong> to view the configured hardware resource sizes for the following resources:
-					<ul>
-						<li>PHD-Broker</li>
-						<li>Route Registrar</li>
-						<li>Broker Registrar</li>
-						<li>PHD Cleanup Tool</li>
-						<li>Compilation (temporary VMs that Ops Manager uses when creating other VMs)</li>
-					</ul>
-            </li>
-            <li>Click <strong>Save</strong>.</li>
-            <li>Click the <strong>Installation Dashboard</strong> link.<p>The <strong>Installation Dashboard</strong> screen displays. </p></li>
-            <li>Click the <strong>Apply Changes</strong> button.<p>Ops Manager creates a virtual machine to run the service broker and begins the installation. A progress meter displays the progress of the installation. 
-				<p>When the installation is complete, the Pivotal HD Service Broker deploys the configured number of pre-created instances of Pivotal HD.  Information about these deployments are accessible from the BOSH Command Line Interface and not from the Operations Manager user interface.  Once the Pivotal HD clusters are deployed, the Pivotal HD Service broker automatically registers the service in the Elastic Runtime marketplace.  Once the Service is registered, Pivotal CF users can create instances and gain access to their own Pivotal HD cluster on-demand.</p>
-				
-		  </p>
-                <p>To create cluster instances, see <a
-                        href="data_service.html">Using Pivotal HD Service</a>.</p></li>
+        <li>Select <strong>On-demand Service Plans</strong> to configure one or more On-Demand Service Plans. The default Service Plan defines a Pivotal HD cluster that includes HDFS, YARN/MapReduce, HAWQ, and deploys up to three five-node clusters comprised of the four component’s master processes and one VM running all components’ slave processes. You can use the default Service Plan as-is, or you can modify the Service Plan for your requirements. See <a
+            href="service_plans.html">Creating On-Demand Service Plans</a></li>
+        <li> (Optional) Select <strong>External Service Plans</strong> to configure one or more External Service Plans.  See <a
+                    href="external-service-plans.html"
+                    shape="rect"
+                    style="text-decoration:none;">Creating External Service Plans</a> for more information. </li>
+        <li>Click the <strong>Installation Dashboard</strong> link.<p>The <strong>Installation Dashboard</strong> screen displays. </p></li>
+        <li>
+            <p>Click <strong>Apply Changes</strong>.</p>
+            <p> During this installation, Pivotal CF Ops Manager deploys a virtual machine to run the Pivotal HD Service Broker.  A progress meter displays the progress of the installation.
+           When the installation is complete, the Pivotal HD Service Broker deploys the configured number of pre-created instances of Pivotal HD for each configured On-Demand Service Plan.</p>
+            <p>To create cluster instances, see <a
+                href="data_service.html">Using Pivotal HD Service</a>.</p>
+        </li>
     </ol>
-<p><strong>Note:</strong> The <strong>Lifecycle Errands</strong> tab allows you to configure whether the PHD Data Service broker is registered with the Cloud Controller and appears in the Services Marketplace. Pivotal recommends that you leave this box checked. </p>
 
+<p><strong>Note:</strong> You can access information about these deployments from the BOSH command-line interface and not from the Pivotal CF Ops Manager console. </p>
+<p><strong>Note:</strong> Once the pre-created Pivotal HD instances are deployed, the Pivotal HD Service broker automatically registers the service in the Elastic Runtime Marketplace.  Once the service is registered, Pivotal CF users can create instances of the configured service plans.
+</p>
 
-<a id="upgrade121"></a>
-
-<h1>Upgrading  from Version 1.2.0.0 to Version 1.2.1.0</h1>
-        
-        <p>To upgrade from version 1.2.0.0 to version 1.2.1.0, you must delete all Pivotal HD cluster instances created by the broker, delete the Pivotal HD Data Services broker, and then you install version 1.2.1.0.</p>
-        <p><strong>Important:</strong> All data and application bindings are deleted when you perform this upgrade procedure.  </p>
-        
-        <p><strong>To upgrade your Pivotal HD Data Service broker from version 1.2.0.0 to version 1.2.1.0:</strong></p>
+<a id="upgrade1300"></a>
+<h1>Upgrading From Version 1.2.x.0 to Version 1.3.2.0</h1>
         <ol>
-            <li>Open the <strong>Pivotal CF Ops Manager</strong> application in a Web browser.<p>The <strong>Installation Dashboard</strong> displays.</p></li>
-            <li>Click the Trash icon in the Pivotal HD Data Service tile.</li>
-            <li>Click <strong>Apply Changes</strong>.<p>Pivotal Ops Manager begins to delete the Pivotal HD Service. When Ops Manager indicates that the changes have been applied, the Pivotal HD Data Service service broker is deleted and its tile no longer appears in the dashboard. </p></li>
-			<li>Run the following commands from a location where you have the cf client installed. You can download the cf client from: 
-							<a href ="https://github.com/cloudfoundry/cli#Downloads">https://github.com/cloudfoundry/cli#Downloads</a>:
-			<p><code>cf purge-service-offering p-hd</code></p>
-			<p><code>cf delete-service-broker phd-broker</code></p></li>
-			<li>Follow the instructions at <a
-                    href="http://docs.gopivotal.com/pivotalcf/customizing/trouble-advanced.html">Advanced Troubleshooting with the BOSH CLI</a> to access the BOSH Director from the Ops Manager VM. </li>
-            <li>
-                <p>Log in to the BOSH Director.</p>
-            </li>
-            <li>Run the following command: <p><code>bosh delete release phd-broker</code></p></li>
-            <li>Run the following command to list all deployments:<p><code>bosh deployments</code></p><p>This command displays a list of deployments similar to the following:</p>
-                <pre>
-+---------------------------+--------------------------------+-------------------------------+
-| Name                      | Release(s)                     | Stemcell(s)                   |
-+---------------------------+--------------------------------+-------------------------------+
-| cf-5f2b8491a89b0598c95c   | cf/169                         | bosh-vsphere-esxi-ubuntu/2366 |
-|                           | push-console-release/6         |                               |
-|                           | runtime-verification-errands/1 |                               |
-+---------------------------+--------------------------------+-------------------------------+
-| phd-1                     | phd/354                        | bosh-vsphere-esxi-centos/1868 |
-+---------------------------+--------------------------------+-------------------------------+
-| phd-2                     | phd/354                        | bosh-vsphere-esxi-centos/1868 |
-+---------------------------+--------------------------------+-------------------------------+
-| p-hd-cbff6614fcdffae83292 | phd-broker/350                 | bosh-vsphere-esxi-centos/1868 |
-+---------------------------+--------------------------------+-------------------------------+</pre></li>
-            <li>Note the rows that begin with "<code>phd-</code>" and are followed by a number. These rows represent deployments of Pivotal HD cluster instances. For each of these deployments, run the following command:<p><code>bosh delete deployment phd-&lt;#> --force</code></p><p>For example:</p><p><code>bosh delete deployment phd-1</code></p></li>
-            <li>Run the following command:<p><code>bosh delete release phd</code></p><p>After completing the above steps, the Pivotal HD Service and all Pivotal HD instances are removed from your Pivotal CF deployment.</p></li>
-            <li>Download and install the Pivotal HD Data Service version 1.2.1.0 software using Pivotal CF Ops Manager. See <a
-                    href="#install">Installation Steps</a>. </li>
-</ol>
-
+            <li>Download the Pivotal HD Service’s v1.3.2.0 software binary from <a href="https://network.pivotal.io/products/pivotal-hd-service">The Pivotal Network</a>. </li>
+            <li>Use a Web browser to log in to the Pivotal Ops Manager application. (This application is part of your Pivotal CF installation.) <p>The <strong>Pivotal CF Ops Manager Installation Dashboard </strong>displays.</p>
+			<img alt="Ops Manager Installation Dashboard"
+                src="images/ops_manager_upgrade.png">
+			</li>
+            <li>Click <strong>Import a Product</strong>. <p>The <strong>Add Products</strong> screen displays.</p></li>
+            <li>Click <strong>Choose File</strong> and navigate to the file you downloaded. <p>The file uploads to your Pivotal CF deployment.</p></li>
+            <li> Click <strong>Upgrade</strong>. <p>The following notification displays: <strong>The Product 'p-hd' has been successfully upgraded to version '1.3.2.0'</strong> and the <strong>Pivotal HD for Pivotal CF</strong> tile now displays version 1.3.2.0.</p></li>
+            <li> Even if you selected a subset of Pivotal HD components in the On-Demand Service Plan that you deployed using version 1.2.x.x, all components will be selected by default after you upgrade. Review and modify the pre-existing On-Demand Service Plan. See <a href="service_plans.html#modifying">Modifying an On-Demand Service Plan</a> </li>
+            <li>If you do not want to make any additional changes to your Service Plans, click <strong>Apply Changes</strong>. </li>
+        </ol>
+        <p>During this installation, Pivotal CF Ops Manager updates the version of the Pivotal HD Service Broker. A progress meter displays the progress of the installation. </p>
+        <p>When the installation is complete, the Pivotal HD Service Broker destroys and re-deploys new pre-created instances of Pivotal HD using the Pivotal HD 2.0.1 binaries. (The number of instances depends on the configured number of pre-created instances defined in each On-Demand Service Plan.)</p>
+        <p>
+            <strong>Note:</strong> Allocated Pivotal HD Service Instances are not modified in any way and cannot be upgraded or changed.</p>
 <a id="vsphere"></a>
 
 #About vSphere Networking Configurations
@@ -200,7 +344,7 @@ When configuring the Pivotal HD Service, you define which vSphere network you wa
 
 Consider the following vSphere network diagram:
 
-![vSphere Networking](/images/vsphere_networking.png)
+![vSphere Networking](images/vsphere_networking.png)
 
 If Operations Manager has been configured to deploy Pivotal CF and any imported Services to network A in the picture above, you can configure the Pivotal HD Service to also deploy Pivotal HD clusters to network A.  If you choose to use the same network as Pivotal CF, it is likely you will use IP addresses from a single IP subnet across all deployments.  Should you choose to use IP addresses from the same subnet, you must ensure that Operations Manager and the Pivotal HD Service do not attempt to use the same IP addresses in their deployments.
 
@@ -224,4 +368,4 @@ Here is an example of how you might do that if you were deploying everything to 
 * DNS Servers: `8.8.8.8`
 * Default Gateway IP Address: `10.0.0.1`
 
-Alternatively, if you configure Ops Manager to deploy Pivotal CF to Network A and the Pivotal HD Service to deploy PHD clusters to Network C.  The only requirement in this case is that the two networks be able to route traffic to each other.
+Alternatively, if you configure Ops Manager to deploy Pivotal CF to Network A and the Pivotal HD Service to deploy Pivotal HD clusters to Network C.  The only requirement in this case is that the two networks be able to route traffic to each other.

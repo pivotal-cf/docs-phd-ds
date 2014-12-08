@@ -1,10 +1,10 @@
 ---
-title: Creating Pivotal HD On-Demand Service Plans
+title: Creating and Modifying Pivotal HD On-Demand Service Plans
 ---
 
 #Overview
 
-A Pivotal CF Administrator can define the details of the Pivotal HD service plan they wish to offer to their Pivotal CF users.  An on-demand service plan is a blueprint that describes the components and configuration of each instance of a Pivotal HD cluster.  The Pivotal HD Service includes default values for the service plan, which can be changed by the Pivotal CF Administrator.
+A Pivotal CF Administrator can define the details of the Pivotal HD On-Demand Service Plans they wish to offer to their Pivotal CF users.  An on-demand service plan is a blueprint that describes the components and configuration of each instance of a Pivotal HD cluster.  The Pivotal HD Service includes default values for the service plan, which can be changed by the Pivotal CF Administrator.
 
 * [Creating an On-Demand Service Plan](#creating)
 
@@ -17,15 +17,19 @@ To create an On-Demand Service Plan:
 
 <ol>
             <li>
-                <p>Use a Web browser to open the <strong>Pivotal Ops Manager</strong> application. (This application is part of your Pivotal Cloud Foundry installation.)</p>
+                <p>Use a Web browser to log in to the <strong>Pivotal Ops Manager</strong> application. (This application is part of your Pivotal Cloud Foundry installation.)</p>
             </li>
             <li>Click the <strong>Pivotal HD for Pivotal CF</strong> tile. </li>
             <li>
-                <p>Click <strong>On-demand Service Plans</strong>.</p>
-                <p>The <strong>On-demand Service Plans</strong> screen displays.</p>
+                <p>Select <strong>On-demand Service Plans</strong>.</p>
+                <p>The <strong>On-demand Service Plans</strong> screen opens and displays a list of configured On-Demand Service Plans. If no service plans have been configured, you will see only the default, Standard service plan. </p>
             </li>
+            <li>Click <strong>Add</strong>.<p>A new Service Plan is added and a form expands below its name.</p><img
+                    alt="on-demand-service-plans.png"
+                    height="50%"
+                    src="images/on-demand-service-plans.png" /></li>
             <li>
-                <p>Configure the following display options for your Pivotal HD cluster plans. This information displays in the Pivotal CF Console and Command-line Interface.</p>
+                <p>Configure the following display options for your Service Plan. This information displays in the Pivotal CF Console and Command-line Interface.</p>
 						
                 <table
                     frame="void" rules="all"
@@ -47,11 +51,11 @@ To create an On-Demand Service Plan:
                         
                         <tr>
                             <td>Service Plan Name</td>
-                            <td>Name of the Service Plan. You use this name when creating Pivotal HD service instances.</td>
+                            <td> The name you want Pivotal CF users to see in the Pivotal CF CLI and Developer Console. </td>
                         </tr>
                         <tr>
                             <td> Service Plan Feature Bullet 1 </td><td
-                                rowspan="4">These fields are used by the Pivotal CF Administrator to describe the details of the service plan to Pivotal CF users.  The values in these fields display to users in the Marketplace section of the Pivotal CF Developer Console. </td>
+                                rowspan="4"> The details of the service plan you want Pivotal CF users to see. The values in these fields display to users in the Marketplace section of the Pivotal CF Developer Console  </td>
                         </tr>
                         <tr>
                             <td>Service Plan Feature Bullet 2 </td>
@@ -85,19 +89,20 @@ To create an On-Demand Service Plan:
                     <tbody>
                         <tr>
                             <td> Amount </td>
-                            <td>Cost in US dollars to create a Pivotal HD cluster instance from this Service Plan </td>
-                            <td>US dollars</td>
+                            <td> (Required) The cost, if any, in US dollars to create an instance of this Service Plan.  For example: entering 1000 will display <b>$1000</b>. </td>
+                            <td>Integer</td>
                         </tr>
                         <tr>
                             <td>Unit of Measurement</td>
-                            <td>Unit of measurement used for billing, for example: Monthly, or weekly. </td>
-                            <td>Text</td>
+                            <td>(Required) Unit of measurement used for billing, for example: Monthly, or weekly. </td>
+                            <td>String</td>
                         </tr>
                     </tbody>
                 </table>
             </li>
-            <li>The Pivotal CF Administrator should ensure that the Pivotal HD Service does not oversubscribe the underlying vSphere resources.  Enter the following values for the cluster defined in your service plan: <table
-                    frame="void" rules="all">
+            <li> Enter the following values to control the behavior of the Pivotal HD Service Broker with respect to deploying instances of this Service Plan:<table
+                    frame="void"
+                    rules="all">
                     <caption>Cluster Instances</caption>
                     <col
                         width="33%" />
@@ -115,25 +120,74 @@ To create an On-Demand Service Plan:
                     <tbody>
                         <tr>
                             <td>Maximum Number of Instances </td>
-                            <td>Maximum number of Pivotal HD instances that users can create from this Service Plan.</td>
-							<td><ul>
-							                                    <li>Minimum: 1</li>
-							                                </ul><p>This field must not be left blank.</p></td>
+                            <td>(Required) Limits the number of instances that Pivotal CF users can create.  Use this field to ensure that the Pivotal HD Service Broker does not oversubscribe the underlying IaaS resources. </td>
+                            <td>Integer<ul>
+                                    <li>Minimum: 1</li>
+                                </ul></td>
                         </tr>
                         <tr>
                             <td> Number of Pre-Created Instances</td>
-                            <td>Pivotal HD Service creates a reserved pool of Service Plan Instances to allocate to Pivotal CF Users. When an Service Plan Instance is allocated in Pivotal CF Elastic Runtime, the service back-fills the pool. <p>The Service never pre-creates more instances than the configured Maximum Number of Instances. </p></td>
-                            <td>
-                                <ul>
+                            <td>(Required) The Pivotal HD Service Broker pre-creates a pool of Service Instances to allocate to Pivotal CF users on-demand.  This field defines how many Service Plan instances the Pivotal HD Service Broker pre-creates.<p
+                                    dir="ltr"
+                                    style="line-height:1;margin-top:0pt;margin-bottom:0pt;">When a Service Instance is allocated to a Pivotal CF user, the Service Broker back-fills the pool.</p><p
+                                    dir="ltr"
+                                    style="line-height:1;margin-top:0pt;margin-bottom:0pt;">If all Service Instances are allocated and the Service Broker has not finished deploying a new one to the pool, Pivotal CF users will temporarily be unable to create a new Service Instance.</p><p
+                                    dir="ltr"
+                                    style="line-height:1;margin-top:0pt;margin-bottom:0pt;">The more instances that are pre-created, the more concurrent requests the Service Broker can satisfy.</p><p
+                                    dir="ltr"
+                                    style="line-height:1;margin-top:0pt;margin-bottom:0pt;">The Service Broker never pre-creates more instances than the configured Maximum Number of Instances. </p></td>
+                            <td>Integer<ul>
                                     <li>Minimum: 1</li>
                                     <li>Maximum: Maximum Number of Instances Created (configuration value, see above)</li>
-                                </ul><p>This field must not be left blank.</p>
-                            </td>
+                                </ul></td>
                         </tr>
                     </tbody>
                 </table></li>
-            <li>Fill in the remaining fields to define the configuration of the Pivotal HD clusters that will be created by this Service Plan. <p>For more information about Pivotal HD and its components, see the <a
-                        href="http://pivotalhd.docs.gopivotal.com/index.html">Pivotal HD Documentation</a> .</p><table
+            <li> Choose which Pivotal HD Components you wish to deploy as a part of each instance of the Service Plan.  <p>For more information about Pivotal HD and its components, see the <a
+                        href="http://pivotalhd.docs.pivotal.io/doc/2010/index.html">Pivotal HD Documentation</a> .</p><table rules="all"
+                    frame="void">
+                    <caption>Pivotal HD Components</caption>
+                    <col
+                        width="25%" />
+                    <col
+                        width="75%" />
+                    <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><b>HDFS</b></td>
+                            <td>
+                                <p> Controls whether to deploy a virtual machine that runs the HDFS NameNode process.  Also controls whether to include the HDFS DataNode process on each Pivotal HD Slave virtual machine. </p>
+								<p>HDFS cannot be the only included component.  If HDFS is the only component selected, the Pivotal HD Service Broker will not register the Service Plan.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>Yarn/MapReduce2</b></td>
+                            <td>
+                                <p> Controls whether to deploy a virtual machine that runs the YARN/MapReduce2 ResourceManager and Job History Server processes.  Also controls whether to include the YARN/MapReduce2 NodeManager process on each Pivotal HD Slave virtual machine.</p>
+                                <p>YARN/MapReduce2 depends on HDFS. If it is included but HDFS is not included, you must specify the Isilon HDFS NameNode Host Address and Port for the Service Plan to function </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>HAWQ</b></td>
+                            <td>
+                                <p> Controls whether to deploy a virtual machine that runs the HAWQ Master and PXF processes.  Also controls whether to include the HAWQ Segment Server process on each Pivotal HD Slave virtual machine.</p>
+                                <p>HAWQ depends on HDFS. If it is included but HDFS is not included, you must specify the Isilon HDFS NameNode, Host Address, and Port for the Service Plan to function. </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>GemFire XD</b></td>
+                            <td>
+                                <p> Controls whether to deploy a virtual machine that runs the GemFire XD Locator process.  Also controls whether to include the GemFire XD server process on each Pivotal HD slave virtual machine.</p>
+                                <p>GemFire XD does not depend on HDFS.  You may exclude HDFS without specifying the Isilon HDFS NameNode Host Address and Port if GemFire XD is the only component you are including. </p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table><table
                     frame="void"
                     rules="all"
                     width="846">
@@ -153,198 +207,202 @@ To create an On-Demand Service Plan:
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Service Plan Components:</td>
-                            <td>Select the HD components you want included in this Service Plan. HDFS is always included by default in a Service Plan.<p>To create a Service Plan that only offers a Hadoop service, select only the <strong>YARN/MapReduce2</strong> option.</p></td>
-                            <td>
-                                <ul>
-                                    <li>Yarn/MapReduce2 </li>
-                                    <li>HAWQ</li>
-                                    <li>GemFire XD</li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
                             <td>Number of PHD Slaves</td>
-                            <td
-                                rowspan="3">Each instance of a PHD Slave virtual machine runs all applicable slave processes for the PHD components that are included in the Service Plan. If only Yarn/MapReduce2 is selected above, then the slave runs only that NodeManager process. <p></p>If HAWQ is also selected, the HAWQ Segment Server process is included. <p></p>Note that the HDFS DataNode process always runs on these slaves. </td>
-                            <td>
-                                <ul>
-                                    <li>Minimum: 1</li>
-                                    <li><strong>Default: </strong>1</li>
-                                </ul>
-                            </td>
+                            <td>(Required)  Controls the number of virtual machines created that each run all applicable slave/clustered processes for the components included in the Service Plan.  <p>Example: If HDFS and Yarn/MapReduce2 are included, then the slave runs the HDFS DataNode and YARN/MapReduce2 NodeManager processes. </p></td>
+                            <td>Integer<p>Minimum: 1</p></td>
                         </tr>
                         <tr>
                             <td>PHD Slave CPU</td>
-                            <td>
-                                <ul>
+                            <td>(Required) Amount of virtual CPU cores to allocate to each virtual machine. </td>
+                            <td>Integer<ul>
                                     <li>Minimum: 1</li>
                                     <li>Maximum: 64</li>
-                                    <li><strong>Default: </strong>2</li>
-                                </ul>
-                            </td>
+                                </ul></td>
                         </tr>
                         <tr>
                             <td>PHD Slave RAM in MB </td>
-                            <td>
-                                <ul>
+                            <td>(Required) Amount of memory to allocate to each virtual machine. </td>
+                            <td>Integer<ul>
                                     <li>Minimum: 8192</li>
                                     <li>Maximum: 1048576 </li>
-                                    <li><strong>Default: </strong>8192</li>
-                                </ul>
-                            </td>
+                                </ul></td>
                         </tr>
                         <tr>
                             <td>PHD Slave Persistent Disk in MB </td>
-                            <td></td>
+                            <td>(Required) Amount of disk space to allocate to each virtual machine. </td>
                             <td>
                                 <ul>
                                     <li>Minimum: 12288</li>
-                                    <li>Maximum: 65011712 </li>
-                                    <li><strong>Default: </strong>12288</li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>NameNode CPU</td>
-                            <td
-                                rowspan="3">The NameNode runs on its own dedicated virtual machine.</td>
-                            <td>
-                                <ul>
-                                    <li>Minimum: 1</li>
-                                    <li>Maximum: 64 </li>
-                                    <li><strong>Default: </strong>1</li>
-                                </ul>
-                                <p> This field must contain a power of 2.</p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>NameNode RAM in MB </td>
-                            <td>
-                                <ul>
-                                    <li>Minimum: 2048</li>
-                                    <li>Maximum: 1048576 </li>
-                                    <li><strong>Default: </strong>2048</li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>NameNode Persistent Disk in MB</td>
-                            <td>
-                                <ul>
-                                    <li>Minimum: 8192</li>
-                                    <li>Maximum: 1048576 </li>
-                                    <li><strong>Default: </strong>8192</li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>ResourceManager CPU </td>
-                            <td
-                                rowspan="3">The ResourceManager runs on its own dedicated virtual machine. </td>
-                            <td>
-                                <ul>
-                                    <li>Minimum: 1</li>
-                                    <li>Maximum: 64 </li>
-                                    <li><strong>Default: </strong>1</li>
-                                </ul>
-                                <p>This field must contain a power of 2</p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>ResourceManager RAM in MB </td>
-                            <td>
-                                <ul>
-                                    <li>Minimum: 2048</li>
-                                    <li>Maximum: 1048576 </li>
-                                    <li><strong>Default: </strong>2048</li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>ResourceManager Ephemeral Disk in MB </td>
-                            <td>
-                                <ul>
-                                    <li>Minimum: 5120</li>
-                                    <li>Maximum: 1048576 </li>
-                                    <li><strong>Default: </strong>5120</li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>HAWQ Master CPU</td>
-                            <td
-                                rowspan="3">The HAWQ Master runs on its own dedicated virtual machine. If you do not specify HAWQ as part of this cluster, these fields are ignored. </td>
-                            <td>
-                                <ul>
-                                    <li>Minimum: 1</li>
-                                    <li>Maximum: 64 </li>
-                                    <li><strong>Default: </strong>1</li>
-                                </ul>
-                                <p>This field must contain a power of 2</p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td> HAWQ Master RAM in MB </td>
-                            <td>
-                                <ul>
-                                    <li>Minimum: 2048</li>
-                                    <li>Maximum: 1048576 </li>
-                                    <li><strong>Default: </strong>1</li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>HAWQ Master  <span
-                                    style="color: rgb(104, 104, 104); font-family: source_sans_prolight; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; display: inline !important; float: none; background-color: rgb(248, 248, 248);">Persistent</span>  Disk in MB </td>
-                            <td>
-                                <ul>
-                                    <li>Minimum: 4096</li>
-                                    <li>Maximum: 1048576 </li>
-                                    <li><strong>Default: </strong>4096</li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Gemfire XD Locator CPU</td>
-                            <td
-                                rowspan="3">The Gemfire XD Locator runs on its own dedicated virtual machine. If you do not specify GemFire XD as part of this cluster, these fields are ignored. </td>
-                            <td>
-                                <ul>
-                                    <li>Minimum: 1</li>
-                                    <li>Maximum: 64 </li>
-                                    <li><strong>Default: </strong>1</li>
-                                </ul>
-                                <p>This field must contain a power of 2</p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Gemfire XD Locator RAM in MB</td>
-                            <td>
-                                <ul>
-                                    <li>Minimum: 1024</li>
-                                    <li>Maximum: 1048576 </li>
-                                    <li><strong>Default: </strong>1024</li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Gemfire XD Locator Persistent Disk in MB </td>
-                            <td>
-                                <ul>
-                                    <li>Minimum: 3072</li>
-                                    <li>Maximum: 1048576 </li>
-                                    <li><strong>Default: </strong>3072</li>
+                                    <li>Maximum: 999999  </li>
                                 </ul>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </li>
+            <li> (Optional) If you don’t plan to deploy the HDFS component, fill in the fields further down in this form to define the Isilon HDFS instance you want each Service Instance’s YARN/MapReduce 2 or HAWQ processes to use.  For more information about using Isilon on HDFS, see <a
+                    href="overview.html#isilon"
+                   >HDFS Isilon Integration</a>.<table rules="all"
+                    frame="void">
+                    <caption>Isilon Configuration</caption>
+                    <col
+                        width="25%" />
+                    <col
+                        width="25%" />
+                    <col
+                        width="25%" />
+                    <col
+                        width="25%" />
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Description</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> Isilon HDFS NameNode Host Address </td>
+                            <td> The IP Address or hostname where Isilon is running.  Example: <code>myIsilon.instance.com</code><p
+                                    dir="ltr"
+                                    style="line-height:1;margin-top:0pt;margin-bottom:0pt;">If the HDFS component is included, this field is ignored.</p><p
+                                    dir="ltr"
+                                    style="line-height:1;margin-top:0pt;margin-bottom:0pt;">If the HDFS component is not included and this field is blank, the Pivotal HD Service Broker will not register this Service Plan </p></td>
+                            <td>String</td>
+                        </tr>
+                        <tr>
+                            <td> Isilon HDFS NameNode Port </td>
+                            <td> The port that Isilon is running the HDFS protocol on.  Typically this is 8020.<p
+                                    dir="ltr"
+                                    style="line-height:1;margin-top:0pt;margin-bottom:0pt;">If HDFS component is included, this field is ignored.</p><p
+                                    dir="ltr"
+                                    style="line-height:1;margin-top:0pt;margin-bottom:0pt;">If HDFS component is not included and this field is blank, the Pivotal HD Service Broker will not register this Service Plan. </p></td>
+                            <td>Integer</td>
+                        </tr>
+                    </tbody>
+                </table></li>
+            <li> (Optional) Revise the values in the remaining fields if you want to change the default resources used by the Service Instance’s virtual machines that the Pivotal HD Service Broker will create depending on which components are included in the Service Plan.<table rules="all"
+            frame="void">
+            <caption>Virtual Machine Resources</caption>
+            <col
+                width="33%" />
+            <col
+                width="33%" />
+            <col
+                width="33%" />
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                    <th>Values</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>NameNode CPU</td>
+                    <td>The NameNode runs on its own dedicated virtual machine.</td>
+                    <td>Integer<ul>
+                        <li>Minimum: 1</li>
+                        <li>Maximum: 64 </li>
+                    </ul></td>
+                </tr>
+                <tr>
+                    <td>NameNode RAM in MB </td>
+                    <td>Amount of memory to allocate to each virtual machine. </td>
+                    <td>Integer<ul>
+                                    <li>Minimum: 2048</li>
+                                    <li>Maximum: 1048576 </li>
+                                </ul></td>
+                </tr>
+                <tr>
+                    <td>NameNode Persistent Disk in MB</td>
+                    <td>Amount of disk space to allocate to each virtual machine. </td>
+                    <td>Integer<ul>
+                        <li>Minimum: 8192</li>
+                        <li>Maximum: 999999 </li>
+                    </ul></td>
+                </tr>
+                <tr>
+                    <td>ResourceManager CPU </td>
+                    <td>Number of virtual CPU cores to allocate to each virtual machine. </td>
+                    <td>Integer<ul>
+                        <li>Minimum: 1</li>
+                        <li>Maximum: 64 </li>
+                        
+                    </ul></td>
+                </tr>
+                <tr>
+                    <td>ResourceManager RAM in MB </td>
+                    <td> Amount of memory to allocate to each virtual machine. </td>
+                    <td>Integer<ul>
+                        <li>Minimum: 2048</li>
+                        <li>Maximum: 1048576 </li>
+                        
+                    </ul></td>
+                </tr>
+                <tr>
+                    <td>ResourceManager Ephemeral Disk in MB </td>
+                    <td> Amount of disk space to allocate to each virtual machine. </td>
+                    <td>Integer<ul>
+                                    <li>Minimum: 5120</li>
+                                    <li>Maximum: 999999 </li>
+                                </ul></td>
+                </tr>
+                <tr>
+                    <td>HAWQ Master CPU</td>
+                    <td>Number of virtual CPU cores to allocate to each virtual machine.  </td>
+                    <td>Integer<ul>
+                                    <li>Minimum: 1</li>
+                                    <li>Maximum: 64 </li>
+                                </ul></td>
+                </tr>
+                <tr>
+                    <td> HAWQ Master RAM in MB </td>
+                    <td> Amount of memory to allocate to each virtual machine. </td>
+                    <td>Integer<ul>
+                                    <li>Minimum: 2048</li>
+                                    <li>Maximum: 1048576 </li>
+                                </ul></td>
+                </tr>
+                <tr>
+                    <td>HAWQ Master Persistent Disk in MB </td>
+                    <td> Amount of disk space to allocate to each virtual machine. </td>
+                    <td>Integer<ul>
+                                    <li>Minimum: 4096</li>
+                                    <li>Maximum: 999999 </li>
+                                </ul></td>
+                </tr>
+                <tr>
+                    <td>Gemfire XD Locator CPU</td>
+                    <td> Number of virtual CPU cores to allocate to each virtual machine. </td>
+                    <td>Integer<ul>
+                                    <li>Minimum: 1</li>
+                                    <li>Maximum: 64 </li>
+                                </ul></td>
+                </tr>
+                <tr>
+                    <td>Gemfire XD Locator RAM in MB</td>
+                    <td> Amount of memory to allocate to each virtual machine. </td>
+                    <td>Integer<ul>
+                                    <li>Minimum: 1024</li>
+                                    <li>Maximum: 1048576 </li>
+                                </ul></td>
+                </tr>
+                <tr>
+                    <td>Gemfire XD Locator Persistent Disk in MB </td>
+                    <td> Amount of disk space to allocate to each virtual machine. </td>
+                    <td>Integer<ul>
+                                    <li>Minimum: 3072</li>
+                                    <li>Maximum: 999999 </li>
+                                </ul></td>
+                </tr>
+            </tbody>
+        </table></li>
             <li>Click the <strong>Save</strong> button.</li>
-			<li>(Optional) Click 
+		
             
 </ol>
+
 <a id="modifying"></a>
 #Modifying an On-Demand Service Plan
 
@@ -361,6 +419,7 @@ To create an On-Demand Service Plan:
  <p>Click <strong>On-demand Service Plans</strong>.</p>
  <p>The <strong>On-demand Service Plans</strong> screen displays.</p>
 </li>
+<li>Click the name of the On-Demand Service plan that you want to modify.<p>A form expands below its name where you can change the configuration values. </p>
 <li>Change any of the fields that define the service plan.</li>
 <li>Click the <strong>Save</strong> button.</li>
 </ol>

@@ -1,5 +1,5 @@
 ---
-title: Using a Pivotal HD Data Service Instance
+title: Using a Pivotal HD Service Instance
 ---
 
 After the Pivotal CF Administrator deploys the Pivotal HD Service, Pivotal CF Users can create instances of the service, resulting in a pre-deployed Pivotal HD cluster that is allocated for their use.  Pivotal CF Users can subsequently bind applications that were pushed from Elastic Runtime to a Pivotal HD Service Instance in order to create and embed user credentials and API endpoints.
@@ -10,7 +10,7 @@ After the Pivotal CF Administrator deploys the Pivotal HD Service, Pivotal CF Us
 * [Unbinding Applications from Pivotal HD Cluster Instances](#unbinding)
 
 <a id="create-cluster"></a>
-#Creating and Using Pivotal HD Service Instances
+#Using a Pivotal HD Service Instance
 
 You use either the Pivotal CF Developer Console or the Pivotal CF command line interface to create Pivotal HD Service Instances. 
 
@@ -42,7 +42,7 @@ To create an instance of a Pivotal HD Service Plan using the Pivotal CF Develope
 
 9. Click **Add**. 
 
-A Pivotal HD Service Instance is created, resulting in allocation of an on-demand Pivotal HD Cluster. The service instance displays in the list of services for the current space:
+A Pivotal HD Service Instance is created.  In the case of an on-demand service plan, you have been allocated a dedicated Pivotal HD sandbox. In the case of a Pivotal HD external service plan, the existing Pivotal HD software’s details are ready to be bound to an application. The service instance displays in the list of services for the current space
 
 **Pivotal CF Developer Console**
 
@@ -54,15 +54,15 @@ Click **Manage** to view the **Service Instance Dashboard** for the service:
 
 You can click the links to access the Web interface for a component.	
 
-For more information about the the Pivotal CF Developer Console, see [Getting Started with the Developer Console](http://docs.gopivotal.com/pivotalcf/console/dev-console.html).
+For more information about the the Pivotal CF Developer Console, see [Getting Started with the Developer Console](http://docs.pivotal.io/pivotalcf/console/dev-console.html).
 
 ##Pivotal CF Command Line
 
 To create a Pivotal HD cluster instance:
 
-1. Install the Pivotal CF Command Line Interface.  For more information on the Pivotal CF Command Line Interface, see [Installing the Pivotal CF CLI](http://docs.gopivotal.com/pivotalcf/devguide/installcf/whats-new-v6.html).
+1. Install the Pivotal CF Command Line Interface.  For more information on the Pivotal CF Command Line Interface, see [Installing the Pivotal CF CLI](http://docs.pivotal.io/pivotalcf/devguide/installcf/whats-new-v6.html).
 
-2. Log in to Pivotal CF using the Pivotal CF CLI. See [Getting Started with cf v6](http://docs.gopivotal.com/pivotalcf/devguide/installcf/whats-new-v6.html).
+2. Log in to Pivotal CF using the Pivotal CF CLI. See [Getting Started with cf v6](http://docs.pivotal.io/pivotalcf/devguide/installcf/whats-new-v6.html).
 
 2. Run the following commands:
 	
@@ -86,7 +86,7 @@ To create a Pivotal HD cluster instance:
 		
 	For example:
 
-	<pre class="terminal" >
+	<pre  >
 	$  cf login -a https://api.rock.music.cf-app.com -u admin -p 961fdc9cd6a85031f7eb -o pivotal -s staging
 	API endpoint: https://api.rock.music.cf-app.com
 	Authenticating...
@@ -137,11 +137,11 @@ You can delete a Pivotal HD Service Instance when it is no longer needed.  Doing
 
 	A confirmation dialog box displays.
 	
-	![Deleting a Service with the Pivotal CF Developer Console](/images/delete_service.png "Deleting a Service with the Pivotal CF Developer Console")
+	![Deleting a Service with the Pivotal CF Developer Console](images/delete_service.png "Deleting a Service with the Pivotal CF Developer Console")
 
 ##Pivotal CF Command Line
 
-1. Log in to Pivotal CF using the Pivotal CF CLI. See [Getting Started with cf v6](http://docs.gopivotal.com/pivotalcf/devguide/installcf/whats-new-v6.html).
+1. Log in to Pivotal CF using the Pivotal CF CLI. See [Getting Started with cf v6](http://docs.pivotal.io/pivotalcf/devguide/installcf/whats-new-v6.html).
 
 2. Run the following commands:
 	
@@ -157,7 +157,7 @@ You can delete a Pivotal HD Service Instance when it is no longer needed.  Doing
 	
 	For example:
 
-	<pre class="terminal">
+	<pre >
 	[root@rock ~]# cf login -a https://api.rock.music.cf-app.com -u admin -p 961fdc9cd6a85031f7eb -o pivotal -s staging
 	API endpoint: https://api.rock.music.cf-app.com
 	Authenticating...
@@ -191,7 +191,7 @@ You can delete a Pivotal HD Service Instance when it is no longer needed.  Doing
 
 When a Pivotal CF User binds an application to a Pivotal HD Service Instance, user account credentials are automatically created in each software component of the allocated Pivotal HD cluster.  Both Credentials and API end-points are returned and included in the `VCAP_SERVICES` environment variable of the bound application.
 
-For more information about binding, see the following topic in the Pivotal CF documentation: [Bind a Service](http://docs.gopivotal.com/pivotalcf/devguide/services/bind-service.html).
+For more information about binding, see the following topic in the Pivotal CF documentation: [Bind a Service](http://docs.pivotal.io/pivotalcf/devguide/services/bind-service.html).
 
 ##Viewing Binding Meta Data and Environment Variables
 
@@ -212,7 +212,7 @@ To view the binding variables from the **Pivotal CF Developer Console**:
 	A dialog box displays the credentials for the components of the Pivotal HD instance.
 	For example:
 	
-	![PHD Credentials Bindings](/images/cred_bindings.png "PHD Credentials Bindings")
+	![PHD Credentials Bindings](images/cred_bindings.png "PHD Credentials Bindings")
 
 	You may need to copy the contents of each field and paste them into a text editor to view them. 
 	
@@ -237,7 +237,7 @@ To view the binding variables from the **Pivotal CF Developer Console**:
 7. Click the **Bind** button for the service you want to bind to this application. 
 
 ##Binding an Application using the Pivotal CF Command Line
-1. Log in to Pivotal CF using the Pivotal CF CLI. See [Getting Started with cf v6](http://docs.gopivotal.com/pivotalcf/devguide/installcf/whats-new-v6.html).
+1. Log in to Pivotal CF using the Pivotal CF CLI. See [Getting Started with cf v6](http://docs.pivotal.io/pivotalcf/devguide/installcf/whats-new-v6.html).
 
 2. Run the following commands:
 	
@@ -251,7 +251,7 @@ To view the binding variables from the **Pivotal CF Developer Console**:
 
 	For example:
 	
-	<pre class="terminal">
+	<pre >
 	[root@rock ~]#  cf login -a https://api.rock.music.cf-app.com -u admin -p 961fdc9cd6a85031f7eb -o pivotal -s staging
 	API endpoint: https://api.rock.music.cf-app.com
 	Authenticating...
@@ -303,7 +303,7 @@ You can unbind a bound application from a Pivotal HD cluster instance using eith
 	A confirmation dialog box displays. 
 
 ##Pivotal CF Command Line
-1. Log in to Pivotal CF using the Pivotal CF CLI. See [Getting Started with cf v6](http://docs.gopivotal.com/pivotalcf/devguide/installcf/whats-new-v6.html).
+1. Log in to Pivotal CF using the Pivotal CF CLI. See [Getting Started with cf v6](http://docs.pivotal.io/pivotalcf/devguide/installcf/whats-new-v6.html).
 
 2. Run the following commands:
 	

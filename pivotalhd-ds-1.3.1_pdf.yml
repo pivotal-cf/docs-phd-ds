@@ -1,0 +1,12 @@
+---
+
+copyright_notice: '© Copyright Pivotal Software Inc, 2013-2014'
+header: pdf_header.html
+pages:
+     - pivotalhd-ds/index.html
+     - pivotalhd-ds/overview.html
+     - pivotalhd-ds/installation.html
+     - pivotalhd-ds/service_plans.html
+     - pivotalhd-ds/data_service.html
+     - pivotalhd-ds/troubleshooting.html
+     - pivotalhd-ds/relnotes.html

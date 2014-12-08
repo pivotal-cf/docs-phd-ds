@@ -1,15 +1,81 @@
 ---
-title: Overview
+title: Overview of Pivotal HD for Pivotal CF v1.3.2.0
 ---
 
-The Pivotal HD Service allows Pivotal CF users to create Pivotal HD clusters on-demand.  A cluster is allocated each time a Pivotal CF user creates an instance of the Pivotal HD Service using the Pivotal CF Command Line Interface or Developer Web Console.  Pivotal CF users can also create and bind user credentials for each component of the Pivotal HD cluster to any application they push to Pivotal Elastic Runtime.
+* [On-Demand Service Plans](#on-demand) 
+* [External Service Plans](#ext-plans)
 
- A Pivotal CF Administrator initially imports the Pivotal HD Service into Pivotal CF Ops Manager, where they define the details of the service plan they wish to offer.  The service plan is a blueprint that describes what each instance of a Pivotal HD cluster is comprised of.  The definition consists of which Pivotal HD components to include, the number of slave nodes to deploy, and how much CPU, Ram and Disk to use for each virtual machine required for the included Pivotal HD components.  The administrator also specifies the maximum number of instances of the service that can be created along with the number to pre-create for rapid allocation to Pivotal CF users.  The Pivotal HD Service creates and starts the virtual machines of these pre-created clusters in advance, eliminating the need for Pivotal CF users to wait when creating an instance of the service."
+The Pivotal HD for Pivotal CF enables [Pivotal CF](http://docs.pivotal.io/pivotalcf/getstarted/pcf-docs.html) Administrators to offer Pivotal CF users access to Pivotal HD software components for a variety of use cases.
 
-The Pivotal HD Service includes several components from the Pivotal HD 1.1 software stack, including HDFS, YARN and MapReduce2.  Additionally, the Pivotal HD Service includes HAWQ and PXF.  Lastly, the Pivotal HD Service includes GemFire XD, which is currently available for beta testing purposes. For more details about the individual software components and their versions, please see the [Pivotal HD Enterprise 1.1.1 Release Notes](http://pivotalhd.docs.pivotal.io/doc/1110/PHDEnterprise1.1.1ReleaseNotes.html).
+Like other [Pivotal CF Services](http://docs.pivotal.io/pivotalcf/services/overview.html), access is presented as a series of Service Plans in [Elastic Runtime](http://docs.pivotal.io/pivotalcf/concepts/overview.html).  A Pivotal CF Administrator initially imports the Pivotal HD Service into Pivotal CF [Ops Manager](http://docs.pivotal.io/pivotalcf/customizing/) where they define the details of the service plans they wish to offer.  
 
-Figure 1 shows the work flow for creating Pivotal HD clusters using Pivotal HD Service:
+When Pivotal CF Administrators deploy the service, Pivotal CF Ops Manger creates a BOSH deployment and uses its instance of BOSH to deploy a virtual machine where the Pivotal HD Service-Broker software process runs, along with a series of temporary VMs that register the Pivotal HD Service with Elastic Runtime and ensure that the deployment is successful.
 
-**Figure 1. Pivotal HD Service Work Flow**
+There are two categories of Service Plans that can be offered using the Pivotal HD Service: On-Demand Service Plans and External Service Plans.  In either case, Pivotal CF users create instances of these Service Plans using either the Command Line Interface or the Developer Console.
+
+<a id="on-demand"></a>
+#On-Demand Service Plans
+
+On-Demand Service Plans allow Pivotal CF developers to create their own dedicated instances of Pivotal HD software.  These instances are intended for integration testing with the application they are developing or as sandboxes for short-term use.
+
+In the case of On-Demand Service Plans, the Pivotal HD Service-Broker uses BOSH to deploy a set of virtual machines that run the various software processes that comprise of a Pivotal HD instance.  The Service-Broker is capable of deploying multiple Pivotal HD instances. 
+
+**Figure 1** describes these virtual machines as created by Ops Manager and the Pivotal HD Service-Broker.
+
+**Figure 1. Pivotal HD Virtual Machines.**
+
+![PHD - CF Architecture](images/architecture.png) 
+
+These Pivotal HD Service Instances are allocated each time a Pivotal CF user creates a Service Instance using the CLI or Developer Web Console and the Service-Broker deploys additional instances as needed. 
+
+Pivotal CF users can also bind hosts, ports, and user credentials for each component to any application they push to Elastic Runtime.
+
+**Figure 2.** shows the work flow for creating Pivotal HD clusters using Pivotal HD Service:
+
+**Figure 2. Pivotal HD Service Work Flow**
 
 ![Data Service Work Flow](/images/data_service.png "Data Service Work Flow")
+
+Each Service Plan is a blueprint that describes the configuration and components of each Service Instance. The definition consists of:
+
+* The Pivotal HD components to include
+* The number of virtual machines to deploy that run the slave processes for each component
+* The maximum number of Service Instances that can be created 
+* The number of pre-created Service Instances 
+* How much CPU, RAM and Disk space to use for each type of required virtual machine
+
+On-Demand Service Plans can consist of several components from the Pivotal HD 2.0.1 software stack, including:
+
+* Hadoop (HDFS, YARN and MapReduce2)
+* HAWQ and PXF
+* GemFire XD
+
+For more details about the individual software components and their versions, please see the [Pivotal HD Enterprise 2.0.1 Release Notes](http://pivotalhd.docs.pivotal.io/doc/2010/PHDEnterprise2.0.1ReleaseNotes.html#PHDEnterprise2.0.1ReleaseNotes-VersioningandCompatibility).
+
+The Pivotal HD Service Broker is the software responsible for deploying each Service Instance’s virtual machines in advance, eliminating the need for Pivotal CF users to wait when creating an instance of the service.
+
+Pivotal CF Administrators can define multiple Service Plans.  Each On-Demand Service Plan can create differently-sized Pivotal HD clusters or clusters comprised of different Pivotal HD software components. 
+
+Lastly, the administrator has the option to not include the HDFS component as a part of each Service Instance and instead automate each included component’s configuration to use a pre-existing instance of HDFS running on [EMC’s Isilon Scale-out Storage Solutions for Hadoop](http://www.emc.com/big-data/scale-out-storage-hadoop.htm).  In this scenario, HDFS is not co-located with the compute components and all data written by the software components is stored on Isilon. See [HDFS Isilon Integration](isilon.html).
+
+<a id="ext-plans"></a> 
+#External Service Plans
+ 
+External Service Plans enable Pivotal CF developers to bind the hosts and ports of Pivotal HD software that is already running to their Pivotal CF-pushed application hosted on Pivotal Cloud Foundry.  It is important to note that user credentials are not created automatically for the application during binding and developers will need to request these credentials from the administrators of the Pivotal HD software.
+
+Administrators can define Multiple External Service Plans in order to broker access to different instances of Pivotal HD in parallel.
+ 
+**Figure 3. External Service Plans**
+ 
+![External Service Plans](/images/external_service_plan.png "External Service Plans")
+ 
+See [Creating an External Service Plan](external-service-plans.html).
+
+<a id="hawq-hdsf"></a>
+
+
+
+
+ 
+ 
+ 
