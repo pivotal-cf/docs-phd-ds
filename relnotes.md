@@ -15,6 +15,6 @@ title: Release Notes for Pivotal HD Service v 1.3.2.0
 
 #Known Issues
 * v1.3.2.0 can only be upgraded from v1.2.1.0.
-* v1.3.2.0 requires v1.3.2.0 of Pivotal CF or later.
+* v1.3.2.0 requires v1.3.4.0 of Pivotal CF Operations Manager.
 * When upgrading from v.1.2.1.0, Service Plans will reset to include all Pivotal HD components in Operations Manager.  Un-check any components you do not wish to include before applying your changes.
 * The state of Pivotal HD Service instances is not visible in Operations Manager and must be viewed using the BOSH CLI.
