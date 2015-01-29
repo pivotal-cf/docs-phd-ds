@@ -346,6 +346,8 @@ Consider the following vSphere network diagram:
 
 ![vSphere Networking](images/vsphere_networking.png)
 
+##Deploying Pivotal CF and Pivotal HD on the Same Network
+
 If Operations Manager has been configured to deploy Pivotal CF and any imported Services to network A in the picture above, you can configure the Pivotal HD Service to also deploy Pivotal HD clusters to network A.  If you choose to use the same network as Pivotal CF, it is likely you will use IP addresses from a single IP subnet across all deployments.  Should you choose to use IP addresses from the same subnet, you must ensure that Operations Manager and the Pivotal HD Service do not attempt to use the same IP addresses in their deployments.
 
 To achieve this, you must exclude the IP range you want the Pivotal HD deployments to use in the Ops Manager vSphere network settings and you must exclude the IP range you want Ops Manager deployments to use in the Pivotal HD Service's network settings.
@@ -368,4 +370,43 @@ Here is an example of how you might do that if you were deploying everything to 
 * DNS Servers: `8.8.8.8`
 * Default Gateway IP Address: `10.0.0.1`
 
-Alternatively, if you configure Ops Manager to deploy Pivotal CF to Network A and the Pivotal HD Service to deploy Pivotal HD clusters to Network C.  The only requirement in this case is that the two networks be able to route traffic to each other.
+<a id="openports"></a>
+##Deploying Pivotal CF and Pivotal HD on Different Networks
+
+Alternatively, you could configure Ops Manager to deploy Pivotal CF to Network A and the Pivotal HD Service to deploy Pivotal HD clusters to Network C.  The only requirement in this case is that the two networks be able to route traffic to each other.  If a firewall is placed between the two networks, you must ensure that these ports are opened to allow unrestricted traffic between the BOSH agent and director:
+
+<table 
+    frame="void" rules="all">
+    <caption>Table 4. Open Ports Required for BOSH Communication</caption>
+    <col
+                   width="33%" />
+                <col
+                    width="33%" />
+                <col
+                    width="33%" />
+                <thead>
+                    <tr>
+                        <th>Port</th>
+                        <th>Protocol</th>
+                        <th>Service</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                        <td>4222</td>
+                        <td>tcp</td>
+                        <td>nats</td>
+                </tr>   
+                <tr>    
+                        <td>25250</td>
+                        <td>tcp</td>
+                        <td>blobstore</td>
+                        </tr>
+                <tr>
+                        <td>53</td>
+                        <td>tcp and udp</td>
+                        <td>powerdns</td>
+                </tr>
+                </tbody>
+              </table>
+
