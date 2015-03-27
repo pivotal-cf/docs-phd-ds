@@ -317,19 +317,19 @@
 						x="-36.35" dy="1.2em" class="st3">to service instance</tspan></text>		</g>
 		<g id="shape31-107" v:mID="31" v:groupContext="shape" transform="translate(0.75,-193.08)">
 			<title>Sheet.31</title>
-			<desc>Pivotal CF Developer Console</desc>
+			<desc>Apps Manager</desc>
 			<v:textBlock v:margins="rect(4,4,4,4)"/>
 			<v:textRect cx="72" cy="397.23" width="144" height="25.2"/>
 			<rect x="0" y="384.63" width="144" height="25.2" class="st14"/>
-			<text x="48.08" y="393.63" class="st2" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>Pivotal CF <v:lf/><tspan
-						x="26.11" dy="1.2em" class="st3">Developer Console</tspan></text>		</g>
+			<text x="48.08" y="393.63" class="st2" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>Pivotal Cloud Foundry <v:lf/><tspan
+						x="26.11" dy="1.2em" class="st3">Apps Manager</tspan></text>		</g>
 		<g id="shape33-111" v:mID="33" v:groupContext="shape" transform="translate(7.95,-370.495)">
 			<title>Sheet.33</title>
-			<desc>Pivotal CF Ops Manager</desc>
+			<desc>Pivotal Cloud Foundry Ops Manager</desc>
 			<v:textBlock v:margins="rect(4,4,4,4)"/>
 			<v:textRect cx="64.8" cy="390.538" width="129.6" height="38.5846"/>
 			<rect x="0" y="371.245" width="129.6" height="38.5846" class="st14"/>
-			<text x="6.76" y="394.14" class="st2" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>Pivotal CF Ops Manager</text>		</g>
+			<text x="6.76" y="394.14" class="st2" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>Pivotal Cloud Foundry Ops Manager</text>		</g>
 		<g id="shape34-114" v:mID="34" v:groupContext="shape" transform="translate(16.2821,-117.48)">
 			<title>Sheet.34</title>
 			<rect v:rectContext="foreign" x="0" y="337.83" width="112.936" height="72" class="st14"/>

@@ -1,8 +1,8 @@
 ---
-title: Troubleshooting a Pivotal HD Service Instance 
+title: Troubleshooting a Pivotal HD Service Instance
 ---
 <p>This section discusses tools and procedures you can use to diagnose problems with a Pivotal HD cluster instance. </p>
-<p>If you need to access a virtual machine in your Pivotal HD cluster or if you need to access the virtual machine that runs Pivotal HD Service, you can do so. </p><p>Information required to access the Pivotal HD Service Broker is displayed in Pivotal CF Ops Manager, which also displays the status of the virtual machine and enables you to download its log files similarly to other Pivotal CF tiles. </p><p>Because the Pivotal HD Service Broker deploys Pivotal HD on-demand service instances, information about those deployments is not visible in Pivotal CF Ops Manager but is visible using the BOSH Command Line Interface, which you can access using the Pivotal HD Service Broker’s terminal shell.  </p>
+<p>If you need to access a virtual machine in your Pivotal HD cluster or if you need to access the virtual machine that runs [Pivotal HD Service](https://network.pivotal.io/products/pivotal-hd-service), you can do so. </p><p>Information required to access the Pivotal HD Service Broker is displayed in Pivotal Cloud Foundry Ops Manager, which also displays the status of the virtual machine and enables you to download its log files similarly to other PCF tiles. </p><p>Because the Pivotal HD Service Broker deploys Pivotal HD on-demand service instances, information about those deployments is not visible in Ops Manager but is visible using the BOSH Command Line Interface, which you can access using the Pivotal HD Service Broker’s terminal shell.  </p>
 <img
             alt="vm_provisioning_flow.png"
             src="images/vm_provisioning_flow.png" /><ul>
@@ -21,7 +21,7 @@ title: Troubleshooting a Pivotal HD Service Instance
             id="creds"></a>
         <h1>Locating the credentials and URL of the Pivotal HD Service broker</h1><ol>
             <li>
-                <p>Use a Web browser to open the <strong>Pivotal CF Ops Manager</strong> application. </p>
+                <p>Use a Web browser to open the <strong>Ops Manager</strong> application. </p>
             </li>
             <li>
                 <p>Click the <strong>Pivotal HD</strong> tile. </p>
@@ -39,9 +39,9 @@ title: Troubleshooting a Pivotal HD Service Instance
         <ol>
             <li>Locate the credentials and URL of the PHD-Broker virtual machine as described <a
                     href="#creds">above</a>. </li>
-            <li>Using this URL and credentials, log in to the Pivotal HD Service Broker's virtual machine using ssh:<pre class="terminal"># ssh vcap@10.0.0.51 
-vcap@10.0.0.51's password: 
-Last login: Wed May 7 15:13:04 2014 from 10.0.0.1 
+            <li>Using this URL and credentials, log in to the Pivotal HD Service Broker's virtual machine using ssh:<pre class="terminal"># ssh vcap@10.0.0.51
+vcap@10.0.0.51's password:
+Last login: Wed May 7 15:13:04 2014 from 10.0.0.1
 [vcap@21c20803-7459-46dc-a0f7-36c70c956db4 ~]</pre></li>
             <li>There are two relevant log files you may want to access:<ul>
                     <li>
@@ -54,7 +54,7 @@ Last login: Wed May 7 15:13:04 2014 from 10.0.0.1
                 id="bosh"></a>
         </p>
         <h1>Using BOSH Director to Examine a PHD Deployment</h1>
-        <p>You can use the BOSH command-line tools to log in to the BOSH Director to run diagnostic commands that examine a Pivotal CF installation, including your Pivotal HD on-demand service instances.  Each service instance is a separate BOSH deployment.  The BOSH Director runs on a virtual machine that Ops Manager deploys on the first installation of the Ops Manager. </p><p>You can <a
+        <p>You can use the BOSH command-line tools to log in to the BOSH Director to run diagnostic commands that examine a PCF installation, including your Pivotal HD on-demand service instances.  Each service instance is a separate BOSH deployment.  The BOSH Director runs on a virtual machine that Ops Manager deploys on the first installation of the Ops Manager. </p><p>You can <a
                 href="https://github.com/cloudfoundry/bosh"
                 shape="rect"
                 style="text-decoration:none;">download the BOSH CLI</a> and run it from a host of your choosing.  Or you can SSH into the Pivotal HD Service Broker, where the BOSH CLI is already installed. <br
@@ -176,18 +176,18 @@ Task 38 done
                 id="ssh"></a></p>
         <h1>Accessing Pivotal HD Cluster Instance virtual machines using SSH</h1><p>There may be troubleshooting situations where you want to access the virtual machines associated with an on-demand service instance where Pivotal HD software is running using SSH.  To access the virtual machines, you need the Pivotal HD Service Broker’s vcap user credentials, which can also be used to access any Pivotal HD service instance’s virtual machine, and the relevant machine’s IP address.  </p><p>Note that when a user creates a service instance for an on-demand service plan, the Pivotal HD Service Broker associates and maps one of its un-allocated BOSH deployments of virtual machines with that particular service instance’s unique ID.  IP addresses for the hosts that run each component’s master process like Hadoop’s NameNode and ResourceManager, HAWQ’s Master, and the GemFireXD Locator appear in the service instance dashboard.  The full list of IP addresses also appear in the <code>bosh vms</code> output.  </p>
         <ol>
-            <li>Use a Web browser to log in to the <strong>Pivotal CF Ops Manager</strong> application. </li>
+            <li>Use a Web browser to log in to the <strong>Ops Manager</strong> application. </li>
             <li>Select Pivotal HD.</li>
             <li>Click the <strong>Credentials</strong> tab and note the password for the Pivotal HD Service Broker’s <code>vcap</code> username.</li>
             <li>
-                <p>Use a Web browser to log in to the <strong>Pivotal CF Developer Console</strong>.</p>
+                <p>Use a Web browser to log in to the <strong>Apps Manager</strong>.</p>
             </li>
             <li>
                 <p>Select of the user who created the service instance you are interested in from the drop-down list on the left.</p>
             </li>
             <li>Select the Space where the service instance was created from the list of spaces on the left.<p>A list of applications and service instances displays. </p></li>
             <li>In the row that contains the Pivotal HD service instance you want to access, click <strong>Manage</strong>  and note the IP addresses of the virtual machines running the components you are interested in . <img
-                    alt="Dev Console Manage Instance"
+                    alt="Apps Manager Manage Instance"
                     src="images/dev_console_manage_instance.png" />
                 <p>The Service Instance Dashboard displays:</p><img
                     alt="service_instance_dashboard.png"
@@ -196,32 +196,32 @@ Task 38 done
                     href="#bosh"
                     shape="rect"
                     style="text-decoration:none;">Using BOSH Director to Examine a Pivotal HD On-Demand Service Instance</a> and run the <code>bosh vms</code> command to see the list of IP addresses for the relevant BOSH deployment’s virtual machines. ??insert output here </li>
-            <li>Using these IP address and the vcap username’s credentials, log in to the virtual machine using ssh: <pre>[root@rock ~]# ssh vcap@10.0.1.6vcap@10.0.1.6's password: 
+            <li>Using these IP address and the vcap username’s credentials, log in to the virtual machine using ssh: <pre>[root@rock ~]# ssh vcap@10.0.1.6vcap@10.0.1.6's password:
 Last login: Mon Sep 29 19:24:29 2014 from 10.0.0.1
 [vcap@0 ~]$ </pre></li>
-        </ol><h1>Understanding which BOSH deployments are allocated to which Service Instance </h1><p><strong>To determine which Virtual Machines are associated with a specific Service Instance, using the Pivotal CF CLI</strong>: </p><p>There may be times when you need to determine which service instances is allocated to which BOSH deployments or vice versa. </p><p>The Pivotal HD Service Broker keeps track of which BOSH deployments it has allocated and which service instance is has allocated a BOSH deployment to.  This information is maintained in a SQLite Database on the Pivotal HD Service Broker.  You can view these allocations by accessing the Pivotal HD Service Broker using ssh. <br
+        </ol><h1>Understanding which BOSH deployments are allocated to which Service Instance </h1><p><strong>To determine which Virtual Machines are associated with a specific Service Instance, using the CF CLI</strong>: </p><p>There may be times when you need to determine which service instances is allocated to which BOSH deployments or vice versa. </p><p>The Pivotal HD Service Broker keeps track of which BOSH deployments it has allocated and which service instance is has allocated a BOSH deployment to.  This information is maintained in a SQLite Database on the Pivotal HD Service Broker.  You can view these allocations by accessing the Pivotal HD Service Broker using ssh. <br
                 class="Apple-interchange-newline"
                 clear="none" />
         </p>
         <ol>
-            <li>Use the <strong>Pivotal CF command line interface</strong> to log in to Pivotal CF as an administrator.</li>
-            <li>From the Pivotal CF command line, make sure you are targeting the space where the Service Instance you are interested in resides: <pre class="terminal">[root@rock ~]# cf target
+            <li>Use the <strong>CF command line interface</strong> to log in to PCF as an administrator.</li>
+            <li>From the CF command line, make sure you are targeting the space where the Service Instance you are interested in resides: <pre class="terminal">[root@rock ~]# cf target
 API endpoint: https://api.rock.music.cf-app.com (API version: 2.2.0)
 User: admin
 Org:  pivotalrocks
 Space:staging
 </pre> If necessary, select a space using the following command: $ cf target -s &lt;space name&gt; </li>
-            <li> From the Pivotal CF CLI, confirm the Service Instance Name you are interested in: <pre class="terminal">
+            <li> From the CF CLI, confirm the Service Instance Name you are interested in: <pre class="terminal">
 root@rock ~]# cf services
 Getting services in org pivotalrocks / space staging as admin...
 OK
 
-nameservice   plan   bound apps 
-instance1   p-hd  Standard  
-instance2   p-hd  Standard   app-sinatra-services   
+nameservice   plan   bound apps
+instance1   p-hd  Standard
+instance2   p-hd  Standard   app-sinatra-services
 </pre>
             </li>
-            <li> From the Pivotal CF CLI, run the following command to look up the Cloud Controller ID for the Service Name you are interested in. The Cloud Controller ID is contained in a JSON-formatted output. To find the ID, locate the name of your service in the output and then locate the <code>guid</code> field within that data structure. The value of this field contains the Cloud Controller ID. For example, in the following output, the Cloud Controler ID for the service that is named <code
+            <li> From the CF CLI, run the following command to look up the Cloud Controller ID for the Service Name you are interested in. The Cloud Controller ID is contained in a JSON-formatted output. To find the ID, locate the name of your service in the output and then locate the <code>guid</code> field within that data structure. The value of this field contains the Cloud Controller ID. For example, in the following output, the Cloud Controler ID for the service that is named <code
                     style="color:red">instance2</code> is highlighted in red: <pre class="terminal">[root@rock ~]# CF_TRACE=true cf s
 
 VERSION:
@@ -262,7 +262,7 @@ X-Vcap-Request-Id: 1f201b6b1881d2957ec572f17eb63b4e::00245095-8317-4547-9c93-a8b
 
 </pre>
             </li>
-            <li>Log in to the Pivotal CF Ops Manager application. </li>
+            <li>Log in to the Ops Manager application. </li>
             <li> Select Pivotal HD.</li>
             <li>Click the <strong>Status</strong> tab and note the IP address for the Pivotal HD Service Broker. <p><img
                         alt="ops_mgr_phd-broker_ip.png"
@@ -271,23 +271,23 @@ X-Vcap-Request-Id: 1f201b6b1881d2957ec572f17eb63b4e::00245095-8317-4547-9c93-a8b
             <li>Click the <strong>Credentials</strong> tab and note the username and password for the PHD-Broker <p><img
                         alt="ops_mgr_phd-broker_creds.png"
                         src="images/ops_mgr_phd-broker_creds.png" /></p>.</li>
-            <li>Using this IP address and credentials, log in to the Pivotal HD Service Broker's virtual machine using ssh: <pre class="terminal">[root@rock ~]# ssh vcap@10.0.0.51 
-vcap@10.0.0.51's password: 
-Last login: Wed May 7 15:13:04 2014 from 10.0.0.1 
+            <li>Using this IP address and credentials, log in to the Pivotal HD Service Broker's virtual machine using ssh: <pre class="terminal">[root@rock ~]# ssh vcap@10.0.0.51
+vcap@10.0.0.51's password:
+Last login: Wed May 7 15:13:04 2014 from 10.0.0.1
 [vcap@21c20803-7459-46dc-a0f7-36c70c956db4 ~]$</pre>
             </li>
-            <li>Access the SQLite Database where the Service Broker stores its mappings: <pre class="terminal">[vcap@21c20803-7459-46dc-a0f7-36c70c956db4 ~]$ cd /var/vcap/store/phd_broker/ 
-[vcap@21c20803-7459-46dc-a0f7-36c70c956db4 phd_broker]$ sqlite3 database.sqlite3 
-SQLite version 3.6.20 
-Enter ".help" for instructions 
-Enter SQL statements terminated with a ";" 
-sqlite> .schema 
-CREATE TABLE "ip_addresses" ("id" integer not null primary key autoincrement, "ip" text, "service_instance_id" integer, "job_name" text); 
-CREATE TABLE "service_instances" ("id" integer not null primary key autoincrement, "cloud_controller_id" text, "state" text); 
-sqlite> select * from service_instances; 
-1|<span style="color:red">5719c2a0-69f2-4ca2-b46a-0f6058fa54af</span>|ALLOCATED 
-2|4914bc7d-da6a-4023-8427-822f17a320fb|ALLOCATED 
-3||AVAILABLE 
+            <li>Access the SQLite Database where the Service Broker stores its mappings: <pre class="terminal">[vcap@21c20803-7459-46dc-a0f7-36c70c956db4 ~]$ cd /var/vcap/store/phd_broker/
+[vcap@21c20803-7459-46dc-a0f7-36c70c956db4 phd_broker]$ sqlite3 database.sqlite3
+SQLite version 3.6.20
+Enter ".help" for instructions
+Enter SQL statements terminated with a ";"
+sqlite> .schema
+CREATE TABLE "ip_addresses" ("id" integer not null primary key autoincrement, "ip" text, "service_instance_id" integer, "job_name" text);
+CREATE TABLE "service_instances" ("id" integer not null primary key autoincrement, "cloud_controller_id" text, "state" text);
+sqlite> select * from service_instances;
+1|<span style="color:red">5719c2a0-69f2-4ca2-b46a-0f6058fa54af</span>|ALLOCATED
+2|4914bc7d-da6a-4023-8427-822f17a320fb|ALLOCATED
+3||AVAILABLE
 sqlite></pre>
             </li>
             <li>Locate the row where the Cloud Controller ID matches the Cloud Controller ID you retrieved earlier. Note the numbers that begin each row. These numbers are the internal Service Instance IDs. </li>
@@ -319,7 +319,7 @@ Task 257 done
             id="delete_service"></a>
         <h1>Deleting the Pivotal HD Service Broker from Cloud Foundry</h1>
         <ol>
-            <li>Use a Web browser to log in to the <strong>Pivotal CF Ops Manager</strong> application.</li>
+            <li>Use a Web browser to log in to the <strong>Ops Manager</strong> application.</li>
             <li>Click the <strong>Trash</strong> icon in the Pivotal HD Data Service tile.</li>
             <li>Click <strong>Apply Changes</strong>.<p>The Pivotal HD Data Service broker is deleted. </p></li>
         </ol>

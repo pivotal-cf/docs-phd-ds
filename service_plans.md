@@ -4,7 +4,7 @@ title: Creating and Modifying Pivotal HD On-Demand Service Plans
 
 #Overview
 
-A Pivotal CF Administrator can define the details of the Pivotal HD On-Demand Service Plans they wish to offer to their Pivotal CF users.  An on-demand service plan is a blueprint that describes the components and configuration of each instance of a Pivotal HD cluster.  The Pivotal HD Service includes default values for the service plan, which can be changed by the Pivotal CF Administrator.
+A PCF Administrator can define the details of the Pivotal HD On-Demand Service Plans they wish to offer to their PCF users. An on-demand service plan is a blueprint that describes the components and configuration of each instance of a Pivotal HD cluster. The Pivotal HD Service includes default values for the service plan, which can be changed by the PCF Administrator.
 
 * [Creating an On-Demand Service Plan](#creating)
 
@@ -19,7 +19,7 @@ To create an On-Demand Service Plan:
             <li>
                 <p>Use a Web browser to log in to the <strong>Pivotal Ops Manager</strong> application. (This application is part of your Pivotal Cloud Foundry installation.)</p>
             </li>
-            <li>Click the <strong>Pivotal HD for Pivotal CF</strong> tile. </li>
+            <li>Click the <strong>Pivotal HD for PCF</strong> tile. </li>
             <li>
                 <p>Select <strong>On-demand Service Plans</strong>.</p>
                 <p>The <strong>On-demand Service Plans</strong> screen opens and displays a list of configured On-Demand Service Plans. If no service plans have been configured, you will see only the default, Standard service plan. </p>
@@ -29,8 +29,8 @@ To create an On-Demand Service Plan:
                     height="50%"
                     src="images/on-demand-service-plans.png" /></li>
             <li>
-                <p>Configure the following display options for your Service Plan. This information displays in the Pivotal CF Console and Command-line Interface.</p>
-						
+                <p>Configure the following display options for your Service Plan. This information displays in the Apps Manager and command line interface.</p>
+
                 <table
                     frame="void" rules="all"
                     width="783">
@@ -48,14 +48,14 @@ To create an On-Demand Service Plan:
                         </tr>
                     </thead>
                     <tbody>
-                        
+
                         <tr>
                             <td>Service Plan Name</td>
-                            <td> The name you want Pivotal CF users to see in the Pivotal CF CLI and Developer Console. </td>
+                            <td> The name you want PCF users to see in the CF CLI and Apps Manager. </td>
                         </tr>
                         <tr>
                             <td> Service Plan Feature Bullet 1 </td><td
-                                rowspan="4"> The details of the service plan you want Pivotal CF users to see. The values in these fields display to users in the Marketplace section of the Pivotal CF Developer Console  </td>
+                                rowspan="4"> The details of the service plan you want PCF users to see. The values in these fields display to users in the Marketplace section of the Apps Manager  </td>
                         </tr>
                         <tr>
                             <td>Service Plan Feature Bullet 2 </td>
@@ -63,13 +63,13 @@ To create an On-Demand Service Plan:
                         <tr>
                             <td>Service Plan Feature Bullet 3 </td>
                         </tr>
-                      
-                        
-                        
+
+
+
                     </tbody>
                 </table>
             </li>
-            <li>Enter the following values regarding the cost of Pivotal HD clusters. These fields are for display only. The values in these fields display to users in the Cloud Foundry CLI and in the Marketplace section of the Pivotal CF Developer Console.<table
+            <li>Enter the following values regarding the cost of Pivotal HD clusters. These fields are for display only. The values in these fields display to users in the Cloud Foundry CLI and in the Marketplace section of the Apps Manager.<table
                     frame="void"
                     rules="all">
                     <caption>Cost Information</caption>
@@ -120,18 +120,18 @@ To create an On-Demand Service Plan:
                     <tbody>
                         <tr>
                             <td>Maximum Number of Instances </td>
-                            <td>(Required) Limits the number of instances that Pivotal CF users can create.  Use this field to ensure that the Pivotal HD Service Broker does not oversubscribe the underlying IaaS resources. </td>
+                            <td>(Required) Limits the number of instances that PCF users can create.  Use this field to ensure that the Pivotal HD Service Broker does not oversubscribe the underlying IaaS resources. </td>
                             <td>Integer<ul>
                                     <li>Minimum: 1</li>
                                 </ul></td>
                         </tr>
                         <tr>
                             <td> Number of Pre-Created Instances</td>
-                            <td>(Required) The Pivotal HD Service Broker pre-creates a pool of Service Instances to allocate to Pivotal CF users on-demand.  This field defines how many Service Plan instances the Pivotal HD Service Broker pre-creates.<p
+                            <td>(Required) The Pivotal HD Service Broker pre-creates a pool of Service Instances to allocate to PCF users on-demand.  This field defines how many Service Plan instances the Pivotal HD Service Broker pre-creates.<p
                                     dir="ltr"
-                                    style="line-height:1;margin-top:0pt;margin-bottom:0pt;">When a Service Instance is allocated to a Pivotal CF user, the Service Broker back-fills the pool.</p><p
+                                    style="line-height:1;margin-top:0pt;margin-bottom:0pt;">When a Service Instance is allocated to a PCF user, the Service Broker back-fills the pool.</p><p
                                     dir="ltr"
-                                    style="line-height:1;margin-top:0pt;margin-bottom:0pt;">If all Service Instances are allocated and the Service Broker has not finished deploying a new one to the pool, Pivotal CF users will temporarily be unable to create a new Service Instance.</p><p
+                                    style="line-height:1;margin-top:0pt;margin-bottom:0pt;">If all Service Instances are allocated and the Service Broker has not finished deploying a new one to the pool, PCF users will temporarily be unable to create a new Service Instance.</p><p
                                     dir="ltr"
                                     style="line-height:1;margin-top:0pt;margin-bottom:0pt;">The more instances that are pre-created, the more concurrent requests the Service Broker can satisfy.</p><p
                                     dir="ltr"
@@ -328,7 +328,7 @@ To create an On-Demand Service Plan:
                     <td>Integer<ul>
                         <li>Minimum: 1</li>
                         <li>Maximum: 64 </li>
-                        
+
                     </ul></td>
                 </tr>
                 <tr>
@@ -337,7 +337,7 @@ To create an On-Demand Service Plan:
                     <td>Integer<ul>
                         <li>Minimum: 2048</li>
                         <li>Maximum: 1048576 </li>
-                        
+
                     </ul></td>
                 </tr>
                 <tr>
@@ -399,8 +399,8 @@ To create an On-Demand Service Plan:
             </tbody>
         </table></li>
             <li>Click the <strong>Save</strong> button.</li>
-		
-            
+
+
 </ol>
 
 <a id="modifying"></a>
@@ -414,7 +414,7 @@ To create an On-Demand Service Plan:
 <li>
 <p>Use a Web browser to open the <strong>Pivotal Ops Manager</strong> application. (This application is part of your Pivotal Cloud Foundry installation.)</p>
 </li>
-<li>Click the <strong>Pivotal HD for Pivotal CF</strong> tile. </li>
+<li>Click the <strong>Pivotal HD for PCF</strong> tile. </li>
 <li>
  <p>Click <strong>On-demand Service Plans</strong>.</p>
  <p>The <strong>On-demand Service Plans</strong> screen displays.</p>

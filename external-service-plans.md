@@ -6,10 +6,10 @@ To create an External Service Plan:
 
 <ol>
             <li>Use a Web browser to open the Pivotal Ops Manager application. (This application is part of your Pivotal Cloud Foundry installation.) </li>
-            <li>Click the <strong>Pivotal HD for Pivotal CF</strong> tile. </li>
+            <li>Click the <strong>Pivotal HD for PCF</strong> tile. </li>
             <li>Select <strong>External Service Plans</strong>. <p>The External Service Plans screen displays.</p></li>
             <li>Click <strong>Add</strong> to create a new Service Plan. </li>
-            <li>Configure the following options for your Service Plan. This information displays in the Pivotal CF Console and Command-line Interface:<table rules="all"
+            <li>Configure the following options for your Service Plan. This information displays in the Apps Manager and command line interface:<table rules="all"
                     frame="void">
                     <caption>Informational Display</caption>
                     <col
@@ -28,13 +28,13 @@ To create an External Service Plan:
                     <tbody>
                         <tr>
                             <td>Service Plan Name</td>
-                            <td>(Required) The name you want Pivotal CF users to see in the CLI and Developer Console. </td>
+                            <td>(Required) The name you want PCF users to see in the CLI and Apps Manager. </td>
                             <td>String</td>
                         </tr>
                         <tr>
                             <td>Service Plan Feature Bullet 1 </td>
                             <td
-                                rowspan="3"> The details of the service plan you want Pivotal CF users to see. The values in these fields display to users in the Marketplace section of the Pivotal CF Developer Console. </td>
+                                rowspan="3"> The details of the service plan you want PCF users to see. The values in these fields display to users in the Marketplace section of the Apps Manager. </td>
                             <td
                                 rowspan="3">String</td>
                         </tr>
@@ -46,7 +46,7 @@ To create an External Service Plan:
                         </tr>
                     </tbody>
                 </table></li>
-            <li> Enter the following values regarding the cost of Pivotal HD clusters. These fields are for display only. The values in these fields display to users in the Marketplace section of the Pivotal CF Developer Console:<table rules="all"
+            <li> Enter the following values regarding the cost of Pivotal HD clusters. These fields are for display only. The values in these fields display to users in the Marketplace section of the Apps Manager:<table rules="all"
                     frame="void">
                     <caption>Cost Information</caption>
                     <col
@@ -107,7 +107,7 @@ To create an External Service Plan:
                         </tr>
                     </tbody>
                 </table></li>
-            <li> Enter the following values for all relevant fields of the Pivotal HD software where you want the Service Plan to broker access. These values you enter in these fields are displayed in the Service Instance Dashboard that Pivotal CF users can access when they create a Service Instance and/or in the <code>VCAP_SERVICES</code> environment variable that Applications can access when they are bound to the Service Instance. <table rules="all"
+            <li> Enter the following values for all relevant fields of the Pivotal HD software where you want the Service Plan to broker access. These values you enter in these fields are displayed in the Service Instance Dashboard that PCF users can access when they create a Service Instance and/or in the <code>VCAP_SERVICES</code> environment variable that Applications can access when they are bound to the Service Instance. <table rules="all"
                     frame="void"
                     width="540">
                     <caption>Pivotal HD Configuration</caption>
