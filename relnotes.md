@@ -2,6 +2,8 @@
 title: Release Notes for Pivotal HD Service v 1.3.2.0
 ---
 
+**Note:** Pivotal HD for PCF 1.3.2.0 is not supported for production deployments.
+
 #Changes since v1.2.1.0:
 * Administrators can now define multiple, On-demand Service Plans using Pivotal Cloud Foundry Operations Manager.
 * Administrators can now define [External Service Plans](external-service-plans.html), which broker access to pre-existing Pivotal HD software components.
