@@ -1,7 +1,7 @@
 ---
-title: Pivotal HD for Pivotal Cloud Foundry v1.3.2.0<sup>*</sup>
+title: Pivotal HD for Pivotal Cloud Foundry v1.3.2.0
 ---
-<sup>*</sup>For non-production use only.
+For non-production use only.
 
 These pages describe how to install, configure and use [Pivotal HD for Pivotal Cloud Foundry](https://network.pivotal.io/products/pivotal-hd-service), version 1.3.2.0.
 
