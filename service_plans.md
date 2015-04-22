@@ -144,7 +144,7 @@ To create an On-Demand Service Plan:
                     </tbody>
                 </table></li>
             <li> Choose which Pivotal HD Components you wish to deploy as a part of each instance of the Service Plan.  <p>For more information about Pivotal HD and its components, see the <a
-                        href="http://pivotalhd.docs.pivotal.io/doc/2010/index.html">Pivotal HD Documentation</a> .</p><table rules="all"
+                        href="http://pivotalhd-210.docs.pivotal.io/doc/2010/index.html">Pivotal HD Documentation</a> .</p><table rules="all"
                     frame="void">
                     <caption>Pivotal HD Components</caption>
                     <col

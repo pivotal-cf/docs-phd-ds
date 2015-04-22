@@ -17,7 +17,7 @@ The documentation contains the following topics:
 * [Release Notes](relnotes.html)
 
 For more information on using Pivotal HD, see the
-[Pivotal HD Documentation](http://pivotalhd.docs.pivotal.io/doc/2010/index.html).
+[Pivotal HD Documentation](http://pivotalhd-210.docs.pivotal.io/doc/2010/index.html).
 
 For more information on using Pivotal Cloud Foundry, see the
 [Pivotal Cloud Foundry Documentation](http://docs.pivotal.io/pivotalcf).

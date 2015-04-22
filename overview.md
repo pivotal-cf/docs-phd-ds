@@ -50,7 +50,7 @@ On-Demand Service Plans can consist of several components from the Pivotal HD 2.
 * HAWQ and PXF
 * GemFire XD
 
-For more details about the individual software components and their versions, please see the [Pivotal HD Enterprise 2.0.1 Release Notes](http://pivotalhd.docs.pivotal.io/doc/2010/PHDEnterprise2.0.1ReleaseNotes.html#PHDEnterprise2.0.1ReleaseNotes-VersioningandCompatibility).
+For more details about the individual software components and their versions, please see the [Pivotal HD Enterprise 2.0.1 Release Notes](http://pivotalhd-210.docs.pivotal.io/doc/2010/PHDEnterprise2.0.1ReleaseNotes.html#PHDEnterprise2.0.1ReleaseNotes-VersioningandCompatibility).
 
 The Pivotal HD Service Broker is the software responsible for deploying each Service Instance’s virtual machines in advance, eliminating the need for PCF users to wait when creating an instance of the service.
 
