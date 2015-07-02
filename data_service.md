@@ -191,7 +191,7 @@ You can delete a Pivotal HD Service Instance when it is no longer needed.  Doing
 
 When a PCF User binds an application to a Pivotal HD Service Instance, user account credentials are automatically created in each software component of the allocated Pivotal HD cluster.  Both Credentials and API end-points are returned and included in the `VCAP_SERVICES` environment variable of the bound application.
 
-For more information about binding, see the following topic in the PCF documentation: [Bind a Service](http://docs.pivotal.io/pivotalcf/devguide/services/bind-service.html).
+For more information about binding, see the [Bind a Service Instance](../pivotalcf/devguide/services/managing-services.html#bind) section of the _Managing Service Instances with the CLI_ topic.
 
 ##Viewing Binding Meta Data and Environment Variables
 
