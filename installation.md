@@ -1,5 +1,5 @@
 ---
-title: Installing and Upgrading Pivotal HD for PCF
+title: Installing and Upgrading Pivotal HD for Pivotal Cloud Foundry&reg;
 ---
 
 * [Prerequisistes](#prereq)
@@ -13,10 +13,10 @@ title: Installing and Upgrading Pivotal HD for PCF
 <a id="prereq"></a>
 #Prerequisites
 
-Before you begin your [Pivotal HD for Pivotal Cloud Foundry](https://network.pivotal.io/products/pivotal-hd-service) deployment, make sure that your system meets the following minimum requirements:
+Before you begin your [Pivotal HD for Pivotal Cloud Foundry&reg;](https://network.pivotal.io/products/pivotal-hd-service) deployment, make sure that your system meets the following minimum requirements:
 
-* An installed instance of Pivotal Cloud Foundry Ops Manager v1.3.2.0
-* Pivotal Cloud Foundry Elastic Runtime installed in Ops Manger
+* An installed instance of [Pivotal Cloud Foundry&reg;](https://network.pivotal.io/products/pivotal-cf) (PCF) Ops Manager v1.3.2.0
+* Pivotal Cloud Foundry&reg; Elastic Runtime installed in Ops Manger
 * Network access and credentials for the Ops Manager Web Console
 * 7 IP Addresses in the vSphere Network where you plan to deploy the Pivotal HD Service Broker. See [Configuring Network Segmentation in Ops Manger](http://docs.pivotal.io/pivotalcf/customizing/network-segmentation.html) in the PCF documentation.
 * Capacity in the vSphere cluster, resource pool, and datastore for the Pivotal HD Service Broker and related virtual machines as follows:
@@ -116,7 +116,7 @@ Before you begin your [Pivotal HD for Pivotal Cloud Foundry](https://network.piv
 </table>
 <br/>
 
-* A Sufficient number of IP Address for the maximum number of Pivotal HD Clusters you will allow PCF users to create. Use the following formula to calculate the number of IP addresses:
+* A sufficient number of IP Address for the maximum number of Pivotal HD Clusters you will allow PCF users to create. Use the following formula to calculate the number of IP addresses:
 
 <strong>Number of Clusters</strong> * (<strong>Number of PHD Components</strong> + <strong>Number of Slave VMs</strong> + <strong>2 Compilation VMs</strong>)
 
@@ -290,7 +290,7 @@ Where the **Number of PHD Components** is one component for each of the followin
                     </tr>
                 </tbody>
             </table>
-            <p><strong>Note:</strong> If you make changes to these network configurations, the changes only affect creation of <em>new</em> service instances. Any pre-created services instances are destroyed and re-created using the new configurations. Existing allowcated or bound service instances are not changed.</p>
+            <p><strong>Note:</strong> If you make changes to these network configurations, the changes only affect creation of <em>new</em> service instances. Any pre-created services instances are destroyed and re-created using the new configurations. Existing allocated or bound service instances are not changed.</p>
         </li>
         <li>
             <p>Click <strong>Save</strong>.</p>
@@ -346,7 +346,7 @@ Consider the following vSphere network diagram:
 
 ![vSphere Networking](images/vsphere_networking.png)
 
-##Deploying Pivotal Cloud Foundry and Pivotal HD on the Same Network
+##Deploying Pivotal Cloud Foundry&reg; and Pivotal HD on the Same Network
 
 If Operations Manager has been configured to deploy PCF and any imported Services to network A in the picture above, you can configure the Pivotal HD Service to also deploy Pivotal HD clusters to network A.  If you choose to use the same network as PCF, it is likely you will use IP addresses from a single IP subnet across all deployments.  Should you choose to use IP addresses from the same subnet, you must ensure that Operations Manager and the Pivotal HD Service do not attempt to use the same IP addresses in their deployments.
 
@@ -371,9 +371,9 @@ Here is an example of how you might do that if you were deploying everything to 
 * Default Gateway IP Address: `10.0.0.1`
 
 <a id="openports"></a>
-##Deploying Pivotal Cloud Foundry and Pivotal HD on Different Networks
+##Deploying Pivotal Cloud Foundry&reg; and Pivotal HD on Different Networks
 
-Alternatively, you could configure Ops Manager to deploy Pivotal Cloud Foundry to Network A and the Pivotal HD Service to deploy Pivotal HD clusters to Network C.  The only requirement in this case is that the two networks be able to route traffic to each other.  If a firewall is placed between the two networks, you must ensure that these ports are opened to allow unrestricted traffic between the BOSH agent and director:
+Alternatively, you could configure Ops Manager to deploy Pivotal Cloud Foundry&reg; to Network A and the Pivotal HD Service to deploy Pivotal HD clusters to Network C.  The only requirement in this case is that the two networks be able to route traffic to each other.  If a firewall is placed between the two networks, you must ensure that these ports are opened to allow unrestricted traffic between the BOSH agent and director:
 
 <table
     frame="void" rules="all">

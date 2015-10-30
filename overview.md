@@ -1,13 +1,13 @@
 ---
-title: Overview of Pivotal HD for PCF v1.3.2.0
+title: Overview of Pivotal HD for Pivotal Cloud Foundry&reg; v1.3.2.0
 ---
 
 * [On-Demand Service Plans](#on-demand)
 * [External Service Plans](#ext-plans)
 
-The [Pivotal HD for Pivotal Cloud Foundry](https://network.pivotal.io/products/pivotal-hd-service) enables [PCF](http://docs.pivotal.io/pivotalcf/getstarted/pcf-docs.html) Administrators to offer PCF users access to Pivotal HD software components for a variety of use cases.
+The [Pivotal HD for Pivotal Cloud Foundry&reg;](https://network.pivotal.io/products/pivotal-hd-service) enables [Pivotal Cloud Foundry&reg;](https://network.pivotal.io/products/pivotal-cf) (PCF) Administrators to offer PCF users access to Pivotal HD software components for a variety of use cases.
 
-Like other [PCF Services](http://docs.pivotal.io/pivotalcf/services/overview.html), access is presented as a series of Service Plans in [Elastic Runtime](http://docs.pivotal.io/pivotalcf/concepts/overview.html).  A PCF Administrator initially imports the Pivotal HD Service into Pivotal Cloud Foundry [Ops Manager](http://docs.pivotal.io/pivotalcf/customizing/) where they define the details of the service plans they wish to offer.
+Like other [PCF Services](http://docs.pivotal.io/pivotalcf/services/overview.html), access is presented as a series of Service Plans in [Elastic Runtime](http://docs.pivotal.io/pivotalcf/concepts/overview.html).  A PCF Administrator initially imports the Pivotal HD Service into Pivotal Cloud Foundry&reg; [Ops Manager](http://docs.pivotal.io/pivotalcf/customizing/) where they define the details of the service plans they wish to offer.
 
 When PCF Administrators deploy the service, Ops Manger creates a BOSH deployment and uses its instance of BOSH to deploy a virtual machine where the Pivotal HD Service-Broker software process runs, along with a series of temporary VMs that register the Pivotal HD Service with Elastic Runtime and ensure that the deployment is successful.
 
@@ -61,7 +61,7 @@ Lastly, the administrator has the option to not include the HDFS component as a 
 <a id="ext-plans"></a>
 #External Service Plans
 
-External Service Plans enable PCF developers to bind the hosts and ports of Pivotal HD software that is already running to their PCF-pushed application hosted on Pivotal Cloud Foundry.  It is important to note that user credentials are not created automatically for the application during binding and developers will need to request these credentials from the administrators of the Pivotal HD software.
+External Service Plans enable PCF developers to bind the hosts and ports of Pivotal HD software that is already running to their PCF-pushed application hosted on Pivotal Cloud Foundry&reg;.  It is important to note that user credentials are not created automatically for the application during binding and developers will need to request these credentials from the administrators of the Pivotal HD software.
 
 Administrators can define Multiple External Service Plans in order to broker access to different instances of Pivotal HD in parallel.
 
