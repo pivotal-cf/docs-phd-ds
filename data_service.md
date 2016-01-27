@@ -60,12 +60,9 @@ For more information about the the Apps Manager, see [Getting Started with the A
 
 To create a Pivotal HD cluster instance:
 
-1. Install the CF Command Line Interface.  For more information on the CF Command Line Interface, see [Installing the CF CLI](http://docs.pivotal.io/pivotalcf/devguide/installcf/install-go-cli.html).
+1. Install the CF Command Line Interface.  For more information on the CF Command Line Interface, see [Installing the CF CLI](http://docs.pivotal.io/pivotalcf/devguide/cf-cli/install-go-cli.html).
 
-2. Log in to PCF using the CF CLI. See [Getting Started with the CF CLI](http://docs.pivotal.io/pivotalcf/devguide/installcf/whats-new-v6.html).
-
-2. Run the following commands:
-
+2. Log in to PCF using the CF CLI. See [Getting Started with the CF CLI](http://docs.pivotal.io/pivotalcf/devguide/cf-cli/getting-started.html
     `$ cf login [-a API_URL] [-u USERNAME] [-p PASSWORD] [-o ORG] [-s SPACE]`
 	(This command takes care of logging in, and also targets the correct org and space simultaneously. If you are already logged in, you can run the following command to target an org and space:
 	`$ cf target  -o <organization> -s <space name>`.)
@@ -141,7 +138,7 @@ You can delete a Pivotal HD Service Instance when it is no longer needed.  Doing
 
 ##CF Command Line
 
-1. Log in to PCF using the CF CLI. See [Getting Started with the CF CLI](http://docs.pivotal.io/pivotalcf/devguide/installcf/whats-new-v6.html).
+1. Log in to PCF using the CF CLI. See [Getting Started with the CF CLI](http://docs.pivotal.io/pivotalcf/devguide/cf-cli/getting-started.html).
 
 2. Run the following commands:
 
@@ -237,7 +234,7 @@ To view the binding variables from the **Apps Manager**:
 7. Click the **Bind** button for the service you want to bind to this application.
 
 ##Binding an Application using the CF Command Line
-1. Log in to CF using the CF CLI. See [Getting Started with the CF CLI](http://docs.pivotal.io/pivotalcf/devguide/installcf/whats-new-v6.html).
+1. Log in to CF using the CF CLI. See [Getting Started with the CF CLI](http://docs.pivotal.io/pivotalcf/devguide/cf-cli/getting-started.html).
 
 2. Run the following commands:
 
@@ -303,7 +300,7 @@ You can unbind a bound application from a Pivotal HD cluster instance using eith
 	A confirmation dialog box displays.
 
 ##CF Command Line
-1. Log in to PCF using the CF CLI. See [Getting Started with the CF CLI](http://docs.pivotal.io/pivotalcf/devguide/installcf/whats-new-v6.html).
+1. Log in to PCF using the CF CLI. See [Getting Started with the CF CLI](http://docs.pivotal.io/pivotalcf/devguide/cf-cli/getting-started.html).
 
 2. Run the following commands:
 
