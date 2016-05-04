@@ -1,5 +1,6 @@
 ---
 title: HDFS Isilon Integration
+owner: Pivotal HD
 ---
 
 This section explains how Pivotal HD components deployed by the Pivotal HD Service interoperate with the  EMC Isilon Scale-Out NAS running the HDFS protocol.

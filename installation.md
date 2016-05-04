@@ -1,5 +1,6 @@
 ---
 title: Installing and Upgrading Pivotal HD for Pivotal Cloud Foundry&reg;
+owner: Pivotal HD
 ---
 
 * [Prerequisistes](#prereq)

@@ -1,5 +1,6 @@
 ---
 title: Release Notes for Pivotal HD Service v 1.3.2.0
+owner: Pivotal HD
 ---
 
 **Note:** Pivotal HD for [Pivotal Cloud Foundry&reg;](https://network.pivotal.io/products/pivotal-cf) (PCF) 1.3.2.0 is not supported for production deployments.

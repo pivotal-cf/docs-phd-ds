@@ -1,5 +1,6 @@
 ---
 title: Troubleshooting a Pivotal HD Service Instance
+owner: Pivotal HD
 ---
 <p>This section discusses tools and procedures you can use to diagnose problems with a Pivotal HD cluster instance. </p>
 <ul>
