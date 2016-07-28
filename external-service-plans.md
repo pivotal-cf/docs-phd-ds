@@ -5,7 +5,7 @@ title: Creating an External Service Plan
 To create an External Service Plan:
 
 <ol>
-            <li>Use a Web browser to open the Pivotal Ops Manager application. (This application is part of your <a href="https://network.pivotal.io/products/pivotal-cf">Pivotal Cloud Foundry&reg;</a> (PCF) installation.) </li>
+            <li>Use a Web browser to open the Pivotal Ops Manager application. (This application is part of your <a href="https://network.pivotal.io/products/pivotal-cf">Pivotal Cloud Foundry</a> (PCF) installation.) </li>
             <li>Click the <strong>Pivotal HD for PCF</strong> tile. </li>
             <li>Select <strong>External Service Plans</strong>. <p>The External Service Plans screen displays.</p></li>
             <li>Click <strong>Add</strong> to create a new Service Plan. </li>

@@ -4,7 +4,7 @@ title: Creating and Modifying Pivotal HD On-Demand Service Plans
 
 #Overview
 
-A [Pivotal Cloud Foundry&reg;](https://network.pivotal.io/products/pivotal-cf) (PCF) Administrator can define the details of the Pivotal HD On-Demand Service Plans they wish to offer to their PCF users. An on-demand service plan is a blueprint that describes the components and configuration of each instance of a Pivotal HD cluster. The Pivotal HD Service includes default values for the service plan, which can be changed by the PCF Administrator.
+A [Pivotal Cloud Foundry](https://network.pivotal.io/products/pivotal-cf) (PCF) Administrator can define the details of the Pivotal HD On-Demand Service Plans they wish to offer to their PCF users. An on-demand service plan is a blueprint that describes the components and configuration of each instance of a Pivotal HD cluster. The Pivotal HD Service includes default values for the service plan, which can be changed by the PCF Administrator.
 
 * [Creating an On-Demand Service Plan](#creating)
 
@@ -17,7 +17,7 @@ To create an On-Demand Service Plan:
 
 <ol>
             <li>
-                <p>Use a Web browser to log in to the <strong>Pivotal Ops Manager</strong> application. (This application is part of your Pivotal Cloud Foundry&reg; installation.)</p>
+                <p>Use a Web browser to log in to the <strong>Pivotal Ops Manager</strong> application. (This application is part of your Pivotal Cloud Foundry installation.)</p>
             </li>
             <li>Click the <strong>Pivotal HD for PCF</strong> tile. </li>
             <li>
@@ -412,7 +412,7 @@ To create an On-Demand Service Plan:
 
 <ol>
 <li>
-<p>Use a Web browser to open the <strong>Pivotal Ops Manager</strong> application. (This application is part of your Pivotal Cloud Foundry&reg; installation.)</p>
+<p>Use a Web browser to open the <strong>Pivotal Ops Manager</strong> application. (This application is part of your Pivotal Cloud Foundry installation.)</p>
 </li>
 <li>Click the <strong>Pivotal HD for PCF</strong> tile. </li>
 <li>

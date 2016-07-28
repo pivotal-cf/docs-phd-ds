@@ -2,10 +2,10 @@
 title: Release Notes for Pivotal HD Service v 1.3.2.0
 ---
 
-**Note:** Pivotal HD for [Pivotal Cloud Foundry&reg;](https://network.pivotal.io/products/pivotal-cf) (PCF) 1.3.2.0 is not supported for production deployments.
+**Note:** Pivotal HD for [Pivotal Cloud Foundry](https://network.pivotal.io/products/pivotal-cf) (PCF) 1.3.2.0 is not supported for production deployments.
 
 #Changes since v1.2.1.0:
-* Administrators can now define multiple, On-demand Service Plans using Pivotal Cloud Foundry&reg; Operations Manager.
+* Administrators can now define multiple, On-demand Service Plans using Pivotal Cloud Foundry Operations Manager.
 * Administrators can now define [External Service Plans](external-service-plans.html), which broker access to pre-existing Pivotal HD software components.
 * Administrators can now exclude HDFS from on-demand Service Plans, and instead utilize a [pre-existing instance of HDFS running on Isilon](isilon.html) OneFS v7.1 + the HDFS 2.2 Service Patch.
 * On-demand Service Plans now deploy Service Instances consisting of Pivotal HD software v2.0.1 instead of v1.1.0.

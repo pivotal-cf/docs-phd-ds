@@ -18,7 +18,7 @@ title: Troubleshooting a Pivotal HD Service Instance
         </ul>
 
 <p>If you need to access a virtual machine in your Pivotal HD cluster or if you need to access the virtual machine that runs Pivotal HD Service, you can do so. </p>
-<p>Information required to access the Pivotal HD Service Broker is displayed in a href="https://network.pivotal.io/products/pivotal-cf">Pivotal Cloud Foundry&reg;</a> (PCF) Ops Manager, which also displays the status of the virtual machine and enables you to download its log files in the same way as for other PCF tiles. </p>
+<p>Information required to access the Pivotal HD Service Broker is displayed in a href="https://network.pivotal.io/products/pivotal-cf">Pivotal Cloud Foundry</a> (PCF) Ops Manager, which also displays the status of the virtual machine and enables you to download its log files in the same way as for other PCF tiles. </p>
 <p>Because the Pivotal HD Service Broker deploys Pivotal HD on-demand service instances, information about those deployments is not visible in Ops Manager but is visible using the BOSH Command Line Interface, which you can access using the Pivotal HD Service Broker’s terminal shell.  </p>
 <img
     alt="vm_provisioning_flow.png"

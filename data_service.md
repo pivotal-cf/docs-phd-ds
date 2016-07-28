@@ -2,7 +2,7 @@
 title: Using a Pivotal HD Service Instance
 ---
 
-After the [Pivotal Cloud Foundry&reg;](https://network.pivotal.io/products/pivotal-cf) (PCF) Administrator deploys the [Pivotal HD Service](https://network.pivotal.io/products/pivotal-hd-service), PCF Users can create instances of the service, resulting in a pre-deployed Pivotal HD cluster that is allocated for their use. PCF users can subsequently bind applications that were pushed from Pivotal Cloud Foundry&reg; Elastic Runtime to a Pivotal HD Service Instance in order to create and embed user credentials and API endpoints.
+After the [Pivotal Cloud Foundry](https://network.pivotal.io/products/pivotal-cf) (PCF) Administrator deploys the [Pivotal HD Service](https://network.pivotal.io/products/pivotal-hd-service), PCF Users can create instances of the service, resulting in a pre-deployed Pivotal HD cluster that is allocated for their use. PCF users can subsequently bind applications that were pushed from Pivotal Cloud Foundry Elastic Runtime to a Pivotal HD Service Instance in order to create and embed user credentials and API endpoints.
 
 * [Creating Pivotal HD Cluster Instances](#create-cluster)
 * [Deleting Pivotal HD Cluster Instances](#delete-cluster)
@@ -44,7 +44,7 @@ To create an instance of a Pivotal HD Service Plan using the Apps Manager:
 
 A Pivotal HD Service Instance is created.  In the case of an on-demand service plan, you have been allocated a dedicated Pivotal HD sandbox. In the case of a Pivotal HD external service plan, the existing Pivotal HD software’s details are ready to be bound to an application. The service instance displays in the list of services for the current space
 
-**Pivotal Cloud Foundry&reg; Apps Manager**
+**Pivotal Cloud Foundry Apps Manager**
 
 ![Apps Manager](images/dev_console_manage_instance.png "Apps Manager")
 
