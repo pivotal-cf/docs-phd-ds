@@ -239,7 +239,7 @@ Where the **Number of PHD Components** is one component for each of the followin
 
         <li>Select the <strong>Pivotal HD for PCF</strong> tile.<p>The <strong>Pivotal HD</strong> configuration page displays. </p></li>
             <li> (Optional) Select <strong>Assign Availability Zones</strong> to configure which Availability Zone you want Ops Manager to use to deploy the Pivotal HD Service Broker and virtual machines.  The Pivotal HD Service Broker and related VMs are all singleton jobs, meaning that only one virtual machine is deployed for each type.  The only exception is the compilation job, which deploys two virtual machines. <p>See <a
-                        href="http://docs.pivotal.io/pivotalcf/customizing/vsphere-config.html">Configuring Ops Manager Director for VMware vSphere </a></p></li>
+                        href="http://docs.pivotal.io/pivotalcf/customizing/vsphere-config.html">Configuring BOSH Director for VMware vSphere </a></p></li>
             <li>(Optional) Select the <strong>Assign Networks</strong> tab if you want to change the vSphere Network where Ops Manager deploys the Pivotal HD Service Broker and related virtual machines.</span>
             </li>
         <li>Click <strong>Save</strong>.</li>
